@@ -20,6 +20,8 @@ package com.pimp.instincts;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,5 +29,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+
+        ImageView spinArrowImageView = (ImageView) findViewById(R.id.spin_arrow);
+        spinArrowImageView.getLayoutParams().width = (int) dpWidth;
+
+        WheelMenu wheelMenu = (WheelMenu) findViewById(R.id.wheelMenu);
+        wheelMenu.setTranslationX(dpWidth);
+        wheelMenu.setDivCount(6);
+        wheelMenu.setWheelImage(R.drawable.spin_wheel);
+        wheelMenu.setSnapToCenterFlag(true);
+
+        wheelMenu.setWheelChangeListener(new WheelMenu.WheelChangeListener() {
+            @Override
+            public void onSelectionChange(int selectedPosition) {
+                //TODO
+            }
+        });
     }
 }
