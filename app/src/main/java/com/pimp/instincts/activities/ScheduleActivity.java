@@ -52,7 +52,6 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
     private static final String TAG = LogHelper.makeLogTag(ScheduleActivity.class);
 
     private WeekView weekView;
-    private Date march9Date, march10Date, march11Date;
     private RealmResults<Event> eventRealmResults;
 
     @Override
@@ -70,19 +69,13 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
         weekView.setOnEventClickListener(this);
         weekView.setMonthChangeListener(this);
         weekView.setEventLongPressListener(this);
-        //weekView.setNumberOfVisibleDays(1);
+        weekView.setNumberOfVisibleDays(1);
 
         setupDateTimeInterpreter();
 
-        String march9String = "09-03-2017 09:00:00";
-        String march10String = "10-03-2017 09:00:00";
-        String march11String = "11-03-2017 09:00:00";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
         try {
-            march9Date = simpleDateFormat.parse(march9String);
-            march10Date = simpleDateFormat.parse(march10String);
-            march11Date = simpleDateFormat.parse(march11String);
-            Calendar calendar = dateToCalendar(march9Date);
+            Calendar calendar = dateToCalendar(simpleDateFormat.parse("08-03-2017 09:00:00"));
             weekView.goToDate(calendar);
         } catch (Exception e) {
             Log.e("DATE", e.toString());
@@ -101,7 +94,7 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
             public String interpretDate(Calendar date) {
                 SimpleDateFormat weekdayNameFormat = new SimpleDateFormat("EEE", Locale.getDefault());
                 String weekday = weekdayNameFormat.format(date.getTime());
-                SimpleDateFormat format = new SimpleDateFormat(" M/d", Locale.getDefault());
+                SimpleDateFormat format = new SimpleDateFormat(" dd/MM", Locale.getDefault());
                 return weekday.toUpperCase() + format.format(date.getTime());
             }
 
@@ -125,8 +118,8 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
                 Calendar endTime = dateToCalendar(date);
                 WeekViewEvent weekViewEvent = new WeekViewEvent(event.getId(), event.getName(),
                         startTime, endTime);
-                weekViewEvent.setColor(Color.parseColor(event.getColor()));
-                weekViewEvent.setLocation(event.getLocation());
+                weekViewEvent.setColor(Color.parseColor(getColorForType(event.getType())));
+                weekViewEvent.setLocation("\n" + event.getLocation());
                 events.add(weekViewEvent);
             } catch (Exception e) {
                 LogHelper.e(TAG, e.toString());
@@ -159,5 +152,25 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
                 event.getStartTime().get(Calendar.MONTH) == month - 1) ||
                 (event.getEndTime().get(Calendar.YEAR) == year &&
                         event.getEndTime().get(Calendar.MONTH) == month - 1);
+    }
+
+    private String getColorForType(String type) {
+        switch (type) {
+            case "null":
+                return "#F2B300";
+            case "ELC":
+                return "#CC66FF";
+            case "Saaral":
+                return "#5B9BD5";
+            case "Music":
+                return "#548235";
+            case "Variety":
+                return "#F2B300";
+            case "Dance":
+                return "#FF6600";
+
+            default:
+                return "#F2B300";
+        }
     }
 }

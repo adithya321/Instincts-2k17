@@ -47,6 +47,21 @@ public class EventDetailActivity extends EventDetailBaseActivity {
             case "null":
                 icon.setImageResource(R.drawable.ic_stage);
                 break;
+            case "ELC":
+                icon.setImageResource(R.drawable.ic_costume);
+                break;
+            case "Saaral":
+                icon.setImageResource(R.drawable.ic_writer);
+                break;
+            case "Music":
+                icon.setImageResource(R.drawable.ic_microphone);
+                break;
+            case "Variety":
+                icon.setImageResource(R.drawable.ic_mask);
+                break;
+            case "Dance":
+                icon.setImageResource(R.drawable.ic_spotlights);
+                break;
 
             default:
                 icon.setImageResource(R.drawable.ic_stage);
@@ -55,14 +70,36 @@ public class EventDetailActivity extends EventDetailBaseActivity {
 
     @Override
     protected void onItemsCreated(@NonNull Items items) {
-        items.add(new Category(event.getName()));
-        items.add(new Card(event.getDescription(), null));
-        items.add(new Line());
-        items.add(new Category("Rules"));
-        items.add(new Card(event.getRules(), null));
-        items.add(new Line());
-        items.add(new Category("Contact"));
-        items.add(new Contact(R.mipmap.ic_launcher_round, event.getContact1(), event.getContact1()));
+        if (!event.getDescription().equals("")) {
+            items.add(new Category(event.getName()));
+            items.add(new Card(event.getDescription(), null));
+            items.add(new Line());
+        }
+        if (!event.getLocation().equals("")) {
+            items.add(new Category("Location"));
+            items.add(new Card(event.getLocation(), null));
+            items.add(new Line());
+        }
+        if (!event.getRules().equals("")) {
+            items.add(new Category("Rules"));
+            items.add(new Card(event.getRules(), null));
+            items.add(new Line());
+        }
+        if (!event.getInfo().equals("")) {
+            items.add(new Category("Info"));
+            items.add(new Card(event.getInfo(), null));
+            items.add(new Line());
+        }
+        if (!event.getContact1().equals("")) {
+            items.add(new Category("Contact"));
+            items.add(new Contact(R.mipmap.ic_launcher_round, event.getContact1().split(":")[0],
+                    event.getContact1().split(":")[1]));
+        }
+        if (!event.getContact2().equals("")) {
+            items.add(new Category("Contact"));
+            items.add(new Contact(R.mipmap.ic_launcher_round, event.getContact2().split(":")[0],
+                    event.getContact2().split(":")[1]));
+        }
     }
 
     @Nullable
@@ -75,7 +112,8 @@ public class EventDetailActivity extends EventDetailBaseActivity {
     @Override
     protected void onActionClick(View action) {
         super.onActionClick(action);
-        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(event.getContact1()));
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +
+                event.getContact1().split(":")[1]));
         startActivity(intent);
     }
 }
