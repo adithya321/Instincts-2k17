@@ -26,8 +26,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.mzelzoghbi.zgallery.ZGrid;
+import com.mzelzoghbi.zgallery.entities.ZColor;
 import com.pimp.instincts.R;
 import com.pimp.instincts.ui.WheelMenu;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,7 +70,13 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "BUSES", Toast.LENGTH_SHORT).show();
                         break;
                     case 5:
-                        Toast.makeText(MainActivity.this, "GALLERY", Toast.LENGTH_SHORT).show();
+                        ZGrid.with(MainActivity.this, getImageList())
+                                .setToolbarColorResId(R.color.colorPrimary)
+                                .setTitle("Gallery")
+                                .setToolbarTitleColor(ZColor.WHITE)
+                                .setSpanCount(3)
+                                .setGridImgPlaceHolder(R.color.colorPrimary)
+                                .show();
                         break;
                 }
             }
@@ -74,5 +84,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registerOnClick(View view) {
+    }
+
+    private ArrayList<String> getImageList() {
+        ArrayList<String> imagesList = new ArrayList<>();
+        for (int i = 1; i <= 13; i++)
+            imagesList.add("http://ssninstincts.org.in/img/gallery/big/" + i + ".jpg");
+        return imagesList;
     }
 }
