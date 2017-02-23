@@ -77,6 +77,7 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
         try {
             Calendar calendar = dateToCalendar(simpleDateFormat.parse("08-03-2017 09:00:00"));
             weekView.goToDate(calendar);
+            weekView.goToHour(7);
         } catch (Exception e) {
             Log.e("DATE", e.toString());
         }
