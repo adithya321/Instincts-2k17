@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "CONTACT", Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
-                        startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                        startActivity(new Intent(MainActivity.this, MapsActivity.class)
+                                .putExtra("location", ""));
                         break;
                     case 5:
                         ZGallery.with(MainActivity.this, getImageList())

@@ -48,6 +48,7 @@ public class ContactViewProvider extends ItemViewProvider<Contact, ContactViewPr
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Contact contact) {
         holder.avatar.setImageResource(contact.avatarResId);
+        holder.avatar.setTag(contact.avatarResId);
         holder.name.setText(contact.name);
         holder.number.setText(contact.number);
     }

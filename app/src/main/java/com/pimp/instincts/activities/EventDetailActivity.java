@@ -23,18 +23,26 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.pimp.instincts.R;
 import com.pimp.instincts.ui.detail.Card;
 import com.pimp.instincts.ui.detail.Category;
 import com.pimp.instincts.ui.detail.Contact;
 import com.pimp.instincts.ui.detail.Line;
+import com.pimp.instincts.utils.LogHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import me.drakeet.multitype.Items;
 
 public class EventDetailActivity extends EventDetailBaseActivity {
+    private static final String TAG = LogHelper.makeLogTag(EventDetailActivity.class);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,13 +79,24 @@ public class EventDetailActivity extends EventDetailBaseActivity {
     @Override
     protected void onItemsCreated(@NonNull Items items) {
         if (!event.getDescription().equals("")) {
-            items.add(new Category(event.getName()));
             items.add(new Card(event.getDescription(), null));
             items.add(new Line());
         }
         if (!event.getLocation().equals("")) {
             items.add(new Category("Location"));
-            items.add(new Card(event.getLocation(), null));
+
+            SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yy HH:mm");
+            SimpleDateFormat sdf3 = new SimpleDateFormat("HH:mm");
+            try {
+                Date startTime = sdf1.parse(event.getStartTime());
+                Date endTime = sdf1.parse(event.getEndTime());
+                items.add(new Contact(R.drawable.ic_map, event.getLocation(), sdf2.format(startTime)
+                        + " - " + sdf3.format(endTime)));
+            } catch (Exception e) {
+                Log.e(TAG, e.toString());
+            }
+
             items.add(new Line());
         }
         if (!event.getRules().equals("")) {
@@ -92,12 +111,12 @@ public class EventDetailActivity extends EventDetailBaseActivity {
         }
         if (!event.getContact1().equals("")) {
             items.add(new Category("Contact"));
-            items.add(new Contact(R.mipmap.ic_launcher_round, event.getContact1().split(":")[0],
+            items.add(new Contact(R.drawable.ic_call, event.getContact1().split(":")[0],
                     event.getContact1().split(":")[1]));
         }
         if (!event.getContact2().equals("")) {
             items.add(new Category("Contact"));
-            items.add(new Contact(R.mipmap.ic_launcher_round, event.getContact2().split(":")[0],
+            items.add(new Contact(R.drawable.ic_call, event.getContact2().split(":")[0],
                     event.getContact2().split(":")[1]));
         }
     }
@@ -112,8 +131,20 @@ public class EventDetailActivity extends EventDetailBaseActivity {
     @Override
     protected void onActionClick(View action) {
         super.onActionClick(action);
-        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +
-                event.getContact1().split(":")[1]));
-        startActivity(intent);
+        CardView cardView = (CardView) action;
+        RelativeLayout relativeLayout = (RelativeLayout) cardView.getChildAt(0);
+        ImageView imageView = (ImageView) relativeLayout.getChildAt(0);
+        switch ((int) imageView.getTag()) {
+            case R.drawable.ic_call:
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +
+                        event.getContact1().split(":")[1]));
+                startActivity(intent);
+                break;
+
+            case R.drawable.ic_map:
+                startActivity(new Intent(EventDetailActivity.this, MapsActivity.class)
+                        .putExtra("location", event.getLocation()));
+                break;
+        }
     }
 }

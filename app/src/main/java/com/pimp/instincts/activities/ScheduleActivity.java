@@ -34,6 +34,7 @@ import com.pimp.instincts.InstinctsApplication;
 import com.pimp.instincts.R;
 import com.pimp.instincts.model.Event;
 import com.pimp.instincts.model.LocalJSONSource;
+import com.pimp.instincts.utils.DateUtils;
 import com.pimp.instincts.utils.LogHelper;
 import com.pimp.instincts.utils.RealmHelper;
 
@@ -46,6 +47,8 @@ import java.util.Locale;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+
+import static com.pimp.instincts.utils.DateUtils.dateToCalendar;
 
 public class ScheduleActivity extends AppCompatActivity implements WeekView.EventClickListener,
         MonthLoader.MonthChangeListener, WeekView.EventLongPressListener {
@@ -73,20 +76,14 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
 
         setupDateTimeInterpreter();
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         try {
-            Calendar calendar = dateToCalendar(simpleDateFormat.parse("08-03-2017 09:00:00"));
+            Calendar calendar = DateUtils.dateToCalendar(simpleDateFormat.parse("08-03-2017 09:00:00"));
             weekView.goToDate(calendar);
             weekView.goToHour(7);
         } catch (Exception e) {
             Log.e("DATE", e.toString());
         }
-    }
-
-    private Calendar dateToCalendar(Date date) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        return calendar;
     }
 
     private void setupDateTimeInterpreter() {
@@ -113,7 +110,7 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
 
         for (Event event : eventRealmResults) {
             try {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy HH:mm:ss");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 Date date = simpleDateFormat.parse(event.getStartTime());
                 Calendar startTime = dateToCalendar(date);
                 date = simpleDateFormat.parse(event.getEndTime());
