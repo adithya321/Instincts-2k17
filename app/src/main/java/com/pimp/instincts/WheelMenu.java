@@ -22,25 +22,22 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 
-public class WheelMenu extends ImageView {
-    private Bitmap imageOriginal, imageScaled;     //variables for original and re-sized image
-    private Matrix matrix;                         //Matrix used to perform rotations
-    private int wheelHeight, wheelWidth;           //height and width of the view
-    private int top;                               //the current top of the wheel (calculated in
-    // wheel divs)
-    private double totalRotation;                  //variable that counts the total rotation
-    // during a given rotation of the wheel by the
-    // user (from ACTION_DOWN to ACTION_UP)
-    private int divCount;                          //no of divisions in the wheel
-    private int divAngle;                          //angle of each division
-    private int selectedPosition;                  //the section currently selected by the user.
-    private boolean snapToCenterFlag = true;       //variable that determines whether to snap the
-    // wheel to the center of a div or not
+public class WheelMenu extends AppCompatImageView {
+    private Bitmap imageOriginal, imageScaled;
+    private Matrix matrix;
+    private int wheelHeight, wheelWidth;
+    private int topOfWheel;
+    private double totalRotation;
+    private int divCount;
+    private int divAngle;
+    private int selectedPosition;
+    private boolean snapToCenterFlag = true;
+
     private Context context;
     private WheelChangeListener wheelChangeListener;
 
@@ -49,20 +46,27 @@ public class WheelMenu extends ImageView {
         init(context);
     }
 
-    //initializations
+    /**
+     * get the quadrant of the wheel which contains the touch point (x,y)
+     *
+     * @return quadrant 1,2,3 or 4
+     */
+    private static int getQuadrant(double x, double y) {
+        if (x >= 0) {
+            return y >= 0 ? 1 : 4;
+        } else {
+            return y >= 0 ? 2 : 3;
+        }
+    }
+
     private void init(Context context) {
         this.context = context;
         this.setScaleType(ScaleType.MATRIX);
         selectedPosition = 0;
 
-        // initialize the matrix only once
-        if (matrix == null) {
-            matrix = new Matrix();
-        } else {
-            matrix.reset();
-        }
+        if (matrix == null) matrix = new Matrix();
+        else matrix.reset();
 
-        //touch events listener
         this.setOnTouchListener(new WheelTouchListener());
     }
 
@@ -106,7 +110,7 @@ public class WheelMenu extends ImageView {
     }
 
     /**
-     * Set a different top position. Default top position is 0.
+     * Set a different topOfWheel position. Default topOfWheel position is 0.
      * Should be set after {#setDivCount(int) setDivCount} method and the value should be greater
      * than 0 and lesser
      * than divCount, otherwise the provided value will be ignored.
@@ -118,9 +122,9 @@ public class WheelMenu extends ImageView {
         if (newTopDiv < 0 || newTopDiv >= divCount)
             return;
         else
-            top = newTopDiv;
+            topOfWheel = newTopDiv;
 
-        selectedPosition = top;
+        selectedPosition = topOfWheel;
     }
 
     /**
@@ -183,19 +187,6 @@ public class WheelMenu extends ImageView {
     }
 
     /**
-     * get the quadrant of the wheel which contains the touch point (x,y)
-     *
-     * @return quadrant 1,2,3 or 4
-     */
-    private static int getQuadrant(double x, double y) {
-        if (x >= 0) {
-            return y >= 0 ? 1 : 4;
-        } else {
-            return y >= 0 ? 2 : 3;
-        }
-    }
-
-    /**
      * rotate the wheel by the given angle
      *
      * @param degrees
@@ -220,7 +211,6 @@ public class WheelMenu extends ImageView {
         public void onSelectionChange(int selectedPosition);
     }
 
-    //listener for touch events on the wheel
     private class WheelTouchListener implements OnTouchListener {
         private double startAngle;
 
@@ -239,7 +229,7 @@ public class WheelMenu extends ImageView {
                     double currentAngle = getAngle(event.getX(), event.getY());
 
                     //rotate the wheel by the difference
-                    rotateWheel((float) (startAngle - currentAngle));
+                    rotateWheel((float) (startAngle - currentAngle) * 3);
 
                     //current angle becomes start angle for the next motion
                     startAngle = currentAngle;
@@ -258,17 +248,17 @@ public class WheelMenu extends ImageView {
                     //calculate the no of divs the rotation has crossed
                     int no_of_divs_crossed = (int) ((totalRotation) / divAngle);
 
-                    //calculate current top
-                    top = (divCount + top - no_of_divs_crossed) % divCount;
+                    //calculate current topOfWheel
+                    topOfWheel = (divCount + topOfWheel - no_of_divs_crossed) % divCount;
 
                     //for next rotation, the initial total rotation will be the no of degrees
-                    // inside the current top
+                    // inside the current topOfWheel
                     totalRotation = totalRotation % divAngle;
 
-                    //snapping to the top's center
+                    //snapping to the topOfWheel's center
                     if (snapToCenterFlag) {
 
-                        //calculate the angle to be rotated to reach the top's center.
+                        //calculate the angle to be rotated to reach the topOfWheel's center.
                         double leftover = divAngle / 2 - totalRotation;
 
                         rotateWheel((float) (leftover));
@@ -278,10 +268,10 @@ public class WheelMenu extends ImageView {
                     }
 
                     //set the currently selected option
-                    if (top == 0) {
+                    if (topOfWheel == 0) {
                         selectedPosition = divCount - 1;//loop around the array
                     } else {
-                        selectedPosition = top - 1;
+                        selectedPosition = topOfWheel - 1;
                     }
 
                     if (wheelChangeListener != null) {

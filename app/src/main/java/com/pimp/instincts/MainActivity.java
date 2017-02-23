@@ -18,10 +18,13 @@
 
 package com.pimp.instincts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,22 +34,43 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
-        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
 
         ImageView spinArrowImageView = (ImageView) findViewById(R.id.spin_arrow);
-        spinArrowImageView.getLayoutParams().width = (int) dpWidth;
+        spinArrowImageView.getLayoutParams().width = displayMetrics.widthPixels / 2;
 
         WheelMenu wheelMenu = (WheelMenu) findViewById(R.id.wheelMenu);
-        wheelMenu.setTranslationX(dpWidth);
+        wheelMenu.setTranslationX(displayMetrics.widthPixels / 2);
         wheelMenu.setDivCount(6);
         wheelMenu.setWheelImage(R.drawable.spin_wheel);
-        wheelMenu.setSnapToCenterFlag(true);
-
+        wheelMenu.setSnapToCenterFlag(false);
         wheelMenu.setWheelChangeListener(new WheelMenu.WheelChangeListener() {
             @Override
             public void onSelectionChange(int selectedPosition) {
-                //TODO
+                switch (selectedPosition) {
+                    case 0:
+                        Toast.makeText(MainActivity.this, "EVENTS", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Toast.makeText(MainActivity.this, "SCHEDULE", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(MainActivity.this, "ABOUT", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        Toast.makeText(MainActivity.this, "CONTACT", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        Toast.makeText(MainActivity.this, "BUSES", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 5:
+                        Toast.makeText(MainActivity.this, "GALLERY", Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
         });
+    }
+
+    public void registerOnClick(View view) {
+        startActivity(new Intent(this, EventsActivity.class));
     }
 }
