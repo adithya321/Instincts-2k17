@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSelectionChange(int selectedPosition) {
                 switch (selectedPosition) {
                     case 0:
-                        startActivity(new Intent(MainActivity.this, EventsActivity.class));
+                        startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
                         break;
                     case 1:
                         startActivity(new Intent(MainActivity.this, ScheduleActivity.class));

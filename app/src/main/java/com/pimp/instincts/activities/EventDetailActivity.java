@@ -18,133 +18,64 @@
 
 package com.pimp.instincts.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.pimp.instincts.R;
 import com.pimp.instincts.ui.detail.Card;
-import com.pimp.instincts.ui.detail.CardViewProvider;
 import com.pimp.instincts.ui.detail.Category;
-import com.pimp.instincts.ui.detail.CategoryViewProvider;
 import com.pimp.instincts.ui.detail.Contact;
-import com.pimp.instincts.ui.detail.ContactViewProvider;
 import com.pimp.instincts.ui.detail.Line;
-import com.pimp.instincts.ui.detail.LineViewProvider;
 
 import me.drakeet.multitype.Items;
-import me.drakeet.multitype.MultiTypeAdapter;
 
-public abstract class EventDetailActivity extends AppCompatActivity implements View.OnClickListener {
-    protected Toolbar toolbar;
-    protected CollapsingToolbarLayout collapsingToolbar;
+public class EventDetailActivity extends EventDetailBaseActivity {
 
-    protected Items items;
-    protected MultiTypeAdapter adapter;
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-    protected abstract void onCreateHeader(ImageView icon);
+    @Override
+    protected void onCreateHeader(ImageView icon) {
+        switch (event.getType()) {
+            case "null":
+                icon.setImageResource(R.drawable.ic_stage);
+                break;
 
-    protected abstract void onItemsCreated(@NonNull Items items);
+            default:
+                icon.setImageResource(R.drawable.ic_stage);
+        }
+    }
+
+    @Override
+    protected void onItemsCreated(@NonNull Items items) {
+        items.add(new Category(event.getName()));
+        items.add(new Card(event.getDescription(), null));
+        items.add(new Line());
+        items.add(new Category("Rules"));
+        items.add(new Card(event.getRules(), null));
+        items.add(new Line());
+        items.add(new Category("Contact"));
+        items.add(new Contact(R.mipmap.ic_launcher_round, event.getContact1(), event.getContact1()));
+    }
 
     @Nullable
+    @Override
     protected CharSequence onCreateTitle() {
-        return null;
+        toolbar.setTitle(event.getName());
+        return super.onCreateTitle();
     }
 
+    @Override
     protected void onActionClick(View action) {
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_detail);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        ImageView icon = (ImageView) findViewById(R.id.icon);
-        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        onCreateHeader(icon);
-
-        final CharSequence title = onCreateTitle();
-        if (title != null) {
-            collapsingToolbar.setTitle(title);
-        }
-
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
-        onSetupRecyclerView(recyclerView);
-    }
-
-    private void onSetupRecyclerView(RecyclerView recyclerView) {
-        adapter = new MultiTypeAdapter();
-        adapter.register(Category.class, new CategoryViewProvider());
-        adapter.register(Card.class, new CardViewProvider(this));
-        adapter.register(Line.class, new LineViewProvider());
-        adapter.register(Contact.class, new ContactViewProvider(this));
-        items = new Items();
-        onItemsCreated(items);
-        adapter.setItems(items);
-        recyclerView.setAdapter(adapter);
-    }
-
-    /**
-     * Set the header view background to a given resource and replace the default value
-     * ?attr/colorPrimary.
-     * The resource should refer to a Drawable object or 0 to remove the background.
-     *
-     * @param resId The identifier of the resource.
-     */
-    public void setHeaderBackgroundResource(@DrawableRes int resId) {
-        if (collapsingToolbar == null) {
-            collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        }
-        collapsingToolbar.setContentScrimResource(resId);
-        collapsingToolbar.setBackgroundResource(resId);
-    }
-
-    public void setHeaderContentColor(@ColorInt int color) {
-        collapsingToolbar.setCollapsedTitleTextColor(color);
-    }
-
-    /**
-     * Set the icon to use for the toolbar's navigation button.
-     *
-     * @param resId Resource ID of a drawable to set
-     */
-    public void setNavigationIcon(@DrawableRes int resId) {
-        toolbar.setNavigationIcon(resId);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (menuItem.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(menuItem);
-    }
-
-    @Override
-    public void setTitle(CharSequence title) {
-        collapsingToolbar.setTitle(title);
-    }
-
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id) {
-            case R.id.action:
-            case R.id.contact_layout:
-                onActionClick(v);
-                break;
-        }
+        super.onActionClick(action);
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(event.getContact1()));
+        startActivity(intent);
     }
 }

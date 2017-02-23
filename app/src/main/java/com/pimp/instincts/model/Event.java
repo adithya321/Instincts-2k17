@@ -29,6 +29,8 @@ public class Event extends RealmObject {
     private String startTime;
     private String endTime;
     private String location;
+    private String color;
+    private String type;
     private String description;
     private String rules;
     private String info;
@@ -39,12 +41,15 @@ public class Event extends RealmObject {
     }
 
     public Event(long id, String name, String startTime, String endTime, String location,
-                 String description, String rules, String info, String contact1, String contact2) {
+                 String color, String type, String description, String rules, String info,
+                 String contact1, String contact2) {
         this.id = id;
         this.name = name;
         this.startTime = startTime;
         this.endTime = endTime;
         this.location = location;
+        this.color = color;
+        this.type = type;
         this.description = description;
         this.rules = rules;
         this.info = info;
@@ -90,6 +95,22 @@ public class Event extends RealmObject {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDescription() {
@@ -140,6 +161,8 @@ public class Event extends RealmObject {
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", location='" + location + '\'' +
+                ", color='" + color + '\'' +
+                ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
                 ", rules='" + rules + '\'' +
                 ", info='" + info + '\'' +

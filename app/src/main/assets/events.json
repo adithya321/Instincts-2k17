@@ -2,10 +2,12 @@
   "events": [
     {
       "id": 1,
-      "name": "INSTINCTS INAUGURAL",
+      "name": "Instincts Inaugural",
       "startTime": "09-03-2017 09:00:00",
       "endTime": "09-03-2017 11:00:00",
-      "location": "MAIN AUDITORIUM",
+      "location": "\nMain Auditorium",
+      "color": "#558A34",
+      "type": "null",
       "description": "Instincts, since its inception in 2006, has today become one of the largest campus festivals in South India, attracting crowds of well over 10,000, from over 150 institutions of higher learning.\nA number of celebrities, performers and eminent personalities from the literary,cine, musical, sporting and educational streams visit our campus across these three days.\nWe have played host in the past to names of the calibre of Madhavan, Arya, Jeyam Ravi, Anirudh Ravichander, Prabhu Deva, Gautam Vasudev Menon, Sivamani, Shaktishree Gopalan, Keith Peters, Santhanam, RJ Balaji , Srikanth and many more.\nInstincts is a combination of fun, learning and exposure all combined into one huge package. It is the ultimate battleground to unleash talent,showcase skills and soak in unlimited fun. At the end of it, anyone and everyone involved gains something massive from this cultural extravaganza - participant and organizer alike. Artistically and technically, INSTINCTS is a college cultural fest that stands unparalleled to this date.\nWe welcome you to join us this year on the 9th, 10th and 11th of March for the 12th version of INSTINCTS!\nSo get ready to hop onto the wildest and most adventurous roller coaster rides till date.\nGet Ready for SSN Instincts 2K17.",
       "rules": "Sponsorship.Instincts@ssn.edu.in",
       "info": "SSN College of Engineering,\nRajiv Gandhi Road, OMR,\nKalavakkam, Chennai - 603110.",
