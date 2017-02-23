@@ -16,7 +16,10 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
 
-<resources>
-    <string name="app_name">Instincts</string>
-    <string name="title_activity_maps">Map</string>
-</resources>
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.pimp.instincts.activities.MapsActivity" />

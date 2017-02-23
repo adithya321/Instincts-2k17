@@ -19,6 +19,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pimp.instincts">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".InstinctsApplication"
         android:allowBackup="true"
@@ -37,5 +39,17 @@
 
         <activity android:name=".activities.EventDetailActivity" />
         <activity android:name=".activities.ScheduleActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".activities.MapsActivity"
+            android:label="@string/title_activity_maps">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.pimp.instincts.activities.MainActivity" />
+        </activity>
     </application>
 </manifest>

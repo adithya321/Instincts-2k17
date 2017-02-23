@@ -103,6 +103,45 @@
       "info": "",
       "contact1": "Radhakrishnan V:8754934347",
       "contact2": ""
+    },
+    {
+      "id": 8,
+      "name": "Patti Mandram Prelims",
+      "startTime": "09-03-2017 12:00:00",
+      "endTime": "09-03-2017 16:00:00",
+      "location": "Central Seminar Hall",
+      "type": "Saaral",
+      "description": "If you know the magic of speech, then the stage is for you",
+      "rules": "",
+      "info": "First prize: Rs.3000\n\nSecond prize: Rs.2000\n\nThird prize: Rs.1500\n\nFourth prize: Rs.1000\n\nFifth prize: Rs.1000\n\nSixth prize: Rs.1000",
+      "contact1": "David:8122142493",
+      "contact2": ""
+    },
+    {
+      "id": 9,
+      "name": "Variety Show Prelims",
+      "startTime": "09-03-2017 11:00:00",
+      "endTime": "09-03-2017 14:00:00",
+      "location": "CSE Seminar Hall",
+      "type": "Variety",
+      "description": "Variety show includes mime, mimicry, skit and other skills which will entertain the crowd. Be innovative, sharpen your entertaining skills. Pull your sparkling creativity to reality. Be the best team to rock the floor!!!!",
+      "rules": "Prelims will be conducted\n\nHave your own theme.\n\nEach team will be given 10 min for performance and 2min for stage setting.\n\nA team may have a Minimum of 5 and maximum of 15.\n\nNo abusive languages should be used.\n\nA team should be represented by one college only.\n\nThe teams are requested to bring their sound track in Pen drives or Cd s and have another copy for your safety.\n\nID cards are must for registration.\n\nThe Final Judgment will be mainly based on their performance, sense of Humor, theme and Creativity.\n\nJudges decision will be final.",
+      "info": "Prize amount- 5.5k + 3.5k\n\nFully filmy Youtube fame \"Abishek\"\n\nYashwanth Kishore",
+      "contact1": "A.Gousik:9087995729",
+      "contact2": ""
+    },
+    {
+      "id": 10,
+      "name": "60 Seconds Finals",
+      "startTime": "09-03-2017 14:00:00",
+      "endTime": "09-03-2017 17:00:00",
+      "location": "CSE Seminar Hall",
+      "type": "Variety",
+      "description": "Teams should put forth their skills to complete tasks within the time limit, each time will be given certain tasks which they have to complete within 60 seconds. The team with the highest score gets selected to the next level.",
+      "rules": "Only two members per team\n\nMore than one team per college is allowed\n\nTeams should only use the resources provided to them\n\nOn the spot registration\n\nJudges decision are the final\n\nID card is mandatory",
+      "info": "Prize amount- 1.5k + 1k= 2.5k",
+      "contact1": "Bevin Harish:7200346055",
+      "contact2": ""
     }
   ]
 }

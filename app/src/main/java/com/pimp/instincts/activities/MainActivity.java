@@ -26,7 +26,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.mzelzoghbi.zgallery.ZGrid;
+import com.mzelzoghbi.zgallery.ZGallery;
 import com.mzelzoghbi.zgallery.entities.ZColor;
 import com.pimp.instincts.R;
 import com.pimp.instincts.ui.WheelMenu;
@@ -67,15 +67,14 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "CONTACT", Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
-                        Toast.makeText(MainActivity.this, "BUSES", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, MapsActivity.class));
                         break;
                     case 5:
-                        ZGrid.with(MainActivity.this, getImageList())
+                        ZGallery.with(MainActivity.this, getImageList())
                                 .setToolbarColorResId(R.color.colorPrimary)
                                 .setTitle("Gallery")
+                                .setGalleryBackgroundColor(ZColor.BLACK)
                                 .setToolbarTitleColor(ZColor.WHITE)
-                                .setSpanCount(3)
-                                .setGridImgPlaceHolder(R.color.colorPrimary)
                                 .show();
                         break;
                 }

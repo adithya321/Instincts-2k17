@@ -73,7 +73,7 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
 
         setupDateTimeInterpreter();
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy HH:mm:ss");
         try {
             Calendar calendar = dateToCalendar(simpleDateFormat.parse("08-03-2017 09:00:00"));
             weekView.goToDate(calendar);
@@ -101,7 +101,8 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
 
             @Override
             public String interpretTime(int hour) {
-                return hour > 11 ? (hour - 12) + " PM" : (hour == 0 ? "12 AM" : hour + " AM");
+                if (hour == 12) return 12 + " PM";
+                return hour > 12 ? (hour - 12) + " PM" : (hour == 0 ? "12 AM" : hour + " AM");
             }
         });
     }
@@ -112,7 +113,7 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
 
         for (Event event : eventRealmResults) {
             try {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy HH:mm:ss");
                 Date date = simpleDateFormat.parse(event.getStartTime());
                 Calendar startTime = dateToCalendar(date);
                 date = simpleDateFormat.parse(event.getEndTime());
