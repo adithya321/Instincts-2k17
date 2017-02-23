@@ -22,9 +22,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:clipChildren="false"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
-    <com.pimp.instincts.WheelMenu
+    <com.pimp.instincts.ui.WheelMenu
         android:id="@+id/wheelMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

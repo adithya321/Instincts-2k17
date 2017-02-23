@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.pimp.instincts;
+package com.pimp.instincts.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -26,11 +26,11 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.pimp.instincts.about.Card;
-import com.pimp.instincts.about.Category;
-import com.pimp.instincts.about.Contact;
-import com.pimp.instincts.about.EventDetailActivity;
-import com.pimp.instincts.about.Line;
+import com.pimp.instincts.R;
+import com.pimp.instincts.ui.detail.Card;
+import com.pimp.instincts.ui.detail.Category;
+import com.pimp.instincts.ui.detail.Contact;
+import com.pimp.instincts.ui.detail.Line;
 
 import me.drakeet.multitype.Items;
 

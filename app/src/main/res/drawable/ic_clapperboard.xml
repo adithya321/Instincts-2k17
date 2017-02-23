@@ -1,0 +1,72 @@
+<!--
+  ~ Instincts
+  ~ Copyright (C) 2017  Adithya J
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="511.999"
+    android:viewportWidth="511.999">
+    <path
+        android:fillColor="#F2F2F2"
+        android:pathData="M248.5,67.6l83,43.8l-85.2,26.4l-83,-43.8l-0.7,-2.2l85.3,-26.4z" />
+    <path
+        android:fillColor="#F2F2F2"
+        android:pathData="M428.2,9.6l20.3,65.6l-31.7,9.8l-0,0l-83,-43.8l-0.7,-2.2z" />
+    <path
+        android:fillColor="#F2F2F2"
+        android:pathData="M466.3,193.5l0,68.6l-99.5,0l66.4,-66.4l0,-2.3z" />
+    <path
+        android:fillColor="#F2F2F2"
+        android:pathData="M343.9,193.5l0,2.3l-66.4,66.4l-89.2,0l66.4,-66.4l0,-2.3z" />
+    <path
+        android:fillColor="#F2F2F2"
+        android:pathData="M165.5,193.5l0,2.3l-66.4,66.4l-33.2,0l0,-68.6z" />
+    <path
+        android:fillColor="#F2F2F2"
+        android:pathData="M161,164.1l-95.1,29.4l-20.3,-65.6l31.7,-9.8l0.7,2.2z" />
+    <path
+        android:fillColor="#4D4D4D"
+        android:pathData="M333.8,41.2l83,43.8l-85.2,26.4l-0,0l-83,-43.8l-0.7,-2.2l85.3,-26.4z" />
+    <path
+        android:fillColor="#4D4D4D"
+        android:pathData="M246.3,137.7l-85.3,26.4l-83,-43.8l-0.7,-2.2l85.3,-26.4l0.7,2.2z" />
+    <path
+        android:fillColor="#666666"
+        android:pathData="M466.3,262.1l0,240.2l-400.4,0l0,-240.2l33.2,0l89.2,0l89.2,0l89.2,0z" />
+    <path
+        android:fillColor="#4D4D4D"
+        android:pathData="M433.2,193.5l0,2.3l-66.4,66.4l-89.2,0l66.4,-66.4l0,-2.3z" />
+    <path
+        android:fillColor="#4D4D4D"
+        android:pathData="M254.7,193.5l0,2.3l-66.4,66.4l-89.2,0l66.4,-66.4l0,-2.3z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M434.3,480c-5.3,0 -9.6,-4.3 -9.6,-9.6V324.3c0,-5.3 4.3,-9.6 9.6,-9.6c5.3,0 9.6,4.3 9.6,9.6v146.1C443.9,475.6 439.6,480 434.3,480z" />
+    <path
+        android:fillColor="#B3B3B3"
+        android:pathData="M393,353.1H139.3c-5.3,0 -9.6,-4.3 -9.6,-9.6c0,-5.3 4.3,-9.6 9.6,-9.6h253.8c5.3,0 9.6,4.3 9.6,9.6C402.6,348.8 398.3,353.1 393,353.1z" />
+    <path
+        android:fillColor="#B3B3B3"
+        android:pathData="M393,428.7H139.3c-5.3,0 -9.6,-4.3 -9.6,-9.6c0,-5.3 4.3,-9.6 9.6,-9.6h253.8c5.3,0 9.6,4.3 9.6,9.6C402.6,424.4 398.3,428.7 393,428.7z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M434.3,292.2m-9.6,0a9.6,9.6 0,1 1,19.2 0a9.6,9.6 0,1 1,-19.2 0" />
+    <path
+        android:fillColor="#333333"
+        android:pathData="M466.3,183.9H129.6l321.8,-99.5c5.1,-1.6 7.9,-7 6.3,-12l-20.3,-65.6c-0.8,-2.4 -2.4,-4.5 -4.7,-5.7c-2.3,-1.2 -4.9,-1.4 -7.3,-0.7L42.8,118.7c-5.1,1.6 -7.9,7 -6.3,12l19.9,64.2v307.4c0,5.3 4.3,9.6 9.6,9.6h400.4c5.3,0 9.6,-4.3 9.6,-9.6V193.5C476,188.2 471.7,183.9 466.3,183.9zM456.7,252.5h-66.7l49.4,-49.4h17.3V252.5zM300.8,252.5l49.4,-49.4h62.1l-49.4,49.4H300.8zM211.5,252.5l49.4,-49.4h62.1L273.6,252.5H211.5zM122.3,252.5l49.4,-49.4h62.1l-49.4,49.4H122.3zM75.5,252.5v-49.4h69l-49.4,49.4H75.5zM159.4,102.8l61.8,32.6l-59.3,18.3l-61.8,-32.6L159.4,102.8zM244.7,76.4l61.8,32.6l-59.3,18.3l-61.8,-32.6L244.7,76.4zM330,50l61.8,32.6l-59.3,18.3l-61.8,-32.6L330,50zM436.4,68.8l-18.7,5.8l-61.8,-32.6l65.9,-20.4L436.4,68.8zM74.2,129.2l61.8,32.6l-63.7,19.7l-14.6,-47.2L74.2,129.2zM75.5,492.8V271.8h381.2v221H75.5V492.8z" />
+</vector>

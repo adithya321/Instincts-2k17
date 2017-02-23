@@ -16,19 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.pimp.instincts.about;
+package com.pimp.instincts.ui.detail;
 
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-public class Card {
+/**
+ * @author drakeet
+ */
+public class Contact {
+    @DrawableRes
+    public final int avatarResId;
     @NonNull
-    public final String content;
-    @Nullable
-    public final String action;
+    public final String name;
+    @NonNull
+    public final String number;
 
-    public Card(@NonNull String content, @Nullable String action) {
-        this.content = content;
-        this.action = action;
+    public Contact(@DrawableRes int avatarResId, @NonNull String name, @NonNull String number) {
+        this.avatarResId = avatarResId;
+        this.name = name;
+        this.number = number;
     }
 }

@@ -16,40 +16,53 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.pimp.instincts.about;
+package com.pimp.instincts.ui.detail;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pimp.instincts.R;
 
 import me.drakeet.multitype.ItemViewProvider;
 
-public class CategoryViewProvider
-        extends ItemViewProvider<Category, CategoryViewProvider.ViewHolder> {
+public class ContactViewProvider extends ItemViewProvider<Contact, ContactViewProvider.ViewHolder> {
+    private final View.OnClickListener onActionClickListener;
+
+    public ContactViewProvider(View.OnClickListener onActionClickListener) {
+        this.onActionClickListener = onActionClickListener;
+    }
+
     @NonNull
     @Override
     protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater,
                                             @NonNull ViewGroup parent) {
-        View root = inflater.inflate(R.layout.about_page_item_category, parent, false);
+        View root = inflater.inflate(R.layout.about_page_item_contact, parent, false);
         return new ViewHolder(root);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Category category) {
-        holder.category.setText(category.value);
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Contact contact) {
+        holder.avatar.setImageResource(contact.avatarResId);
+        holder.name.setText(contact.name);
+        holder.number.setText(contact.number);
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView category;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView avatar;
+        TextView name;
+        TextView number;
 
         ViewHolder(View itemView) {
             super(itemView);
-            category = (TextView) itemView.findViewById(R.id.category);
+            avatar = (ImageView) itemView.findViewById(R.id.avatar);
+            name = (TextView) itemView.findViewById(R.id.name);
+            number = (TextView) itemView.findViewById(R.id.number);
+            itemView.setOnClickListener(onActionClickListener);
         }
     }
 }

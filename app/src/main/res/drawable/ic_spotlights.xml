@@ -1,0 +1,57 @@
+<!--
+  ~ Instincts
+  ~ Copyright (C) 2017  Adithya J
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="512.0"
+    android:viewportWidth="512.0">
+    <path
+        android:fillColor="#F95428"
+        android:pathData="M18.6,136.6l-2.9,-4C3,115.1 6.9,90.6 24.4,77.9l0,0c17.5,-12.7 42,-8.8 54.7,8.7l2.9,4L18.6,136.6z" />
+    <path
+        android:fillColor="#F95428"
+        android:pathData="M493.4,136.6l2.9,-4c12.7,-17.5 8.8,-42 -8.7,-54.7l0,0c-17.5,-12.7 -42,-8.8 -54.7,8.7l-2.9,4L493.4,136.6z" />
+    <path
+        android:fillColor="#F95428"
+        android:pathData="M160.2,410.1h191.5v31.4h-191.5z" />
+    <path
+        android:fillColor="#2BA5F7"
+        android:pathData="M209,410.1l229.4,-287.4l19.9,17.6l-130.2,269.7" />
+    <path
+        android:fillColor="#F7B239"
+        android:pathData="M303,410.1l-229.4,-287.4l-19.9,17.6l130.2,269.7" />
+    <path
+        android:fillColor="#9AD14B"
+        android:pathData="M209,410.1l94,0l-47,-58.8z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M48.6,90.8m-8.3,0a8.3,8.3 0,1 1,16.5 0a8.3,8.3 0,1 1,-16.5 0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M481,97.5m-8.3,0a8.3,8.3 0,1 1,16.5 0a8.3,8.3 0,1 1,-16.5 0" />
+    <path
+        android:fillColor="#333333"
+        android:pathData="M461.9,133c-4.1,-2 -9.1,-0.3 -11,3.9L323,401.8h-16l-40.4,-50.6l178.3,-223.4c2.8,-3.6 2.3,-8.8 -1.3,-11.6c-3.6,-2.9 -8.8,-2.3 -11.6,1.3L256,338L81.4,119.3c-2.8,-3.6 -8.1,-4.2 -11.6,-1.3c-3.6,2.8 -4.2,8.1 -1.3,11.6l176.9,221.6l-40.4,50.6h-16L61.1,136.8c-2,-4.1 -6.9,-5.8 -11,-3.9c-4.1,2 -5.8,6.9 -3.9,11l124.4,257.8h-10.4c-4.6,0 -8.3,3.7 -8.3,8.3v23.2H77.3c-4.6,0 -8.3,3.7 -8.3,8.3s3.7,8.3 8.3,8.3h357.4c4.6,0 8.3,-3.7 8.3,-8.3s-3.7,-8.3 -8.3,-8.3h-74.7v-23.2c0,-4.6 -3.7,-8.3 -8.3,-8.3h-10.4l124.4,-257.8C467.8,139.9 466,134.9 461.9,133zM256,364.5l29.8,37.3h-59.6L256,364.5zM343.5,433.3H168.5v-14.9h175V433.3z" />
+    <path
+        android:fillColor="#333333"
+        android:pathData="M90.2,91.9c0.3,-2.2 -0.2,-4.4 -1.5,-6.2L85.8,81.8c-7.4,-10.3 -18.4,-17 -30.9,-19c-12.5,-2 -25,1 -35.3,8.5C-1.6,86.6 -6.3,116.3 9,137.5l2.9,4c1.6,2.2 4.1,3.4 6.7,3.4c1.7,0 3.4,-0.5 4.9,-1.6l63.4,-46C88.7,96 89.8,94.1 90.2,91.9zM20.6,125c-7.8,-13.5 -4.2,-31 8.7,-40.4c5.5,-4 11.8,-5.9 18.1,-5.9c8.5,0 16.9,3.5 22.9,10.2L20.6,125z" />
+    <path
+        android:fillColor="#333333"
+        android:pathData="M492.4,71.2c-10.3,-7.4 -22.8,-10.4 -35.3,-8.5c-12.5,2 -23.5,8.7 -30.9,19l-2.9,4c-1.3,1.8 -1.8,4 -1.5,6.2c0.3,2.2 1.5,4.1 3.3,5.4l63.4,46c1.5,1.1 3.2,1.6 4.9,1.6c2.6,0 5.1,-1.2 6.7,-3.4l2.9,-4C518.3,116.3 513.6,86.6 492.4,71.2zM491.4,125l-49.7,-36.1c4.7,-5.2 11,-8.7 18.1,-9.8c8.2,-1.3 16.3,0.7 23,5.5c6.7,4.8 11.1,12 12.4,20.2C496.2,111.8 494.9,118.9 491.4,125z" />
+</vector>

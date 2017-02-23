@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.pimp.instincts;
+package com.pimp.instincts.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +25,9 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.pimp.instincts.R;
+import com.pimp.instincts.ui.WheelMenu;
 
 public class MainActivity extends AppCompatActivity {
 

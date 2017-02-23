@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.pimp.instincts.about;
+package com.pimp.instincts.activities;
 
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -32,6 +32,14 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.pimp.instincts.R;
+import com.pimp.instincts.ui.detail.Card;
+import com.pimp.instincts.ui.detail.CardViewProvider;
+import com.pimp.instincts.ui.detail.Category;
+import com.pimp.instincts.ui.detail.CategoryViewProvider;
+import com.pimp.instincts.ui.detail.Contact;
+import com.pimp.instincts.ui.detail.ContactViewProvider;
+import com.pimp.instincts.ui.detail.Line;
+import com.pimp.instincts.ui.detail.LineViewProvider;
 
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;

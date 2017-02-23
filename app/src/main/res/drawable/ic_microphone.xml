@@ -1,0 +1,63 @@
+<!--
+  ~ Instincts
+  ~ Copyright (C) 2017  Adithya J
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="512.0"
+    android:viewportWidth="512.0">
+    <path
+        android:fillColor="#999999"
+        android:pathData="M466.7,45.4c47,47 47,123.2 0,170.2L296.5,45.4C343.5,-1.7 419.7,-1.7 466.7,45.4z" />
+    <path
+        android:fillColor="#808080"
+        android:pathData="M325.2,129c0,-54.7 37.9,-100.8 89.5,-114.9c-10.6,-2.9 -21.7,-4.4 -33.2,-4.4c-67.8,0 -122.7,53.4 -122.7,119.3s55,119.3 122.7,119.3c11.5,0 22.7,-1.5 33.2,-4.4C363.1,229.9 325.2,183.7 325.2,129z" />
+    <path
+        android:fillColor="#F7B239"
+        android:pathData="M264.1,156.6l91.3,91.3l-254.3,226l-1.6,-1.8l-59.6,-59.6l-1.8,-1.6z" />
+    <path
+        android:fillColor="#666666"
+        android:pathData="M271.8,81.1l159.1,159.2c-23.8,10.7 -50.4,13.3 -75.5,7.7l-91.3,-91.3C258.5,131.5 261.1,104.9 271.8,81.1z" />
+    <path
+        android:fillColor="#4D4D4D"
+        android:pathData="M325.2,129c0,-0.7 0,-1.3 0,-2c-16.5,-19.6 -35.1,-41.6 -49.5,-58.6c-10.8,17.8 -17,38.5 -17,60.6c0,65.9 55,119.3 122.7,119.3c11.5,0 22.7,-1.5 33.2,-4.4C363.1,229.9 325.2,183.7 325.2,129z" />
+    <path
+        android:fillColor="#F95428"
+        android:pathData="M99.5,472.1l1.6,1.8l-31.3,27.9l-59.6,-59.6l27.9,-31.3l1.8,1.6z" />
+    <path
+        android:fillColor="#CCCCCC"
+        android:pathData="M271.8,81.1l-5.8,-5.8c-8.3,-8.3 -8.3,-21.9 0,-30.2c4.2,-4.2 9.6,-6.3 15.1,-6.3c5.5,0 10.9,2.1 15.1,6.3l0.3,0.3h0L466.7,215.6l0.3,0.3c8.3,8.3 8.3,21.9 0,30.2c-4.2,4.2 -9.6,6.3 -15.1,6.3c-5.5,0 -10.9,-2.1 -15.1,-6.3l-5.8,-5.8L271.8,81.1z" />
+    <path
+        android:fillColor="#B3B3B3"
+        android:pathData="M325.6,74.5l-0.3,-0.3l0.3,0.3z" />
+    <path
+        android:fillColor="#B3B3B3"
+        android:pathData="M300.9,110.2l-5.8,-5.8c-8.3,-8.3 -8.3,-21.9 0,-30.2c4.2,-4.2 9.6,-6.3 15.1,-6.3c5.5,0 10.9,2.1 15.1,6.3l-28.9,-28.9h-0l-0.3,-0.3c-4.2,-4.2 -9.6,-6.3 -15.1,-6.3c-5.5,0 -10.9,2.1 -15.1,6.3c-8.3,8.3 -8.3,21.9 0,30.2l5.8,5.8L300.9,110.2z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M459.9,177.4c-1.4,0 -2.9,-0.3 -4.3,-1c-5.1,-2.4 -7.3,-8.4 -4.9,-13.5c4.8,-10.1 7.2,-21 7.2,-32.4c0,-20.4 -7.9,-39.5 -22.3,-53.9c-1.1,-1.1 -3,-2.8 -5.5,-4.8c-4.3,-3.6 -5,-10 -1.4,-14.3c3.6,-4.3 10,-5 14.3,-1.4c3,2.5 5.4,4.5 7,6.1c18.2,18.2 28.3,42.5 28.3,68.3c0,14.4 -3.1,28.2 -9.1,41.1C467.3,175.2 463.7,177.4 459.9,177.4z" />
+    <path
+        android:fillColor="#E09B2D"
+        android:pathData="M330.3,222.9l-3.9,3.8l-62.4,-70.1l-14.4,16.2c0,0 4.6,6.3 10.4,16.7c21.8,39 14.7,87.7 -17.2,118.9L87.4,460.2l12.1,11.9l1.6,1.8l254.3,-226L330.3,222.9z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M406.9,47.8m-10.2,0a10.2,10.2 0,1 1,20.3 0a10.2,10.2 0,1 1,-20.3 0" />
+    <path
+        android:fillColor="#333333"
+        android:pathData="M473.8,38.2c-48.8,-48.8 -127,-50.8 -178.2,-5.9c-11.9,-6.2 -26.9,-4.3 -36.9,5.7c-12.3,12.3 -12.3,32.3 0,44.6l1,1c-8.5,22.2 -10.9,46.7 -6.7,70.2L2.6,435.5c-3.6,4 -3.4,10.1 0.4,13.9l59.6,59.6c2,2 4.6,3 7.2,3c2.4,0 4.8,-0.9 6.8,-2.6l281.8,-250.5c7.6,1.4 15.3,2.1 23.1,2.1c16.1,0 32.1,-2.9 47.1,-8.7l1,1c6,6 13.9,9.2 22.3,9.2c8.4,0 16.3,-3.3 22.3,-9.2c6,-6 9.2,-13.9 9.2,-22.3c0,-5.2 -1.2,-10.1 -3.6,-14.6C524.6,165.1 522.7,87 473.8,38.2zM459.5,52.5c20.8,20.8 32.3,48.5 32.3,77.9c0,26 -9,50.6 -25.4,70.4L311.2,45.7c19.7,-16.4 44.4,-25.4 70.4,-25.4C411,20.3 438.7,31.7 459.5,52.5zM70.2,487.9l-46,-46l14.4,-16.2l47.9,47.9L70.2,487.9zM101.6,459.9l-49.5,-49.5l212.4,-238.9l76.1,76.1L101.6,459.9zM360.4,238.6l-87,-87c-3.3,-17.3 -2.5,-35.3 2.4,-52.1L412.5,236.2C395.7,241.1 377.7,241.9 360.4,238.6zM459.7,238.8c-2.1,2.1 -4.9,3.3 -7.9,3.3c-3,0 -5.8,-1.2 -7.9,-3.3L273.2,68.1c-4.4,-4.4 -4.4,-11.5 -0,-15.8c2.2,-2.2 5,-3.3 7.9,-3.3s5.7,1.1 7.9,3.3l170.8,170.8c2.1,2.1 3.3,4.9 3.3,7.9C463,233.9 461.8,236.7 459.7,238.8z" />
+</vector>

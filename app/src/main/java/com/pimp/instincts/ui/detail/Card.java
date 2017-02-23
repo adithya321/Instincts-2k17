@@ -16,7 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.pimp.instincts.about;
+package com.pimp.instincts.ui.detail;
 
-public class Line {
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+public class Card {
+    @NonNull
+    public final String content;
+    @Nullable
+    public final String action;
+
+    public Card(@NonNull String content, @Nullable String action) {
+        this.content = content;
+        this.action = action;
+    }
 }

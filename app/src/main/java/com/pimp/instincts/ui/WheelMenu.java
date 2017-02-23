@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.pimp.instincts;
+package com.pimp.instincts.ui;
 
 import android.content.Context;
 import android.graphics.Bitmap;
