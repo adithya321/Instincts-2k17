@@ -22,53 +22,72 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.alamkanak.weekview.DateTimeInterpreter;
 import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.pimp.instincts.R;
+import com.pimp.instincts.model.LocalJSONSource;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class ScheduleActivity extends AppCompatActivity implements WeekView.EventClickListener,
-        MonthLoader.MonthChangeListener, WeekView.EventLongPressListener,
-        WeekView.EmptyViewLongPressListener {
+        MonthLoader.MonthChangeListener, WeekView.EventLongPressListener {
 
     private WeekView weekView;
+    private Date march9Date, march10Date, march11Date;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
+        LocalJSONSource localJSONSource = new LocalJSONSource(this);
+
         weekView = (WeekView) findViewById(R.id.weekView);
         weekView.setOnEventClickListener(this);
         weekView.setMonthChangeListener(this);
         weekView.setEventLongPressListener(this);
-        weekView.goToToday();
-        weekView.setNumberOfVisibleDays(1);
+        //weekView.setNumberOfVisibleDays(1);
 
-        setupDateTimeInterpreter(false);
+        setupDateTimeInterpreter();
+
+        String march9String = "09-03-2017 09:00:00";
+        String march10String = "10-03-2017 09:00:00";
+        String march11String = "11-03-2017 09:00:00";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        try {
+            march9Date = simpleDateFormat.parse(march9String);
+            march10Date = simpleDateFormat.parse(march10String);
+            march11Date = simpleDateFormat.parse(march11String);
+            Calendar calendar = dateToCalendar(march9Date);
+            weekView.goToDate(calendar);
+        } catch (Exception e) {
+            Log.e("DATE", e.toString());
+        }
     }
 
-    private void setupDateTimeInterpreter(final boolean shortDate) {
+    private Calendar dateToCalendar(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar;
+    }
+
+    private void setupDateTimeInterpreter() {
         weekView.setDateTimeInterpreter(new DateTimeInterpreter() {
             @Override
             public String interpretDate(Calendar date) {
                 SimpleDateFormat weekdayNameFormat = new SimpleDateFormat("EEE", Locale.getDefault());
                 String weekday = weekdayNameFormat.format(date.getTime());
                 SimpleDateFormat format = new SimpleDateFormat(" M/d", Locale.getDefault());
-
-                // All android api level do not have a standard way of getting the first letter of
-                // the week day name. Hence we get the first char programmatically.
-                // Details: http://stackoverflow.com/questions/16959502/get-one-letter-abbreviation-of-week-day-of-a-date-in-java#answer-16959657
-                if (shortDate)
-                    weekday = String.valueOf(weekday.charAt(0));
                 return weekday.toUpperCase() + format.format(date.getTime());
             }
 
@@ -81,31 +100,50 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
 
     @Override
     public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+        List<WeekViewEvent> events = new ArrayList<>();
 
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        Calendar startTime = dateToCalendar(march9Date);
+        startTime.set(Calendar.HOUR_OF_DAY, 9);
         startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth - 1);
-        startTime.set(Calendar.YEAR, newYear);
         Calendar endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR, 1);
-        endTime.set(Calendar.MONTH, newMonth - 1);
-        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.colorPrimary));
-        events.add(event);
+        endTime.set(Calendar.HOUR_OF_DAY, 11);
+        WeekViewEvent weekViewEvent = new WeekViewEvent(1, "INSTINCTS INAUGURAL", startTime, endTime);
+        weekViewEvent.setColor(getResources().getColor(R.color.colorPrimary));
+        weekViewEvent.setLocation("\nMAIN AUDITORIUM");
+        events.add(weekViewEvent);
 
-        return events;
-    }
+        startTime = dateToCalendar(march9Date);
+        startTime.set(Calendar.HOUR_OF_DAY, 11);
+        startTime.set(Calendar.MINUTE, 0);
+        endTime = (Calendar) startTime.clone();
+        endTime.set(Calendar.HOUR_OF_DAY, 13);
+        weekViewEvent = new WeekViewEvent(1, "SARAAL MAGAZINE RELEASE", startTime, endTime);
+        weekViewEvent.setColor(getResources().getColor(R.color.colorAccent));
+        weekViewEvent.setLocation("\nMAIN AUDITORIUM");
+        events.add(weekViewEvent);
 
-    @Override
-    public void onEmptyViewLongPress(Calendar calendar) {
+        startTime = dateToCalendar(march9Date);
+        startTime.set(Calendar.HOUR_OF_DAY, 14);
+        startTime.set(Calendar.MINUTE, 0);
+        endTime = (Calendar) startTime.clone();
+        endTime.set(Calendar.HOUR_OF_DAY, 17);
+        weekViewEvent = new WeekViewEvent(1, "STUDENT VARIETY SHOW FINALS", startTime, endTime);
+        weekViewEvent.setColor(getResources().getColor(R.color.colorPrimary));
+        weekViewEvent.setLocation("\nMAIN AUDITORIUM");
+        events.add(weekViewEvent);
 
+        List<WeekViewEvent> matchedEvents = new ArrayList<>();
+        for (WeekViewEvent event : events) {
+            if (eventMatches(event, newYear, newMonth)) {
+                matchedEvents.add(event);
+            }
+        }
+        return matchedEvents;
     }
 
     @Override
     public void onEventClick(WeekViewEvent weekViewEvent, RectF rectF) {
-
+        Toast.makeText(this, weekViewEvent.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -113,7 +151,10 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
 
     }
 
-    protected String getEventTitle(Calendar time) {
-        return String.format("Event of %02d:%02d %s/%d", time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), time.get(Calendar.MONTH) + 1, time.get(Calendar.DAY_OF_MONTH));
+    private boolean eventMatches(WeekViewEvent event, int year, int month) {
+        return (event.getStartTime().get(Calendar.YEAR) == year &&
+                event.getStartTime().get(Calendar.MONTH) == month - 1) ||
+                (event.getEndTime().get(Calendar.YEAR) == year &&
+                        event.getEndTime().get(Calendar.MONTH) == month - 1);
     }
 }

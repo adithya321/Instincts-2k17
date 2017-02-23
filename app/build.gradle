@@ -17,10 +17,12 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+
     defaultConfig {
         applicationId "com.pimp.instincts"
         minSdkVersion 15
@@ -29,11 +31,22 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        warningsAsErrors true
+    }
+}
+
+repositories {
+    maven {
+        url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
     }
 }
 
@@ -52,4 +65,7 @@ dependencies {
 
     compile 'com.github.alamkanak:android-week-view:1.2.6'
     compile 'me.drakeet.multitype:multitype:2.4.1'
+
+    debugCompile 'com.facebook.stetho:stetho:1.4.2'
+    debugCompile 'com.uphyca:stetho_realm:2.0.0'
 }
