@@ -38,8 +38,15 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pimp.instincts.R;
+import com.pimp.instincts.utils.LogHelper;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+    private static final String TAG = LogHelper.makeLogTag(MapsActivity.class);
 
     public static final String[] PERMISSIONS = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
     private static final int REQUEST_LOCATION_PERMISSION = 1;
@@ -48,16 +55,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private SupportMapFragment mapFragment;
     private GoogleMap googleMap;
 
+    private Map<String, LatLng> stringToLatLngMap;
     private String location;
     private LatLngBounds SSN_COLLEGE = new LatLngBounds(new LatLng(12.748690, 80.188149),
             new LatLng(12.755693, 80.205421));
     private LatLng MAIN_AUDITORIUM = new LatLng(12.753018, 80.200039);
+    private LatLng MAIN_STAGE = new LatLng(12.752338, 80.194252);
+    private LatLng MINI_AUDITORIUM = new LatLng(12.750640, 80.193585);
+    private LatLng ECE_SEMINAR_HALL = new LatLng(12.750743, 80.196205);
+    private LatLng CENTRAL_SEMINAR_HALL = new LatLng(12.750409, 80.196144);
+    private LatLng CSE_SEMINAR_HALL = new LatLng(12.751133, 80.197286);
+    private LatLng IT_SEMINAR_HALL = new LatLng(12.751133, 80.196877);
+    private LatLng IT_CLASSROOMS = new LatLng(12.751448, 80.196876);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         location = getIntent().getStringExtra("location");
+
+        stringToLatLngMap = new HashMap<>();
+        stringToLatLngMap.put("Main Auditorium", MAIN_AUDITORIUM);
+        stringToLatLngMap.put("Main Stage", MAIN_STAGE);
+        stringToLatLngMap.put("Mini Auditorium", MINI_AUDITORIUM);
+        stringToLatLngMap.put("ECE Seminar Hall", ECE_SEMINAR_HALL);
+        stringToLatLngMap.put("Central Seminar Hall", CENTRAL_SEMINAR_HALL);
+        stringToLatLngMap.put("CSE Seminar Hall", CSE_SEMINAR_HALL);
+        stringToLatLngMap.put("IT Seminar Hall", IT_SEMINAR_HALL);
+        stringToLatLngMap.put("IT Classrooms", IT_CLASSROOMS);
+
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         attemptEnableMyLocation();
@@ -67,6 +93,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap map) {
         googleMap = map;
         googleMap.setMyLocationEnabled(locationEnabled);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         UiSettings uiSettings = googleMap.getUiSettings();
         uiSettings.setZoomControlsEnabled(false);
@@ -78,18 +105,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         googleMap.setLatLngBoundsForCameraTarget(SSN_COLLEGE);
 
+        Set<Map.Entry<String, LatLng>> entries = stringToLatLngMap.entrySet();
+        Iterator iterator = entries.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, LatLng> entry = (Map.Entry) iterator.next();
+            googleMap.addMarker(new MarkerOptions()
+                    .position(entry.getValue()).title(entry.getKey()));
+        }
+
         centerOnLocation();
     }
 
     private void centerOnLocation() {
-        switch (location) {
-            case "Main Auditorium":
-                moveCameraToPosition(MAIN_AUDITORIUM);
-                break;
-
-            default:
-                moveCameraToPosition(null);
-        }
+        moveCameraToPosition(stringToLatLngMap.get(location));
     }
 
     private void moveCameraToPosition(LatLng position) {

@@ -167,6 +167,8 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
                 return "#F2B300";
             case "Dance":
                 return "#FF6600";
+            case "Quiz":
+                return "#C6E0B4";
 
             default:
                 return "#F2B300";

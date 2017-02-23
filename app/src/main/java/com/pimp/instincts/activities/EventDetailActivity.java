@@ -70,6 +70,9 @@ public class EventDetailActivity extends EventDetailBaseActivity {
             case "Dance":
                 icon.setImageResource(R.drawable.ic_spotlights);
                 break;
+            case "Quiz":
+                icon.setImageResource(R.drawable.ic_walk_of_fame);
+                break;
 
             default:
                 icon.setImageResource(R.drawable.ic_stage);
