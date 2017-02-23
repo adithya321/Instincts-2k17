@@ -48,7 +48,7 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     tools:ignore="ContentDescription"
-                    tools:src="@drawable/spin_wheel" />
+                    tools:src="@drawable/ic_walk_of_fame" />
             </LinearLayout>
 
             <android.support.v7.widget.Toolbar

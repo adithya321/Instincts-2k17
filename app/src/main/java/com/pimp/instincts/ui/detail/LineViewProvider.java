@@ -34,7 +34,7 @@ public class LineViewProvider extends ItemViewProvider<Line, LineViewProvider.Vi
     @Override
     protected ViewHolder onCreateViewHolder(
             @NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View root = inflater.inflate(R.layout.about_page_item_line, parent, false);
+        View root = inflater.inflate(R.layout.detail_page_item_line, parent, false);
         return new ViewHolder(root);
     }
 

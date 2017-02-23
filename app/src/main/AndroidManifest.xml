@@ -35,5 +35,6 @@
         </activity>
 
         <activity android:name=".activities.EventsActivity" />
+        <activity android:name=".activities.ScheduleActivity" />
     </application>
 </manifest>

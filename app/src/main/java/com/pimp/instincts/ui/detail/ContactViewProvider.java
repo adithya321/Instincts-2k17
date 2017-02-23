@@ -41,7 +41,7 @@ public class ContactViewProvider extends ItemViewProvider<Contact, ContactViewPr
     @Override
     protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater,
                                             @NonNull ViewGroup parent) {
-        View root = inflater.inflate(R.layout.about_page_item_contact, parent, false);
+        View root = inflater.inflate(R.layout.detail_page_item_contact, parent, false);
         return new ViewHolder(root);
     }
 

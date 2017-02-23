@@ -43,7 +43,7 @@ public class EventsActivity extends EventDetailActivity {
 
     @Override
     protected void onCreateHeader(ImageView icon) {
-        icon.setImageResource(R.mipmap.ic_launcher);
+        icon.setImageResource(R.drawable.ic_walk_of_fame);
     }
 
     @Override

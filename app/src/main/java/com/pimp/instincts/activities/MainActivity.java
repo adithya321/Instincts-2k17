@@ -51,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
             public void onSelectionChange(int selectedPosition) {
                 switch (selectedPosition) {
                     case 0:
-                        Toast.makeText(MainActivity.this, "EVENTS", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, EventsActivity.class));
                         break;
                     case 1:
-                        Toast.makeText(MainActivity.this, "SCHEDULE", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, ScheduleActivity.class));
                         break;
                     case 2:
                         Toast.makeText(MainActivity.this, "ABOUT", Toast.LENGTH_SHORT).show();
@@ -74,6 +74,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registerOnClick(View view) {
-        startActivity(new Intent(this, EventsActivity.class));
     }
 }

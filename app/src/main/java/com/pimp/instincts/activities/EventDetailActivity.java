@@ -66,7 +66,7 @@ public abstract class EventDetailActivity extends AppCompatActivity implements V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_about_activity);
+        setContentView(R.layout.activity_event_detail);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         ImageView icon = (ImageView) findViewById(R.id.icon);
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);

@@ -42,7 +42,7 @@ public class CardViewProvider extends ItemViewProvider<Card, CardViewProvider.Vi
     @NonNull
     @Override
     protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View root = inflater.inflate(R.layout.about_page_item_card, parent, false);
+        View root = inflater.inflate(R.layout.detail_page_item_card, parent, false);
         return new ViewHolder(root);
     }
 
