@@ -16,23 +16,8 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_events"
-    android:orientation="vertical"
-    tools:context=".activities.EventsActivity">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="32dp"
-        android:src="@drawable/events_heading" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/events_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+    android:layout_gravity="center"
+    android:src="@drawable/dance_full" />

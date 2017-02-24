@@ -46,9 +46,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-    private static final String TAG = LogHelper.makeLogTag(MapsActivity.class);
-
     public static final String[] PERMISSIONS = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
+    private static final String TAG = LogHelper.makeLogTag(MapsActivity.class);
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     private boolean locationEnabled = false;
 
