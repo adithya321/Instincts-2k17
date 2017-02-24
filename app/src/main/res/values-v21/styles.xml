@@ -27,4 +27,10 @@
         <item name="android:navigationBarColor">@color/colorPrimary</item>
     </style>
 
+    <style name="EventsTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/eventsPrimary</item>
+        <item name="colorPrimaryDark">@color/eventsPrimaryDark</item>
+        <item name="colorAccent">@color/eventsAccent</item>
+        <item name="android:navigationBarColor">@color/eventsPrimary</item>
+    </style>
 </resources>

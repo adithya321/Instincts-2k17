@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                 .show();
                         break;
                     case 4:
-                        startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
+                        startActivity(new Intent(MainActivity.this, EventsActivity.class));
                         break;
                     case 5:
                         startActivity(new Intent(MainActivity.this, ScheduleActivity.class));

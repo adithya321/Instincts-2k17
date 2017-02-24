@@ -37,6 +37,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activities.EventsActivity"
+            android:theme="@style/EventsTheme" />
+
         <activity android:name=".activities.EventDetailActivity" />
         <activity android:name=".activities.ScheduleActivity" />
 

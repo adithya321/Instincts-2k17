@@ -16,18 +16,14 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
 
-<resources>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_events"
+    tools:context=".activities.MainActivity">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="EventsTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/eventsPrimary</item>
-        <item name="colorPrimaryDark">@color/eventsPrimaryDark</item>
-        <item name="colorAccent">@color/eventsAccent</item>
-    </style>
-</resources>
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>
