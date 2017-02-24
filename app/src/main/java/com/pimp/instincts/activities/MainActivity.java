@@ -19,6 +19,10 @@
 package com.pimp.instincts.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -26,12 +30,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.lukedeighton.wheelview.WheelView;
+import com.lukedeighton.wheelview.adapter.WheelArrayAdapter;
 import com.mzelzoghbi.zgallery.ZGallery;
 import com.mzelzoghbi.zgallery.entities.ZColor;
 import com.pimp.instincts.R;
-import com.pimp.instincts.ui.WheelMenu;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,32 +53,30 @@ public class MainActivity extends AppCompatActivity {
         ImageView spinArrowImageView = (ImageView) findViewById(R.id.spin_arrow);
         spinArrowImageView.getLayoutParams().width = displayMetrics.widthPixels / 2;
 
-        WheelMenu wheelMenu = (WheelMenu) findViewById(R.id.wheelMenu);
-        wheelMenu.setTranslationX(displayMetrics.widthPixels / 2);
-        wheelMenu.setDivCount(6);
-        wheelMenu.setWheelImage(R.drawable.spin_wheel);
-        wheelMenu.setSnapToCenterFlag(false);
-        wheelMenu.setWheelChangeListener(new WheelMenu.WheelChangeListener() {
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(6);
+        for (int i = 0; i < 6; i++) {
+            Map.Entry<String, Integer> entry = new AbstractMap.SimpleEntry<>("", 0x0);
+            entries.add(entry);
+        }
+
+        WheelView wheelView = (WheelView) findViewById(R.id.wheelview);
+        wheelView.setWheelRadius(displayMetrics.widthPixels / 2);
+        wheelView.setWheelItemRadius(displayMetrics.widthPixels / 6);
+        wheelView.setOnWheelItemClickListener(new WheelView.OnWheelItemClickListener() {
             @Override
-            public void onSelectionChange(int selectedPosition) {
-                switch (selectedPosition) {
+            public void onWheelItemClick(WheelView parent, int position, boolean isSelected) {
+                switch (position) {
                     case 0:
-                        startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
-                        break;
-                    case 1:
-                        startActivity(new Intent(MainActivity.this, ScheduleActivity.class));
-                        break;
-                    case 2:
                         Toast.makeText(MainActivity.this, "ABOUT", Toast.LENGTH_SHORT).show();
                         break;
-                    case 3:
+                    case 1:
                         Toast.makeText(MainActivity.this, "CONTACT", Toast.LENGTH_SHORT).show();
                         break;
-                    case 4:
+                    case 2:
                         startActivity(new Intent(MainActivity.this, MapsActivity.class)
                                 .putExtra("location", ""));
                         break;
-                    case 5:
+                    case 3:
                         ZGallery.with(MainActivity.this, getImageList())
                                 .setToolbarColorResId(R.color.colorPrimary)
                                 .setTitle("Gallery")
@@ -78,9 +84,16 @@ public class MainActivity extends AppCompatActivity {
                                 .setToolbarTitleColor(ZColor.WHITE)
                                 .show();
                         break;
+                    case 4:
+                        startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, ScheduleActivity.class));
+                        break;
                 }
             }
         });
+        wheelView.setAdapter(new WheelAdapter(entries));
     }
 
     public void registerOnClick(View view) {
@@ -91,5 +104,23 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 1; i <= 13; i++)
             imagesList.add("http://ssninstincts.org.in/img/gallery/big/" + i + ".jpg");
         return imagesList;
+    }
+
+    static class WheelAdapter extends WheelArrayAdapter<Map.Entry<String, Integer>> {
+        public WheelAdapter(List<Map.Entry<String, Integer>> items) {
+            super(items);
+        }
+
+        @Override
+        public Drawable getDrawable(int position) {
+            Drawable[] drawable = new Drawable[]{createOvalDrawable()};
+            return new LayerDrawable(drawable);
+        }
+
+        private Drawable createOvalDrawable() {
+            ShapeDrawable shapeDrawable = new ShapeDrawable(new OvalShape());
+            shapeDrawable.getPaint().setColor(0x0);
+            return shapeDrawable;
+        }
     }
 }

@@ -71,6 +71,7 @@ dependencies {
 
     compile 'com.github.alamkanak:android-week-view:1.2.6'
     compile 'me.drakeet.multitype:multitype:2.4.1'
+    compile 'com.github.lukedeighton:wheelview:0.4.1'
     compile 'com.github.mzelzoghbi:zgallery:0.1'
 
     compile 'com.facebook.stetho:stetho:1.4.2'

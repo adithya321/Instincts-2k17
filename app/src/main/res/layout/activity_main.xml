@@ -17,6 +17,7 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,11 +25,16 @@
     android:clipChildren="false"
     tools:context=".activities.MainActivity">
 
-    <com.pimp.instincts.ui.WheelMenu
-        android:id="@+id/wheelMenu"
+    <com.lukedeighton.wheelview.WheelView
+        android:id="@+id/wheelview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        app:repeatItems="true"
+        app:rotatableWheelDrawable="true"
+        app:selectionAngle="60.0"
+        app:wheelDrawable="@drawable/spin_wheel"
+        app:wheelItemCount="6"
+        app:wheelPosition="right" />
 
     <ImageView
         android:id="@+id/spin_arrow"
