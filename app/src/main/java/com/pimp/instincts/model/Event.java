@@ -19,6 +19,7 @@
 package com.pimp.instincts.model;
 
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
 public class Event extends RealmObject {
@@ -29,6 +30,7 @@ public class Event extends RealmObject {
     private String startTime;
     private String endTime;
     private String location;
+    @Index
     private String type;
     private String description;
     private String rules;

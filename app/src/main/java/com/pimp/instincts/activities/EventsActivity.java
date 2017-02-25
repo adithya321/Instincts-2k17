@@ -21,14 +21,37 @@ package com.pimp.instincts.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
+import com.pimp.instincts.InstinctsApplication;
 import com.pimp.instincts.R;
+import com.pimp.instincts.adapters.EventsAdapter;
+import com.pimp.instincts.model.Event;
+import com.pimp.instincts.utils.LogHelper;
+import com.pimp.instincts.utils.RealmHelper;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class EventsActivity extends AppCompatActivity {
+    private static final String TAG = LogHelper.makeLogTag(EventsActivity.class);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+
+        InstinctsApplication instinctsApplication = (InstinctsApplication) getApplicationContext();
+        RealmHelper realmHelper = instinctsApplication.getRealmHelper();
+        Realm realm = realmHelper.getRealmInstance();
+        RealmResults<Event> eventRealmResults = realm.where(Event.class)
+                .distinct("type").sort("type", Sort.ASCENDING);
+        RecyclerView eventsRecyclerView = (RecyclerView) findViewById(R.id.events_recycler_view);
+
+        EventsAdapter adapter = new EventsAdapter(this, eventRealmResults);
+        eventsRecyclerView.setAdapter(adapter);
+        eventsRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
     }
 }

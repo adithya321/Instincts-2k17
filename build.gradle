@@ -36,6 +36,10 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
+    tasks.withType(JavaForkOptions) {
+        // Forked processes like GradleWorkerMain for tests won't steal focus!
+        jvmArgs '-Djava.awt.headless=true'
+    }
 }
 
 task clean(type: Delete) {

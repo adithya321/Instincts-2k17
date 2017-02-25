@@ -35,6 +35,7 @@ import com.lukedeighton.wheelview.adapter.WheelArrayAdapter;
 import com.mzelzoghbi.zgallery.ZGallery;
 import com.mzelzoghbi.zgallery.entities.ZColor;
 import com.pimp.instincts.R;
+import com.pimp.instincts.model.LocalJSONSource;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        new LocalJSONSource(this);
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
 
         ImageView spinArrowImageView = (ImageView) findViewById(R.id.spin_arrow);

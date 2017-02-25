@@ -62,7 +62,6 @@ public class ScheduleActivity extends AppCompatActivity implements WeekView.Even
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        LocalJSONSource localJSONSource = new LocalJSONSource(this);
         InstinctsApplication instinctsApplication = (InstinctsApplication) getApplicationContext();
         RealmHelper realmHelper = instinctsApplication.getRealmHelper();
         Realm realm = realmHelper.getRealmInstance();
