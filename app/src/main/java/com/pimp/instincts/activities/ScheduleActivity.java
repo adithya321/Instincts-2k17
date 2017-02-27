@@ -33,7 +33,6 @@ import com.alamkanak.weekview.WeekViewEvent;
 import com.pimp.instincts.InstinctsApplication;
 import com.pimp.instincts.R;
 import com.pimp.instincts.model.Event;
-import com.pimp.instincts.model.LocalJSONSource;
 import com.pimp.instincts.utils.DateUtils;
 import com.pimp.instincts.utils.LogHelper;
 import com.pimp.instincts.utils.RealmHelper;

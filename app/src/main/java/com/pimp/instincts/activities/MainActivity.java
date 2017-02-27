@@ -26,7 +26,6 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 3:
                         ZGallery.with(MainActivity.this, getImageList())
-                                .setToolbarColorResId(R.color.colorPrimary)
+                                .setToolbarColorResId(R.color.navigationBar)
                                 .setTitle("Gallery")
                                 .setGalleryBackgroundColor(ZColor.BLACK)
                                 .setToolbarTitleColor(ZColor.WHITE)
@@ -96,9 +95,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         wheelView.setAdapter(new WheelAdapter(entries));
-    }
-
-    public void registerOnClick(View view) {
     }
 
     private ArrayList<String> getImageList() {

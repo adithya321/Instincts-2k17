@@ -18,8 +18,10 @@
 
 <resources>
     <color name="colorPrimary">#A3E059</color>
-    <color name="colorPrimaryDark">#8FC14C</color>
+    <color name="colorPrimaryDark">#569FF4</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="navigationBar">#493E4A</color>
 
     <color name="eventsPrimary">#D07866</color>
     <color name="eventsPrimaryDark">#C24E49</color>
