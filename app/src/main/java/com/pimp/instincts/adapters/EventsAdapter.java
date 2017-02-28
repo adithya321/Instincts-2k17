@@ -77,34 +77,37 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
 
         switch (event.getType()) {
             case "Quiz":
-                setImageView(viewHolder.imageView, R.drawable.quiz_full);
+                setImageView(viewHolder.imageView, R.drawable.quiz);
                 break;
             case "Fine Arts":
-                setImageView(viewHolder.imageView, R.drawable.finearts_full);
+                setImageView(viewHolder.imageView, R.drawable.finearts);
                 break;
             case "Variety":
-                setImageView(viewHolder.imageView, R.drawable.variety_full);
+                setImageView(viewHolder.imageView, R.drawable.variety);
                 break;
             case "ELC":
-                setImageView(viewHolder.imageView, R.drawable.elc_full);
+                setImageView(viewHolder.imageView, R.drawable.elc);
                 break;
             case "Music":
-                setImageView(viewHolder.imageView, R.drawable.music_full);
+                setImageView(viewHolder.imageView, R.drawable.music);
                 break;
             case "Dance":
-                setImageView(viewHolder.imageView, R.drawable.dance_full);
+                setImageView(viewHolder.imageView, R.drawable.dance);
                 break;
             case "LOP":
-                setImageView(viewHolder.imageView, R.drawable.lop_full);
+                setImageView(viewHolder.imageView, R.drawable.lop);
                 break;
             case "Photography":
-                setImageView(viewHolder.imageView, R.drawable.spc_full);
+                setImageView(viewHolder.imageView, R.drawable.photography);
                 break;
             case "Saaral":
-                setImageView(viewHolder.imageView, R.drawable.saaral_full);
+                setImageView(viewHolder.imageView, R.drawable.saaral);
                 break;
             case "Film Club":
-                setImageView(viewHolder.imageView, R.drawable.filmclub_full);
+                setImageView(viewHolder.imageView, R.drawable.filmclub);
+                break;
+            default:
+                setImageView(viewHolder.imageView, R.drawable.other);
                 break;
         }
 
