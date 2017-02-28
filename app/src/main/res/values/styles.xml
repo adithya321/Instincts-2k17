@@ -31,6 +31,7 @@
         <item name="colorPrimary">@color/eventsPrimary</item>
         <item name="colorPrimaryDark">@color/eventsPrimaryDark</item>
         <item name="colorAccent">@color/eventsAccent</item>
+        <item name="colorControlNormal">@color/white</item>
         <item name="android:navigationBarColor">@color/eventsPrimary</item>
     </style>
 

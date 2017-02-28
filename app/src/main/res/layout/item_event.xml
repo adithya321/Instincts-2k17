@@ -40,6 +40,7 @@
             android:paddingRight="@dimen/keyline_2"
             android:textColor="@color/body_text_1"
             android:textSize="@dimen/app_text_size_large"
+            android:textStyle="bold"
             tools:text="09:00" />
     </FrameLayout>
 
@@ -58,7 +59,7 @@
             android:layout_marginRight="@dimen/my_schedule_icon_horizontal_padding"
             android:layout_marginTop="8dp"
             android:contentDescription="@null"
-            app:srcCompat="@drawable/ic_call" />
+            app:srcCompat="@drawable/saaral" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -77,6 +78,7 @@
                 android:ellipsize="end"
                 android:textColor="@color/body_text_1"
                 android:textSize="@dimen/app_text_size_medium"
+                android:textStyle="bold"
                 tools:text="Title" />
 
             <TextView

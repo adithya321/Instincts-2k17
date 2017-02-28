@@ -18,40 +18,58 @@
 
 package com.pimp.instincts.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
-import com.pimp.instincts.InstinctsApplication;
 import com.pimp.instincts.R;
-import com.pimp.instincts.adapters.EventsAdapter;
-import com.pimp.instincts.model.Event;
 import com.pimp.instincts.utils.LogHelper;
-import com.pimp.instincts.utils.RealmHelper;
 
-import io.realm.Realm;
-import io.realm.RealmResults;
-import io.realm.Sort;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class EventsActivity extends AppCompatActivity {
+public class EventsActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = LogHelper.makeLogTag(EventsActivity.class);
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.quiz_ll)
+    LinearLayout quizLl;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+        ButterKnife.bind(this);
 
-        InstinctsApplication instinctsApplication = (InstinctsApplication) getApplicationContext();
-        RealmHelper realmHelper = instinctsApplication.getRealmHelper();
-        Realm realm = realmHelper.getRealmInstance();
-        RealmResults<Event> eventRealmResults = realm.where(Event.class)
-                .distinct("type").sort("type", Sort.ASCENDING);
-        RecyclerView eventsRecyclerView = (RecyclerView) findViewById(R.id.events_recycler_view);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        EventsAdapter adapter = new EventsAdapter(this, eventRealmResults);
-        eventsRecyclerView.setAdapter(adapter);
-        eventsRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        quizLl.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.quiz_ll:
+                startActivity(new Intent(this, EventsTabbedActivity.class));
+                break;
+        }
     }
 }

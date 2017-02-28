@@ -27,6 +27,8 @@
     <color name="eventsPrimaryDark">#C24E49</color>
     <color name="eventsAccent">#4E92A9</color>
 
+    <color name="white">#FFF</color>
+
     <color name="about_page_card_background">#ffffff</color>
     <color name="about_page_card_shadow">#10000000</color>
     <color name="about_page_background">#f1f1f1</color>
