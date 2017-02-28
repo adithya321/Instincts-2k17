@@ -19,16 +19,26 @@
 package com.pimp.instincts.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.pimp.instincts.R;
+import com.pimp.instincts.activities.EventDetailActivity;
+import com.pimp.instincts.activities.EventDetailBaseActivity;
 import com.pimp.instincts.model.Event;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import static com.google.android.gms.internal.zzt.TAG;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
     private List<Event> eventList;
@@ -55,7 +65,15 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(final EventsAdapter.ViewHolder viewHolder, int position) {
-        Event event = eventList.get(position);
+        final Event event = eventList.get(position);
+
+        viewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventDetailBaseActivity.event = event;
+                context.startActivity(new Intent(context, EventDetailActivity.class));
+            }
+        });
 
         switch (event.getType()) {
             case "Quiz":
@@ -90,15 +108,20 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
                 break;
         }
 
-        viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int drawable = context.getResources().getIdentifier(context.getResources()
-                        .getResourceEntryName((int) viewHolder.imageView.getTag()).split("_")[0]
-                        + "_pop", "drawable", context.getPackageName());
-                viewHolder.imageView.setImageResource(drawable);
-            }
-        });
+        viewHolder.startTime.setText(event.getStartTime().split(" ")[1].substring(0, 5));
+        viewHolder.title.setText(event.getName());
+
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
+        try {
+            Date startTime = sdf1.parse(event.getStartTime());
+            Date endTime = sdf1.parse(event.getEndTime());
+
+            viewHolder.description.setText(sdf2.format(startTime)
+                    + " - " + sdf2.format(endTime) + " / " + event.getLocation());
+        } catch (Exception e) {
+            Log.e(TAG, e.toString());
+        }
     }
 
     @Override
@@ -112,11 +135,21 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
+        private LinearLayout linearLayout;
+
+        private ImageView imageView;
+        private TextView startTime;
+        private TextView title;
+        private TextView description;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.event_image);
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.event_ll);
+
+            imageView = (ImageView) itemView.findViewById(R.id.icon);
+            startTime = (TextView) itemView.findViewById(R.id.start_time);
+            title = (TextView) itemView.findViewById(R.id.title);
+            description = (TextView) itemView.findViewById(R.id.description);
         }
     }
 }

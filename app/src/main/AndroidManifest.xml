@@ -53,7 +53,7 @@
             android:theme="@style/EventsTheme" />
 
         <activity android:name=".activities.EventDetailActivity" />
-        <activity android:name=".activities.ScheduleActivity" />
+        <activity android:name=".activities.DayViewActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -62,6 +62,15 @@
         <activity
             android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.pimp.instincts.activities.HomeActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.ScheduleActivity"
+            android:parentActivityName=".activities.HomeActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pimp.instincts.activities.HomeActivity" />

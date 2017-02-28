@@ -36,4 +36,14 @@
     <color name="about_page_line">#9e9e9e</color>
     <color name="about_page_name_color">#424242</color>
     <color name="about_page_desc_color">#757575</color>
+
+    <color name="body_text_1">#de000000</color>
+    <color name="body_text_2">#8a000000</color>
+    <color name="body_text_3">#60000000</color>
+    <color name="body_text_disabled">#44000000</color>
+
+    <color name="body_text_1_inverse">#deffffff</color>
+    <color name="body_text_2_inverse">#8affffff</color>
+
+    <color name="list_dropdown_divider_color">#92a3a3a3</color>
 </resources>

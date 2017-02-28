@@ -1,0 +1,55 @@
+<!--
+  ~ Instincts
+  ~ Copyright (C) 2017  Adithya J
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <!-- standard metrics -->
+    <dimen name="spacing_normal">8dp</dimen>
+    <dimen name="spacing_micro">4dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="spacing_large">32dp</dimen>
+    <dimen name="touch_raise">6dp</dimen>
+
+    <!-- App Primary Text Sizes -->
+    <dimen name="app_text_size_xsmall">11sp</dimen>
+    <dimen name="app_text_size_small">12sp</dimen>
+    <dimen name="app_text_size_medium">14sp</dimen>
+    <dimen name="app_text_size_large">18sp</dimen>
+    <dimen name="app_text_size_xlarge">20sp</dimen>
+    <dimen name="app_text_size_diff_large_small">6sp</dimen>
+
+    <!-- line spacing -->
+    <item name="body_1_spacing" format="float" type="dimen">1.22448979592</item>
+    <item name="h3_spacing" format="float" type="dimen">1.14285714286</item>
+
+    <dimen name="keyline_2">72dp</dimen>
+
+    <dimen name="my_schedule_item_height">136dp</dimen>
+    <dimen name="my_schedule_item_height_break">80dp</dimen>
+    <dimen name="my_schedule_item_height_past">60dp</dimen>
+    <dimen name="my_schedule_time_column_width">100dp</dimen>
+    <dimen name="my_schedule_title_strip_padding">8dp</dimen>
+    <dimen name="my_schedule_page_margin">@dimen/padding_normal</dimen>
+    <dimen name="my_schedule_icon_size">24dp</dimen>
+    <dimen name="my_schedule_icon_horizontal_padding">24dp</dimen>
+</resources>

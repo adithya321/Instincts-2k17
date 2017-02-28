@@ -17,27 +17,17 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main"
-    tools:context=".activities.DayViewActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.pimp.instincts.activities.ScheduleActivity$PlaceholderFragment">
 
-    <com.alamkanak.weekview.WeekView
-        android:id="@+id/weekView"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/events_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:columnGap="8dp"
-        app:dayBackgroundColor="#05000000"
-        app:eventTextColor="@android:color/white"
-        app:eventTextSize="12sp"
-        app:headerColumnBackground="#ffffffff"
-        app:headerColumnPadding="8dp"
-        app:headerColumnTextColor="#FFFFFF"
-        app:headerRowBackgroundColor="#9FEBFD"
-        app:headerRowPadding="12dp"
-        app:hourHeight="60dp"
-        app:noOfVisibleDays="3"
-        app:todayBackgroundColor="#1848adff" />
+        android:layout_height="match_parent" />
 </RelativeLayout>
