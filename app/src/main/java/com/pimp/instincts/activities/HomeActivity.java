@@ -41,12 +41,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         new LocalJSONSource(this);
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
@@ -68,17 +68,17 @@ public class MainActivity extends AppCompatActivity {
             public void onWheelItemClick(WheelView parent, int position, boolean isSelected) {
                 switch (position) {
                     case 0:
-                        Toast.makeText(MainActivity.this, "ABOUT", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this, "ABOUT", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        Toast.makeText(MainActivity.this, "CONTACT", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this, "CONTACT", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
-                        startActivity(new Intent(MainActivity.this, MapsActivity.class)
+                        startActivity(new Intent(HomeActivity.this, MapsActivity.class)
                                 .putExtra("location", ""));
                         break;
                     case 3:
-                        ZGallery.with(MainActivity.this, getImageList())
+                        ZGallery.with(HomeActivity.this, getImageList())
                                 .setToolbarColorResId(R.color.navigationBar)
                                 .setTitle("Gallery")
                                 .setGalleryBackgroundColor(ZColor.BLACK)
@@ -86,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
                                 .show();
                         break;
                     case 4:
-                        startActivity(new Intent(MainActivity.this, EventsActivity.class));
+                        startActivity(new Intent(HomeActivity.this, EventsActivity.class));
                         break;
                     case 5:
-                        startActivity(new Intent(MainActivity.this, ScheduleActivity.class));
+                        startActivity(new Intent(HomeActivity.this, ScheduleActivity.class));
                         break;
                 }
             }

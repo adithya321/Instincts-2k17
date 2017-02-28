@@ -19,4 +19,12 @@
 <resources>
     <string name="app_name">Instincts</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="login">LOGIN</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="go">GO</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="register">REGISTER</string>
 </resources>
