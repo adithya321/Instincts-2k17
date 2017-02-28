@@ -118,7 +118,6 @@ public class EventDetailActivity extends EventDetailBaseActivity {
                     event.getContact1().split(":")[1]));
         }
         if (!event.getContact2().equals("")) {
-            items.add(new Category("Contact"));
             items.add(new Contact(R.drawable.ic_call, event.getContact2().split(":")[0],
                     event.getContact2().split(":")[1]));
         }
