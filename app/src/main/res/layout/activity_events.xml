@@ -19,6 +19,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/events_root_ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -38,10 +39,10 @@
         android:layout_weight="1">
 
         <LinearLayout
-            android:id="@+id/quiz_ll"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border"
             android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
@@ -65,6 +66,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_fill"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -87,6 +90,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -115,6 +120,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_fill"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -137,6 +144,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -159,6 +168,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_fill"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -187,6 +198,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -209,6 +222,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_fill"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -231,6 +246,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -259,6 +276,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_fill"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -281,6 +300,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -303,6 +324,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_fill"
+            android:foreground="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
 

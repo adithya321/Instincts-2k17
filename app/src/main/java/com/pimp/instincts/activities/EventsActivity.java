@@ -25,7 +25,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.pimp.instincts.R;
 import com.pimp.instincts.utils.LogHelper;
@@ -36,10 +38,10 @@ import butterknife.ButterKnife;
 public class EventsActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = LogHelper.makeLogTag(EventsActivity.class);
 
+    @BindView(R.id.events_root_ll)
+    LinearLayout eventsRootLl;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.quiz_ll)
-    LinearLayout quizLl;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,7 +53,13 @@ public class EventsActivity extends AppCompatActivity implements View.OnClickLis
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        quizLl.setOnClickListener(this);
+        for (int i = 1; i < eventsRootLl.getChildCount(); i++) {
+            ViewGroup viewGroup = (ViewGroup) eventsRootLl.getChildAt(i);
+            for (int j = 0; j < viewGroup.getChildCount(); j++) {
+                LinearLayout linearLayout = (LinearLayout) viewGroup.getChildAt(j);
+                linearLayout.setOnClickListener(this);
+            }
+        }
     }
 
     @Override
@@ -66,10 +74,8 @@ public class EventsActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.quiz_ll:
-                startActivity(new Intent(this, EventsTabbedActivity.class));
-                break;
-        }
+        TextView textView = (TextView) ((ViewGroup) view).getChildAt(1);
+        startActivity(new Intent(this, EventsTabbedActivity.class).putExtra("section_type",
+                textView.getText().toString()));
     }
 }

@@ -28,7 +28,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +40,9 @@ import com.pimp.instincts.model.Event;
 import com.pimp.instincts.utils.LogHelper;
 import com.pimp.instincts.utils.RealmHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -49,6 +51,7 @@ public class EventsTabbedActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    public Map<Integer, String> sectionNoToString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,19 @@ public class EventsTabbedActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        sectionNoToString = new HashMap<>();
+        sectionNoToString.put(0, "Quiz");
+        sectionNoToString.put(1, "Fine Arts");
+        sectionNoToString.put(2, "Variety");
+        sectionNoToString.put(3, "ELC");
+        sectionNoToString.put(4, "Music");
+        sectionNoToString.put(5, "Dance");
+        sectionNoToString.put(6, "LOP");
+        sectionNoToString.put(7, "Photography");
+        sectionNoToString.put(8, "Saaral");
+        sectionNoToString.put(9, "Film Club");
+        sectionNoToString.put(10, "Others");
+
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -66,6 +82,24 @@ public class EventsTabbedActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
+        String type = getIntent().getStringExtra("section_type");
+        for (Map.Entry<Integer, String> entry : sectionNoToString.entrySet()) {
+            if (entry.getValue().equals(type)) {
+                tabLayout.getTabAt(entry.getKey()).select();
+                break;
+            }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public static class PlaceholderFragment extends Fragment {
@@ -103,23 +137,9 @@ public class EventsTabbedActivity extends AppCompatActivity {
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-        private SparseArray<String> sectionNoToString;
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
-
-            sectionNoToString = new SparseArray<>();
-            sectionNoToString.put(0, "Quiz");
-            sectionNoToString.put(1, "Fine Arts");
-            sectionNoToString.put(2, "Variety");
-            sectionNoToString.put(3, "ELC");
-            sectionNoToString.put(4, "Music");
-            sectionNoToString.put(5, "Dance");
-            sectionNoToString.put(6, "LOP");
-            sectionNoToString.put(7, "Photography");
-            sectionNoToString.put(8, "Saaral");
-            sectionNoToString.put(9, "Film Club");
-            sectionNoToString.put(10, "Others");
         }
 
         @Override
@@ -136,15 +156,5 @@ public class EventsTabbedActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return sectionNoToString.get(position);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
