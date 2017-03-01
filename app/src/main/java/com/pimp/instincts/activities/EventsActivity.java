@@ -75,7 +75,7 @@ public class EventsActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         TextView textView = (TextView) ((ViewGroup) view).getChildAt(1);
-        startActivity(new Intent(this, EventsTabbedActivity.class).putExtra("section_type",
+        startActivity(new Intent(this, EventsListActivity.class).putExtra("section_type",
                 textView.getText().toString()));
     }
 }

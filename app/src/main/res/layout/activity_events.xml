@@ -29,7 +29,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/spin_wheel_orange"
         app:title="Events"
         app:titleTextColor="#FFF" />
 

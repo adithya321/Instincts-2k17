@@ -24,8 +24,12 @@
     <color name="navigationBar">#493E4A</color>
 
     <color name="eventsPrimary">#D07866</color>
-    <color name="eventsPrimaryDark">#C24E49</color>
+    <color name="eventsPrimaryDark">#ffa000</color>
     <color name="eventsAccent">#4E92A9</color>
+
+    <color name="spin_wheel_red">#F5233A</color>
+    <color name="spin_wheel_blue">#27BBD1</color>
+    <color name="spin_wheel_orange">#F7B252</color>
 
     <color name="white">#FFF</color>
 
