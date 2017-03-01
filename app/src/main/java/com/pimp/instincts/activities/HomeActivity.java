@@ -72,19 +72,19 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.makeText(HomeActivity.this, "ABOUT", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        Toast.makeText(HomeActivity.this, "CONTACT", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 2:
-                        startActivity(new Intent(HomeActivity.this, MapsActivity.class)
-                                .putExtra("location", ""));
-                        break;
-                    case 3:
                         ZGallery.with(HomeActivity.this, getImageList())
                                 .setToolbarColorResId(R.color.navigationBar)
                                 .setTitle("Gallery")
                                 .setGalleryBackgroundColor(ZColor.BLACK)
                                 .setToolbarTitleColor(ZColor.WHITE)
                                 .show();
+                        break;
+                    case 2:
+                        startActivity(new Intent(HomeActivity.this, MapsActivity.class)
+                                .putExtra("location", ""));
+                        break;
+                    case 3:
+                        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                         break;
                     case 4:
                         startActivity(new Intent(HomeActivity.this, EventsActivity.class));
@@ -115,7 +115,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ArrayList<String> getImageList() {
         ArrayList<String> imagesList = new ArrayList<>();
-        for (int i = 1; i <= 13; i++)
+        for (int i = 1; i <= 23; i++)
             imagesList.add("http://ssninstincts.org.in/img/gallery/big/" + i + ".jpg");
         return imagesList;
     }

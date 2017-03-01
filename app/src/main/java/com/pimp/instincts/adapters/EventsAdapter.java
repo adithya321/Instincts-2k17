@@ -76,38 +76,44 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         });
 
         switch (event.getType()) {
+            case "Special":
+                setImageView(viewHolder.imageView, R.drawable.ic_award);
+                break;
+            case "Gaming":
+                setImageView(viewHolder.imageView, R.drawable.ic_puppet_show);
+                break;
             case "Quiz":
-                setImageView(viewHolder.imageView, R.drawable.quiz);
+                setImageView(viewHolder.imageView, R.drawable.ic_walk_of_fame);
                 break;
             case "Fine Arts":
-                setImageView(viewHolder.imageView, R.drawable.finearts);
+                setImageView(viewHolder.imageView, R.drawable.ic_puppet);
                 break;
             case "Variety":
-                setImageView(viewHolder.imageView, R.drawable.variety);
+                setImageView(viewHolder.imageView, R.drawable.ic_mask);
                 break;
             case "ELC":
-                setImageView(viewHolder.imageView, R.drawable.elc);
+                setImageView(viewHolder.imageView, R.drawable.ic_costume);
                 break;
             case "Music":
-                setImageView(viewHolder.imageView, R.drawable.music);
+                setImageView(viewHolder.imageView, R.drawable.ic_microphone);
                 break;
             case "Dance":
-                setImageView(viewHolder.imageView, R.drawable.dance);
+                setImageView(viewHolder.imageView, R.drawable.ic_spotlights);
                 break;
             case "LOP":
-                setImageView(viewHolder.imageView, R.drawable.lop);
+                setImageView(viewHolder.imageView, R.drawable.ic_stage);
                 break;
             case "Photography":
-                setImageView(viewHolder.imageView, R.drawable.photography);
+                setImageView(viewHolder.imageView, R.drawable.ic_shutter);
                 break;
             case "Saaral":
-                setImageView(viewHolder.imageView, R.drawable.saaral);
+                setImageView(viewHolder.imageView, R.drawable.ic_writer);
                 break;
             case "Film Club":
-                setImageView(viewHolder.imageView, R.drawable.filmclub);
+                setImageView(viewHolder.imageView, R.drawable.ic_clapperboard);
                 break;
             default:
-                setImageView(viewHolder.imageView, R.drawable.other);
+                setImageView(viewHolder.imageView, R.drawable.ic_award);
                 break;
         }
 

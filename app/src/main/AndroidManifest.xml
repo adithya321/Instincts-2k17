@@ -40,6 +40,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activities.LoginActivity" />
         <activity
             android:name=".activities.RegisterActivity"
             android:theme="@style/Translucent" />

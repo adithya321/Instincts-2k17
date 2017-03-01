@@ -52,15 +52,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/quiz" />
+                android:src="@drawable/ic_award" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:text="Quiz" />
+                android:text="Special" />
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -76,7 +77,61 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/finearts" />
+                android:src="@drawable/ic_puppet_show" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:text="Gaming" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_walk_of_fame" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:text="Quiz" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_fill"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_puppet" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/variety" />
+                android:src="@drawable/ic_mask" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,12 +164,6 @@
                 android:layout_margin="8dp"
                 android:text="Variety" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -130,7 +179,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/elc" />
+                android:src="@drawable/ic_costume" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -139,6 +188,12 @@
                 android:layout_margin="8dp"
                 android:text="ELC" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -154,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/music" />
+                android:src="@drawable/ic_microphone" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -178,7 +233,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/dance" />
+                android:src="@drawable/ic_spotlights" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -187,12 +242,6 @@
                 android:layout_margin="8dp"
                 android:text="Dance" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -208,7 +257,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/lop" />
+                android:src="@drawable/ic_stage" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -217,6 +266,12 @@
                 android:layout_margin="8dp"
                 android:text="LOP" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -232,7 +287,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/photography" />
+                android:src="@drawable/ic_shutter" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -256,7 +311,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/saaral" />
+                android:src="@drawable/ic_writer" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -265,12 +320,6 @@
                 android:layout_margin="8dp"
                 android:text="Saaral" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -286,7 +335,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/filmclub" />
+                android:src="@drawable/ic_clapperboard" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -294,56 +343,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:text="Film Club" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border"
-            android:foreground="?selectableItemBackground"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:src="@drawable/other" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:text="Others" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_fill"
-            android:foreground="?selectableItemBackground"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:src="@drawable/quiz"
-                android:visibility="invisible" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:text="Quiz"
-                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

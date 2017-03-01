@@ -48,10 +48,9 @@ import io.realm.RealmResults;
 
 public class EventsTabbedActivity extends AppCompatActivity {
     private static final String TAG = LogHelper.makeLogTag(EventsTabbedActivity.class);
-
+    public Map<Integer, String> sectionNoToString;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-    public Map<Integer, String> sectionNoToString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

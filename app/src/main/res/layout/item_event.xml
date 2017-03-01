@@ -59,7 +59,7 @@
             android:layout_marginRight="@dimen/my_schedule_icon_horizontal_padding"
             android:layout_marginTop="8dp"
             android:contentDescription="@null"
-            app:srcCompat="@drawable/saaral" />
+            app:srcCompat="@drawable/ic_walk_of_fame" />
 
         <LinearLayout
             android:layout_width="0dp"
