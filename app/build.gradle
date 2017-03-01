@@ -71,9 +71,10 @@ dependencies {
 
     compile 'com.google.android.gms:play-services-maps:10.2.0'
 
+    compile project(':WheelViewLib')
+
     compile 'com.github.alamkanak:android-week-view:1.2.6'
     compile 'me.drakeet.multitype:multitype:2.4.1'
-    compile 'com.github.lukedeighton:wheelview:0.4.1'
     compile 'com.github.mzelzoghbi:zgallery:0.1'
 
     compile 'com.jakewharton:butterknife:8.5.1'
