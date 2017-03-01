@@ -15,7 +15,6 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pimp.instincts">
 
@@ -29,7 +28,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -39,24 +37,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activities.LoginActivity" />
         <activity
             android:name=".activities.RegisterActivity"
             android:theme="@style/Translucent" />
-
         <activity
             android:name=".activities.HomeActivity"
             android:screenOrientation="userPortrait" />
-
         <activity
             android:name=".activities.EventsActivity"
             android:theme="@style/EventsTheme" />
-
         <activity
             android:name=".activities.EventsTabbedActivity"
             android:theme="@style/EventsTheme" />
-
         <activity android:name=".activities.EventDetailActivity" />
         <activity android:name=".activities.DayViewActivity" />
 
@@ -71,9 +64,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pimp.instincts.activities.HomeActivity" />
         </activity>
-
         <activity
             android:name=".activities.ScheduleActivity"
+            android:parentActivityName=".activities.HomeActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.pimp.instincts.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".activities.HospitalityActivity"
+            android:parentActivityName=".activities.HomeActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.pimp.instincts.activities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".activities.AboutActivity"
             android:parentActivityName=".activities.HomeActivity"
             android:theme="@style/AppTheme">
             <meta-data

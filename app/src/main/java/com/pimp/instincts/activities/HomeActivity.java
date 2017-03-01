@@ -28,7 +28,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.lukedeighton.wheelview.WheelView;
 import com.lukedeighton.wheelview.adapter.WheelArrayAdapter;
@@ -69,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onWheelItemClick(WheelView parent, int position, boolean isSelected) {
                 switch (position) {
                     case 0:
-                        Toast.makeText(HomeActivity.this, "ABOUT", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(HomeActivity.this, AboutActivity.class));
                         break;
                     case 1:
                         ZGallery.with(HomeActivity.this, getImageList())
@@ -80,8 +79,7 @@ public class HomeActivity extends AppCompatActivity {
                                 .show();
                         break;
                     case 2:
-                        startActivity(new Intent(HomeActivity.this, MapsActivity.class)
-                                .putExtra("location", ""));
+                        startActivity(new Intent(HomeActivity.this, HospitalityActivity.class));
                         break;
                     case 3:
                         startActivity(new Intent(HomeActivity.this, LoginActivity.class));
