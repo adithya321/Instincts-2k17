@@ -18,6 +18,8 @@
 
 package com.pimp.instincts.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -55,6 +57,18 @@ public class HospitalityActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
     }
 
+    public void contactClick1(View view) {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+91 97 90 088471")));
+    }
+
+    public void contactClick2(View view) {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+91 96 98 406000")));
+    }
+
+    public void contactClick3(View view) {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+91 89 39 619640")));
+    }
+
     public static class PlaceholderFragment extends Fragment {
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -72,7 +86,21 @@ public class HospitalityActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_hospitality, container, false);
+            View rootView;
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+                case 0:
+                    rootView = inflater.inflate(R.layout.fragment_general_guidelines, container, false);
+                    break;
+                case 1:
+                    rootView = inflater.inflate(R.layout.fragment_accommodation_guidelines, container, false);
+                    break;
+                case 2:
+                    rootView = inflater.inflate(R.layout.fragment_buses, container, false);
+                    break;
+
+                default:
+                    rootView = inflater.inflate(R.layout.fragment_general_guidelines, container, false);
+            }
             return rootView;
         }
     }
@@ -85,7 +113,7 @@ public class HospitalityActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(position);
         }
 
         @Override

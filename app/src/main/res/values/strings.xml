@@ -27,4 +27,40 @@
     <string name="go">GO</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="register">REGISTER</string>
+
+    <string name="general_guidelines"> \u2022 Please carry your college ID card with you.
+\n\n \u2022 Cars and bikes will not be allowed to enter campus. So you will be asked to park them at the gate and walk inside.
+\n\n \u2022 Registrations start at 10.30AM on Day 1 and 9AM on Day 2 and Day 3. Please be there on time. Kindly take a note of the events under general registration and those under special event registration.
+\n\n \u2022 Please respect the college rules and regulations and abide by them.
+\n\n \u2022 Smoking is strictly prohibited inside the campus premises. Possession and consumption of alcohol and narcotics and other illegal activities in any form is strictly prohibited. Any violation of the mentioned rules will be reported to your college and the case will be severely dealt with.
+\n\n \u2022 If any damage to the college properties is reported, the cost of the damage will be collected. The Organisation will not take responsibility for any form of damage to person or property during the course of Instincts 2017.
+\n\n \u2022 In case of any discrepancy, the decision of Instincts team is final.
+\n\n \u2022 The college bus can be availed for travel to Instincts 2017.
+\n\n \u2022 The college bus routes and MTC bus routes can be found in the website.
+\n\n \u2022 For any other queries, please feel free to contact us anytime.</string>
+
+    <string name="accommodation_guidelines">\u2022 Accommodation will be provided on a sharing basis. However, large teams or teams from the same college may be put up in the same rooms.
+\n\n \u2022 Accommodation is provided on first cum first served basis.
+\n\n \u2022 Participant will be charged on 24-hour basis, that is you will be charged from the day of check-in till the day you check out.
+\n\n \u2022 Advance booking for accommodation is not available.
+\n\n \u2022 ID cards are compulsory.
+\n\n \u2022 The accommodation cost is Rs 100 per person.
+\n\n \u2022 All members of a team should register for accommodation individually.
+\n\n \u2022 Accommodation will be provided on 9th to 11th only.
+\n\n \u2022 Girls have to follow the curfew system that prevails in the college strictly (8 pm).
+\n\n \u2022 Please make entries in the register kept with the security whenever you move in and out of the allotted room.
+\n\n \u2022 It is not advisable to keep valuable items along with the luggage in the room.
+\n\n \u2022 Instincts 2017 will not be responsible for any loss or damage of your property.</string>
+
+    <string name="mtc_routes">\u2022 CMBT TO KELAMBAKKAM (KLM): 570, 570X (SSNCE, Not very Frequent) Note: Do not board 570S. The destination of 570S is Siruseri/Sipcot and not Kelambakkam.
+\n\n \u2022 T NAGAR TO KLM via Saidapet :19B (AC and Non AC), 519(SSNCE), 219A
+\n\n \u2022 CENTRAL TO SSNCE: 221H (Not very frequent)
+\n\n \u2022 CENTRAL R.S to BROADWAY: 10A,10E,11,11G,120K,15A,15B,15G,15L,17,17A,17B,17C,17D,17E,17G,17K,18A,18E,18F,18K,20A,20N,26,50,52B,52G,52L,53P,54V,5C,60D,60H,64C,71C,71D7F,88M,9M,G17,M51,M88,11,120,15B,15G.
+\n\n \u2022 BROADWAY TO KLM: 102(AC and Non AC), 521H (Stops at SSN College of Engineering)
+\n\n \u2022 TAMBARAM to SSNCE: 515, 555.
+\n\n \u2022 SRP TOOLS TO KELAMBAKKAM: 19P, M19A, 102, 19B, 519(SSNCE), 521H (SSNCE), 568(SSNCE), 221H (SSNCE), 570.
+\n\n \u2022 KEELKATALAI to SSNCE via Kovilambakkam, Medavakkam, South Pallikaranai, Sozhinganallur : 552K
+\n\n \u2022 AMBATTUR TO KLM via Ampa Skywalk, Loyola, T nagar, Saidapet, Madhyakailash : 219A (Not Very Frequent)
+\n\n \u2022 KELAMBAKKAM TO SSN 221H, 515, 521H,522,522K,566,568,568C,587, Share auto towards Thiruporur.
+\n\n \u2022 Please Note that buses will not be available after 11 pm</string>
 </resources>
