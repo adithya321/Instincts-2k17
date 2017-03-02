@@ -1,18 +1,17 @@
 /**
- *
- *   Copyright (C) 2014 Luke Deighton
- *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Copyright (C) 2014 Luke Deighton
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.lukedeighton.wheelview;
@@ -61,7 +60,7 @@ public class WheelView extends View {
 
     private static final float VELOCITY_FRICTION_COEFFICIENT = 0.015f;
     private static final float CONSTANT_FRICTION_COEFFICIENT = 0.0028f;
-    private static final float ANGULAR_VEL_COEFFICIENT = 100f;
+    private static final float ANGULAR_VEL_COEFFICIENT = 50f;
     private static final float MAX_ANGULAR_VEL = 10f;
 
     private static final int LEFT_MASK = 0x01;
@@ -78,6 +77,9 @@ public class WheelView extends View {
     private static final float TOUCH_DRAG_COEFFICIENT = 0.8f;
 
     private static final float[] TOUCH_FACTORS;
+    private static final float CLICK_MAX_DRAGGED_ANGLE = 0.7f;
+    private static final CacheItem EMPTY_CACHE_ITEM = new CacheItem(true);
+
     static {
         int size = TOUCH_FACTOR_SIZE;
         TOUCH_FACTORS = new float[size];
@@ -88,10 +90,6 @@ public class WheelView extends View {
             TOUCH_FACTORS[i] = (1 - factor * factor / numerator) * TOUCH_DRAG_COEFFICIENT;
         }
     }
-
-    private static final float CLICK_MAX_DRAGGED_ANGLE = 0.7f;
-
-    private static final CacheItem EMPTY_CACHE_ITEM = new CacheItem(true);
 
     private VelocityTracker mVelocityTracker;
     private Vector mForceVector = new Vector();
@@ -203,7 +201,7 @@ public class WheelView extends View {
         d = a.getDrawable(R.styleable.WheelView_wheelDrawable);
         if (d != null) {
             setWheelDrawable(d);
-        } else if (a.hasValue(R.styleable.WheelView_wheelColor)){
+        } else if (a.hasValue(R.styleable.WheelView_wheelColor)) {
             int color = a.getColor(R.styleable.WheelView_wheelColor, NEVER_USED);
             setWheelColor(color);
         }
@@ -266,6 +264,29 @@ public class WheelView extends View {
         a.recycle();
     }
 
+    //Taken and modified from Android Source for API < 11
+    public static int resolveSizeAndState(int size, int measureSpec) {
+        int result = size;
+        int specMode = MeasureSpec.getMode(measureSpec);
+        int specSize = MeasureSpec.getSize(measureSpec);
+        switch (specMode) {
+            case MeasureSpec.UNSPECIFIED:
+                result = size;
+                break;
+            case MeasureSpec.AT_MOST:
+                if (specSize < size) {
+                    result = specSize;
+                } else {
+                    result = size;
+                }
+                break;
+            case MeasureSpec.EXACTLY:
+                result = specSize;
+                break;
+        }
+        return result;
+    }
+
     @SuppressWarnings("unchecked")
     private <T> T validateAndInstantiate(String clazzName, Class<? extends T> clazz) {
         String errorMessage;
@@ -325,31 +346,12 @@ public class WheelView extends View {
         mSelectionTransformer = new FadingSelectionTransformer();
     }
 
-    public interface OnWheelItemClickListener {
-        void onWheelItemClick(WheelView parent, int position, boolean isSelected);
-    }
-
-    public void setOnWheelItemClickListener(OnWheelItemClickListener listener) {
-        mOnItemClickListener = listener;
-    }
-
     public OnWheelItemClickListener getOnWheelItemClickListener() {
         return mOnItemClickListener;
     }
 
-    /**
-     * A listener for when a wheel item is selected.
-     */
-    public interface OnWheelItemSelectListener {
-        /**
-         * @param parent WheelView that calls this listener
-         * @param itemDrawable - The Drawable of the wheel item that is closest to the selection angle
-         *                     (or closest to the selection angle)
-         * @param position of the adapter that is closest to the selection angle
-         */
-        void onWheelItemSelected(WheelView parent, Drawable itemDrawable, int position);
-
-        //TODO onWheelItemSettled?
+    public void setOnWheelItemClickListener(OnWheelItemClickListener listener) {
+        mOnItemClickListener = listener;
     }
 
     public void setOnWheelItemSelectedListener(OnWheelItemSelectListener listener) {
@@ -360,10 +362,6 @@ public class WheelView extends View {
         return mOnItemSelectListener;
     }
 
-    public interface OnWheelItemVisibilityChangeListener {
-        void onItemVisibilityChange(WheelAdapter adapter, int position, boolean isVisible);
-    }
-
     /* TODO public */ void setOnWheelItemVisibilityChangeListener(OnWheelItemVisibilityChangeListener listener) {
         mOnItemVisibilityChangeListener = listener;
     }
@@ -372,22 +370,16 @@ public class WheelView extends View {
         return mOnItemVisibilityChangeListener;
     }
 
-    /**
-     * A listener for when the wheel's angle has changed.
-     */
-    public interface OnWheelAngleChangeListener {
-        /**
-         * Receive a callback when the wheel's angle has changed.
-         */
-        void onWheelAngleChange(float angle);
+    public OnWheelAngleChangeListener getOnWheelAngleChangeListener() {
+        return mOnAngleChangeListener;
     }
 
     public void setOnWheelAngleChangeListener(OnWheelAngleChangeListener listener) {
         mOnAngleChangeListener = listener;
     }
 
-    public OnWheelAngleChangeListener getOnWheelAngleChangeListener() {
-        return mOnAngleChangeListener;
+    public WheelAdapter getAdapter() {
+        return mAdapter;
     }
 
     public void setAdapter(WheelAdapter wheelAdapter) {
@@ -398,17 +390,21 @@ public class WheelView extends View {
         invalidate();
     }
 
-    public WheelAdapter getAdapter() {
-        return mAdapter;
-    }
-
     public void setWheelItemTransformer(WheelItemTransformer itemTransformer) {
-        if (itemTransformer == null) throw new IllegalArgumentException("WheelItemTransformer cannot be null");
+        if (itemTransformer == null)
+            throw new IllegalArgumentException("WheelItemTransformer cannot be null");
         mItemTransformer = itemTransformer;
     }
 
     public void setWheelSelectionTransformer(WheelSelectionTransformer transformer) {
         mSelectionTransformer = transformer;
+    }
+
+    /**
+     * @return {@code true} if the wheel drawable rotates.
+     */
+    public boolean isWheelDrawableRotatable() {
+        return mIsWheelDrawableRotatable;
     }
 
     /**
@@ -422,10 +418,10 @@ public class WheelView extends View {
     }
 
     /**
-     * @return {@code true} if the wheel drawable rotates.
+     * @return {@code true} if the adapter items continuously cycle around the wheel.
      */
-    public boolean isWheelDrawableRotatable() {
-        return mIsWheelDrawableRotatable;
+    public boolean isRepeatableAdapter() {
+        return mIsRepeatable;
     }
 
     /**
@@ -435,11 +431,8 @@ public class WheelView extends View {
         mIsRepeatable = isRepeatable;
     }
 
-    /**
-     * @return {@code true} if the adapter items continuously cycle around the wheel.
-     */
-    public boolean isRepeatableAdapter() {
-        return mIsRepeatable;
+    public float getWheelItemAngle() {
+        return mItemAngle;
     }
 
     public void setWheelItemAngle(float angle) {
@@ -454,10 +447,6 @@ public class WheelView extends View {
         //TODO
     }
 
-    public float getWheelItemAngle() {
-        return mItemAngle;
-    }
-
     private float calculateItemAngle(int itemCount) {
         return 360f / itemCount;
     }
@@ -466,14 +455,18 @@ public class WheelView extends View {
         return (int) (360f / angle);
     }
 
+    public float getWheelItemAnglePadding() {
+        return mItemAnglePadding;
+    }
+
     public void setWheelItemAnglePadding(float anglePadding) {
         mItemAnglePadding = anglePadding;
 
         //TODO
     }
 
-    public float getWheelItemAnglePadding() {
-        return mItemAnglePadding;
+    public float getSelectionAngle() {
+        return mSelectionAngle;
     }
 
     public void setSelectionAngle(float angle) {
@@ -484,39 +477,35 @@ public class WheelView extends View {
         }
     }
 
-    public float getSelectionAngle() {
-        return mSelectionAngle;
+    public int getSelectionPadding() {
+        return mSelectionPadding;
     }
 
     public void setSelectionPadding(int padding) {
         mSelectionPadding = padding;
     }
 
-    public int getSelectionPadding() {
-        return mSelectionPadding;
+    public float getWheelToItemDistance() {
+        return mWheelToItemDistance;
     }
 
     public void setWheelToItemDistance(int distance) {
         mWheelToItemDistance = distance;
     }
 
-    public float getWheelToItemDistance() {
-        return mWheelToItemDistance;
+    public float getWheelItemRadius() {
+        return mItemRadius;
     }
 
     public void setWheelItemRadius(int radius) {
         mItemRadius = radius;
     }
 
-    /* TODO
-    public void setWheelItemRadius(float radius, int itemCount) {
-        mItemRadius = radius;
-        mItemAngle = calculateItemAngle(itemCount);
-        mItemCount = itemCount;
-    } */
-
-    public float getWheelItemRadius() {
-        return mItemRadius;
+    /**
+     * Gets the radius of the wheel in pixels
+     */
+    public float getWheelRadius() {
+        return mWheelRadius;
     }
 
     /**
@@ -528,11 +517,18 @@ public class WheelView extends View {
         mWheelRadius = radius;
     }
 
+    /* TODO
+    public void setWheelItemRadius(float radius, int itemCount) {
+        mItemRadius = radius;
+        mItemAngle = calculateItemAngle(itemCount);
+        mItemCount = itemCount;
+    } */
+
     /**
-     * Gets the radius of the wheel in pixels
+     * @return the count of wheel items that are displayed on the wheel.
      */
-    public float getWheelRadius() {
-        return mWheelRadius;
+    public float getWheelItemCount() {
+        return mItemCount;
     }
 
     /**
@@ -548,11 +544,8 @@ public class WheelView extends View {
         }
     }
 
-    /**
-     * @return the count of wheel items that are displayed on the wheel.
-     */
-    public float getWheelItemCount() {
-        return mItemCount;
+    public float getWheelOffsetX() {
+        return mOffsetX;
     }
 
     public void setWheelOffsetX(int offsetX) {
@@ -560,23 +553,14 @@ public class WheelView extends View {
         //TODO
     }
 
-    public float getWheelOffsetX() {
-        return mOffsetX;
+    public float getWheelOffsetY() {
+        return mOffsetY;
     }
 
     public void setWheelOffsetY(int offsetY) {
         mOffsetY = offsetY;
         //TODO
     }
-
-    public float getWheelOffsetY() {
-        return mOffsetY;
-    }
-
-    /*
-    public void setWheelPosition(int position) {
-        //TODO possible solution to animate or instantly?
-    }*/
 
     /**
      * Find the largest circle to fit within the item angle.
@@ -601,6 +585,11 @@ public class WheelView extends View {
 
         super.onLayout(changed, left, top, right, bottom);
     }
+
+    /*
+    public void setWheelPosition(int position) {
+        //TODO possible solution to animate or instantly?
+    }*/
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -641,29 +630,6 @@ public class WheelView extends View {
         setMeasuredDimension(width, height);
     }
 
-    //Taken and modified from Android Source for API < 11
-    public static int resolveSizeAndState(int size, int measureSpec) {
-        int result = size;
-        int specMode = MeasureSpec.getMode(measureSpec);
-        int specSize =  MeasureSpec.getSize(measureSpec);
-        switch (specMode) {
-            case MeasureSpec.UNSPECIFIED:
-                result = size;
-                break;
-            case MeasureSpec.AT_MOST:
-                if (specSize < size) {
-                    result = specSize;
-                } else {
-                    result = size;
-                }
-                break;
-            case MeasureSpec.EXACTLY:
-                result = specSize;
-                break;
-        }
-        return result;
-    }
-
     private void layoutWheel(int left, int top, int width, int height) {
         if (width == 0 || height == 0) return;
 
@@ -699,7 +665,7 @@ public class WheelView extends View {
     private int measureWheelRadius(int radius, int width, int height) {
         if (radius == ViewGroup.LayoutParams.MATCH_PARENT) {
             return Math.min(width - getPaddingLeft() - getPaddingRight(),
-                            height - getPaddingTop() - getPaddingBottom()) / 2;
+                    height - getPaddingTop() - getPaddingBottom()) / 2;
         } else {
             return radius;
         }
@@ -752,28 +718,6 @@ public class WheelView extends View {
     }
 
     /**
-     * <p>
-     * Sets the wheel's drawable that can also rotate with the items.
-     * </p>
-     * <p>
-     * Note if the drawable has infinite lines of symmetry then you should set the wheel drawable to
-     * not rotate, see {@link #setWheelDrawableRotatable(boolean)}. In other words, if the drawable
-     * doesn't look any different whilst it is rotating, you should improve the performance by
-     * disabling the drawable from rotating.
-     * </p>
-     *
-     * @see #setWheelDrawableRotatable(boolean)
-     */
-    public void setWheelDrawable(Drawable drawable) {
-        mWheelDrawable = drawable;
-
-        if (mWheelBounds != null) {
-            mWheelDrawable.setBounds(mWheelBounds.getBoundingRect());
-            invalidate();
-        }
-    }
-
-    /**
      * Sets the empty item drawable that is drawn when outside of the adapter range.
      *
      * @see #isEmptyItemPosition(int)
@@ -789,20 +733,6 @@ public class WheelView extends View {
      */
     public void setEmptyItemDrawable(@DrawableRes int resId) {
         setEmptyItemDrawable(getResources().getDrawable(resId));
-    }
-
-    /**
-     * Sets the empty item drawable that is drawn when outside of the adapter range.
-     *
-     * @see #isEmptyItemPosition(int)
-     */
-    public void setEmptyItemDrawable(Drawable drawable) {
-        mEmptyItemDrawable = drawable;
-        EMPTY_CACHE_ITEM.mDrawable = drawable;
-
-        if (mWheelBounds != null) {
-            invalidate();
-        }
     }
 
     /**
@@ -826,6 +756,13 @@ public class WheelView extends View {
     }
 
     /**
+     * @return The Drawable that is drawn behind the selected item.
+     */
+    public Drawable getSelectionDrawable() {
+        return mSelectionDrawable;
+    }
+
+    /**
      * Set the selection drawable that is drawn behind the selected item.
      *
      * @see #setSelectionDrawable(int)
@@ -837,15 +774,7 @@ public class WheelView extends View {
     }
 
     /**
-     * @return The Drawable that is drawn behind the selected item.
-     */
-    public Drawable getSelectionDrawable() {
-        return mSelectionDrawable;
-    }
-
-    /**
      * @return the empty item drawable used when rendering positions outside of the adapter range.
-     *
      * @see #isEmptyItemPosition(int)
      */
     public Drawable getEmptyItemDrawable() {
@@ -853,10 +782,46 @@ public class WheelView extends View {
     }
 
     /**
+     * Sets the empty item drawable that is drawn when outside of the adapter range.
+     *
+     * @see #isEmptyItemPosition(int)
+     */
+    public void setEmptyItemDrawable(Drawable drawable) {
+        mEmptyItemDrawable = drawable;
+        EMPTY_CACHE_ITEM.mDrawable = drawable;
+
+        if (mWheelBounds != null) {
+            invalidate();
+        }
+    }
+
+    /**
      * @return the wheel's drawable
      */
     public Drawable getWheelDrawable() {
         return mWheelDrawable;
+    }
+
+    /**
+     * <p>
+     * Sets the wheel's drawable that can also rotate with the items.
+     * </p>
+     * <p>
+     * Note if the drawable has infinite lines of symmetry then you should set the wheel drawable to
+     * not rotate, see {@link #setWheelDrawableRotatable(boolean)}. In other words, if the drawable
+     * doesn't look any different whilst it is rotating, you should improve the performance by
+     * disabling the drawable from rotating.
+     * </p>
+     *
+     * @see #setWheelDrawableRotatable(boolean)
+     */
+    public void setWheelDrawable(Drawable drawable) {
+        mWheelDrawable = drawable;
+
+        if (mWheelBounds != null) {
+            mWheelDrawable.setBounds(mWheelBounds.getBoundingRect());
+            invalidate();
+        }
     }
 
     /**
@@ -876,7 +841,6 @@ public class WheelView extends View {
      * </p>
      *
      * @param rawPosition the raw position (can take negative numbers)
-     *
      * @see #setMidSelected()
      */
     public void setSelected(int rawPosition) {
@@ -907,24 +871,6 @@ public class WheelView extends View {
     }
 
     /**
-     * Set the angle of the wheel instantaneously.
-     * Note this does not animate to the provided angle.
-     *
-     * @param angle given in degrees and can be any value (not only between 0 and 360)
-     */
-    public void setAngle(float angle) {
-        mAngle = angle;
-
-        updateSelectedPosition();
-
-        if (mOnAngleChangeListener != null) {
-            mOnAngleChangeListener.onWheelAngleChange(mAngle);
-        }
-
-        invalidate();
-    }
-
-    /**
      * Checks to see if the selectedPosition has changed.
      */
     private void updateSelectedPosition() {
@@ -934,22 +880,11 @@ public class WheelView extends View {
 
     /**
      * @return {@code true} if this adapter position is empty.
-     *
+     * <p>
      * This is only possible with non-repeatable items.
      */
     public boolean isEmptyItemPosition(int position) {
         return !mIsRepeatable && (position < 0 || position >= mAdapterItemCount);
-    }
-
-    private void setSelectedPosition(int position) {
-        if (mRawSelectedPosition == position) return;
-
-        mRawSelectedPosition = position;
-
-        if (mOnItemSelectListener != null && !isEmptyItemPosition(position)) {
-            int adapterPos = getSelectedPosition();
-            mOnItemSelectListener.onWheelItemSelected(this, getWheelItemDrawable(adapterPos), adapterPos);
-        }
     }
 
     /**
@@ -998,7 +933,6 @@ public class WheelView extends View {
 
     /**
      * @return the adapter position that is closest to the selection
-     *
      * @see #getRawSelectedPosition()
      * @see #getAngle()
      */
@@ -1006,14 +940,42 @@ public class WheelView extends View {
         return rawPositionToAdapterPosition(mRawSelectedPosition);
     }
 
+    private void setSelectedPosition(int position) {
+        if (mRawSelectedPosition == position) return;
+
+        mRawSelectedPosition = position;
+
+        if (mOnItemSelectListener != null && !isEmptyItemPosition(position)) {
+            int adapterPos = getSelectedPosition();
+            mOnItemSelectListener.onWheelItemSelected(this, getWheelItemDrawable(adapterPos), adapterPos);
+        }
+    }
+
     /**
      * @return the wheel angle in degrees.
-     *
      * @see #getRawSelectedPosition()
      * @see #getSelectedPosition()
      */
     public float getAngle() {
         return mAngle;
+    }
+
+    /**
+     * Set the angle of the wheel instantaneously.
+     * Note this does not animate to the provided angle.
+     *
+     * @param angle given in degrees and can be any value (not only between 0 and 360)
+     */
+    public void setAngle(float angle) {
+        mAngle = angle;
+
+        updateSelectedPosition();
+
+        if (mOnAngleChangeListener != null) {
+            mOnAngleChangeListener.onWheelAngleChange(mAngle);
+        }
+
+        invalidate();
     }
 
     private void addAngle(float degrees) {
@@ -1172,7 +1134,7 @@ public class WheelView extends View {
      */
     private void update(float deltaTime) {
         float vel = mAngularVelocity;
-        float velSqr = vel*vel;
+        float velSqr = vel * vel;
         if (vel > 0f) {
             //TODO the damping is not based on time
             mAngularVelocity -= velSqr * VELOCITY_FRICTION_COEFFICIENT + CONSTANT_FRICTION_COEFFICIENT;
@@ -1207,7 +1169,7 @@ public class WheelView extends View {
         }
 
         if (mAdapter != null && mAdapterItemCount > 0) {
-           drawWheelItems(canvas);
+            drawWheelItems(canvas);
         }
     }
 
@@ -1295,6 +1257,74 @@ public class WheelView extends View {
         }
     }
 
+    private void updateItemState(ItemState itemState, int adapterPosition,
+                                 float x, float y, float radius) {
+        float itemAngle = mWheelBounds.angleToDegrees(x, y);
+        float angleFromSelection = Circle.shortestAngle(itemAngle, mSelectionAngle);
+        float relativePos = angleFromSelection / mItemAngle * 2f;
+
+        itemState.mAngleFromSelection = angleFromSelection;
+        itemState.mRelativePos = relativePos;
+        itemState.mBounds.mCenterX = x;
+        itemState.mBounds.mCenterY = y;
+        itemState.mAdapterPosition = adapterPosition;
+
+        //TODO The radius is always known - doesn't really need this?
+        itemState.mBounds.mRadius = radius;
+    }
+
+    private ItemState getClickedItem(float touchX, float touchY) {
+        for (ItemState state : mItemStates) {
+            Circle itemBounds = state.mBounds;
+            if (itemBounds.contains(touchX, touchY)) return state;
+        }
+        return null;
+    }
+
+    private CacheItem getCacheItem(int position) {
+        if (isEmptyItemPosition(position)) return EMPTY_CACHE_ITEM;
+
+        CacheItem cacheItem = mItemCacheArray[position];
+        if (cacheItem == null) {
+            cacheItem = new CacheItem();
+            mItemCacheArray[position] = cacheItem;
+        }
+        return cacheItem;
+    }
+
+    public interface OnWheelItemClickListener {
+        void onWheelItemClick(WheelView parent, int position, boolean isSelected);
+    }
+
+    /**
+     * A listener for when a wheel item is selected.
+     */
+    public interface OnWheelItemSelectListener {
+        /**
+         * @param parent       WheelView that calls this listener
+         * @param itemDrawable - The Drawable of the wheel item that is closest to the selection angle
+         *                     (or closest to the selection angle)
+         * @param position     of the adapter that is closest to the selection angle
+         */
+        void onWheelItemSelected(WheelView parent, Drawable itemDrawable, int position);
+
+        //TODO onWheelItemSettled?
+    }
+
+    public interface OnWheelItemVisibilityChangeListener {
+        void onItemVisibilityChange(WheelAdapter adapter, int position, boolean isVisible);
+    }
+
+    /**
+     * A listener for when the wheel's angle has changed.
+     */
+    public interface OnWheelAngleChangeListener {
+        /**
+         * Receive a callback when the wheel's angle has changed.
+         */
+        void onWheelAngleChange(float angle);
+    }
+
     /**
      * The ItemState is used to provide extra information when transforming the selection drawable
      * or item bounds.
@@ -1327,30 +1357,6 @@ public class WheelView extends View {
         }
     }
 
-    private void updateItemState(ItemState itemState, int adapterPosition,
-                                 float x, float y, float radius) {
-        float itemAngle = mWheelBounds.angleToDegrees(x, y);
-        float angleFromSelection = Circle.shortestAngle(itemAngle, mSelectionAngle);
-        float relativePos = angleFromSelection / mItemAngle * 2f;
-
-        itemState.mAngleFromSelection = angleFromSelection;
-        itemState.mRelativePos = relativePos;
-        itemState.mBounds.mCenterX = x;
-        itemState.mBounds.mCenterY = y;
-        itemState.mAdapterPosition = adapterPosition;
-
-        //TODO The radius is always known - doesn't really need this?
-        itemState.mBounds.mRadius = radius;
-    }
-
-    private ItemState getClickedItem(float touchX, float touchY) {
-        for (ItemState state : mItemStates) {
-            Circle itemBounds = state.mBounds;
-            if (itemBounds.contains(touchX, touchY)) return state;
-        }
-        return null;
-    }
-
     static class CacheItem {
         boolean mDirty;
         boolean mIsVisible;
@@ -1367,17 +1373,6 @@ public class WheelView extends View {
         }
     }
 
-    private CacheItem getCacheItem(int position) {
-        if (isEmptyItemPosition(position)) return EMPTY_CACHE_ITEM;
-
-        CacheItem cacheItem = mItemCacheArray[position];
-        if (cacheItem == null) {
-            cacheItem = new CacheItem();
-            mItemCacheArray[position] = cacheItem;
-        }
-        return cacheItem;
-    }
-
     /**
      * A simple class to represent a vector with an add and cross product method. Used only to
      * calculate the Wheel's angular velocity in {@link #flingWheel()}
@@ -1385,7 +1380,8 @@ public class WheelView extends View {
     static class Vector {
         float x, y;
 
-        Vector() {}
+        Vector() {
+        }
 
         void set(float x, float y) {
             this.x = x;

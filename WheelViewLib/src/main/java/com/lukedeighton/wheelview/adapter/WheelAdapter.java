@@ -1,19 +1,20 @@
 package com.lukedeighton.wheelview.adapter;
 
 import android.graphics.drawable.Drawable;
+
 import com.lukedeighton.wheelview.WheelView;
 
 /**
  * <p>
  * Provide drawables for the {@link WheelView} to draw on the wheel.
  * </p>
- *
+ * <p>
  * <p>
  * Note that {@link WheelAdapter} doesn't behave exactly like a typical Adapter from Android source.
  * There are some limitations to using drawables rather than views, but it also means you do not
  * need to worry about recycling drawables as it is not as expensive as view inflation.
  * </p>
- *
+ * <p>
  * <p>
  * It may be possible to properly implement an Adapter with recycling Views but for now this will do.
  * </p>
