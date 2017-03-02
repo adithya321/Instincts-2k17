@@ -70,7 +70,7 @@
         <activity
             android:name=".activities.ScheduleActivity"
             android:parentActivityName=".activities.HomeActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/ScheduleTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pimp.instincts.activities.HomeActivity" />
@@ -78,7 +78,7 @@
         <activity
             android:name=".activities.HospitalityActivity"
             android:parentActivityName=".activities.HomeActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/ScheduleTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pimp.instincts.activities.HomeActivity" />
@@ -86,7 +86,7 @@
         <activity
             android:name=".activities.AboutActivity"
             android:parentActivityName=".activities.HomeActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AboutTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pimp.instincts.activities.HomeActivity" />

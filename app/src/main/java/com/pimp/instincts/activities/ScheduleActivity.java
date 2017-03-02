@@ -81,7 +81,7 @@ public class ScheduleActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_event, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_schedule, container, false);
 
             int day = getArguments().getInt(ARG_SECTION_NUMBER);
 
@@ -90,9 +90,9 @@ public class ScheduleActivity extends AppCompatActivity {
             Realm realm = realmHelper.getRealmInstance();
             RealmResults<Event> eventRealmResults = realm.where(Event.class)
                     .contains("startTime", "0" + day + "-03-2017").findAllSorted("startTime");
-            RecyclerView eventsRecyclerView = (RecyclerView) rootView.findViewById(R.id.events_recycler_view);
 
             EventsAdapter adapter = new EventsAdapter(getActivity(), eventRealmResults);
+            RecyclerView eventsRecyclerView = (RecyclerView) rootView.findViewById(R.id.events_recycler_view);
             eventsRecyclerView.setAdapter(adapter);
             eventsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             return rootView;

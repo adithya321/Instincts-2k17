@@ -72,7 +72,24 @@ public class AboutActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_about, container, false);
+            View rootView;
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+                case 0:
+                    rootView = inflater.inflate(R.layout.fragment_our_team, container, false);
+                    break;
+                case 1:
+                    rootView = inflater.inflate(R.layout.fragment_about_instincts, container, false);
+                    break;
+                case 2:
+                    rootView = inflater.inflate(R.layout.fragment_committees, container, false);
+                    break;
+                case 3:
+                    rootView = inflater.inflate(R.layout.fragment_about_ssn, container, false);
+                    break;
+
+                default:
+                    rootView = inflater.inflate(R.layout.fragment_about_instincts, container, false);
+            }
             return rootView;
         }
     }
@@ -85,7 +102,7 @@ public class AboutActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(position);
         }
 
         @Override

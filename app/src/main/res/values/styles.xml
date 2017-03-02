@@ -35,6 +35,22 @@
         <item name="android:navigationBarColor">@color/spin_wheel_orange</item>
     </style>
 
+    <style name="ScheduleTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/spin_wheel_red</item>
+        <item name="colorPrimaryDark">@color/spin_wheel_redDark</item>
+        <item name="colorAccent">@color/eventsAccent</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:navigationBarColor">@color/spin_wheel_red</item>
+    </style>
+
+    <style name="AboutTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/spin_wheel_blue</item>
+        <item name="colorPrimaryDark">@color/spin_wheel_blueDark</item>
+        <item name="colorAccent">@color/eventsAccent</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:navigationBarColor">@color/spin_wheel_blue</item>
+    </style>
+
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/background_main</item>
     </style>
