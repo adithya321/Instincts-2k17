@@ -18,11 +18,13 @@
 
 package com.pimp.instincts.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.pimp.instincts.InstinctsApplication;
@@ -81,10 +83,19 @@ public class EventsListActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_event_list, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.action_home:
+                startActivity(new Intent(this, HomeActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

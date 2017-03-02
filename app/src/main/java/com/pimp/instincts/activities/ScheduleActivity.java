@@ -34,7 +34,7 @@ import android.view.ViewGroup;
 
 import com.pimp.instincts.InstinctsApplication;
 import com.pimp.instincts.R;
-import com.pimp.instincts.adapters.EventsAdapter;
+import com.pimp.instincts.adapters.ScheduleAdapter;
 import com.pimp.instincts.model.Event;
 import com.pimp.instincts.utils.RealmHelper;
 
@@ -52,6 +52,7 @@ public class ScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Schedule");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -91,7 +92,7 @@ public class ScheduleActivity extends AppCompatActivity {
             RealmResults<Event> eventRealmResults = realm.where(Event.class)
                     .contains("startTime", "0" + day + "-03-2017").findAllSorted("startTime");
 
-            EventsAdapter adapter = new EventsAdapter(getActivity(), eventRealmResults);
+            ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), eventRealmResults);
             RecyclerView eventsRecyclerView = (RecyclerView) rootView.findViewById(R.id.events_recycler_view);
             eventsRecyclerView.setAdapter(adapter);
             eventsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

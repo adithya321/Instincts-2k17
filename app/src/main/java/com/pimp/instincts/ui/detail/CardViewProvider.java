@@ -51,14 +51,18 @@ public class CardViewProvider extends ItemViewProvider<Card, CardViewProvider.Vi
         holder.content.setText(card.content);
         if (card.action == null) holder.action.setVisibility(GONE);
         else holder.action.setText(card.action);
+        if (card.title == null) holder.title.setVisibility(GONE);
+        else holder.title.setText(card.title);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        TextView title;
         TextView content;
         TextView action;
 
         ViewHolder(View itemView) {
             super(itemView);
+            title = (TextView) itemView.findViewById(R.id.title);
             content = (TextView) itemView.findViewById(R.id.content);
             action = (TextView) itemView.findViewById(R.id.action);
             action.setOnClickListener(onActionClickListener);

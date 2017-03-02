@@ -18,23 +18,39 @@
 
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/about_page_background">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:background="@color/spin_wheel_orange"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/white" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:paddingStart="72dp"
+        app:title="Saaral"
+        app:titleTextColor="@color/white" />
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:background="@color/spin_wheel_orange"
+        android:layout_height="350dp"
+        android:background="@android:color/transparent"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="@color/spin_wheel_orange"
+            app:expandedTitleGravity="center_horizontal|bottom"
+            app:expandedTitleTextAppearance="@style/Body1Text"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <LinearLayout
@@ -44,12 +60,14 @@
                 android:orientation="vertical"
                 app:layout_collapseMode="parallax">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/icon"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/ic_walk_of_fame" />
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:src="@drawable/ic_walk_of_fame"
+                    app:civ_border_color="#FFFFFFFF"
+                    app:civ_border_width="2dp"
+                    app:civ_fill_color="@color/white" />
             </LinearLayout>
 
             <android.support.v7.widget.Toolbar
@@ -58,7 +76,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin" />
 
-        </android.support.design.widget.CollapsingToolbarLayout>
+        </net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 

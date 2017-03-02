@@ -87,6 +87,7 @@
     </style>
 
     <style name="Body1Text">
+        <item name="android:textColor">#424242</item>
         <item name="android:textAppearance">@style/TextAppearance.Body1</item>
         <item name="android:lineSpacingMultiplier">@dimen/body_1_spacing</item>
     </style>

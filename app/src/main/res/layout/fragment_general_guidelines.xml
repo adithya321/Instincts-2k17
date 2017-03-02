@@ -44,9 +44,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="sans-serif-thin"
+                    android:fontFamily="sans-serif"
                     android:text="Contact"
-                    android:textSize="25sp" />
+                    android:textSize="20sp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -54,12 +54,14 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="contactClick1">
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/avatar1"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_margin="16dp"
+                        android:background="@android:color/transparent"
                         android:src="@drawable/ic_call"
+                        android:tint="@color/spin_wheel_red"
                         tools:ignore="ContentDescription" />
 
                     <TextView
@@ -89,12 +91,14 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="contactClick2">
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/avatar2"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_margin="16dp"
+                        android:background="@android:color/transparent"
                         android:src="@drawable/ic_call"
+                        android:tint="@color/spin_wheel_red"
                         tools:ignore="ContentDescription" />
 
                     <TextView
@@ -139,9 +143,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="sans-serif-thin"
+                    android:fontFamily="sans-serif"
                     android:text="General Guidelines"
-                    android:textSize="25sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/content"

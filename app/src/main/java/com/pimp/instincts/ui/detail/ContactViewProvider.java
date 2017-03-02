@@ -23,7 +23,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.pimp.instincts.R;
@@ -54,13 +54,13 @@ public class ContactViewProvider extends ItemViewProvider<Contact, ContactViewPr
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView avatar;
+        ImageButton avatar;
         TextView name;
         TextView number;
 
         ViewHolder(View itemView) {
             super(itemView);
-            avatar = (ImageView) itemView.findViewById(R.id.avatar);
+            avatar = (ImageButton) itemView.findViewById(R.id.avatar);
             name = (TextView) itemView.findViewById(R.id.name);
             number = (TextView) itemView.findViewById(R.id.number);
             itemView.setOnClickListener(onActionClickListener);

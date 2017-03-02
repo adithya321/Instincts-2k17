@@ -43,6 +43,7 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("About");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -116,11 +117,11 @@ public class AboutActivity extends AppCompatActivity {
                 case 0:
                     return "OUR TEAM";
                 case 1:
-                    return "INSTINCTS?";
+                    return "INSTINCTS";
                 case 2:
                     return "COMMITTEES";
                 case 3:
-                    return "SSN?";
+                    return "SSN";
             }
             return null;
         }

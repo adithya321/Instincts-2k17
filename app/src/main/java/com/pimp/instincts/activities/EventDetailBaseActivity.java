@@ -18,15 +18,16 @@
 
 package com.pimp.instincts.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,12 +43,14 @@ import com.pimp.instincts.ui.detail.ContactViewProvider;
 import com.pimp.instincts.ui.detail.Line;
 import com.pimp.instincts.ui.detail.LineViewProvider;
 
+import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
+
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
 
 public abstract class EventDetailBaseActivity extends AppCompatActivity implements View.OnClickListener {
     public static Event event;
-    protected Toolbar toolbar;
+    protected Toolbar toolbar1, toolbar2;
     protected CollapsingToolbarLayout collapsingToolbar;
 
     protected Items items;
@@ -69,7 +72,8 @@ public abstract class EventDetailBaseActivity extends AppCompatActivity implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar1 = (Toolbar) findViewById(R.id.toolbar);
+        toolbar2 = (Toolbar) findViewById(R.id.toolbar2);
         ImageView icon = (ImageView) findViewById(R.id.icon);
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         onCreateHeader(icon);
@@ -79,7 +83,7 @@ public abstract class EventDetailBaseActivity extends AppCompatActivity implemen
             collapsingToolbar.setTitle(title);
         }
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar1);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
@@ -123,14 +127,31 @@ public abstract class EventDetailBaseActivity extends AppCompatActivity implemen
      * @param resId Resource ID of a drawable to set
      */
     public void setNavigationIcon(@DrawableRes int resId) {
-        toolbar.setNavigationIcon(resId);
+        toolbar1.setNavigationIcon(resId);
+        toolbar2.setNavigationIcon(resId);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_event_detail, menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (menuItem.getItemId() == android.R.id.home) {
-            onBackPressed();
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            case R.id.action_home:
+                startActivity(new Intent(this, HomeActivity.class));
+                break;
+            case R.id.action_map:
+                startActivity(new Intent(this, MapsActivity.class)
+                        .putExtra("location", event.getLocation()));
+                break;
         }
+
         return super.onOptionsItemSelected(menuItem);
     }
 

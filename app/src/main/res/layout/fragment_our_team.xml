@@ -37,25 +37,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="PRESIDENT"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Mrs. Kala Vijayakumar"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -69,26 +71,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="PRINCIPAL"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Dr. S Salivahnan"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -102,25 +105,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="FACULTY CONVENER"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Dr. Sunita Nair"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -134,22 +139,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="STUDENT COORDINATORS"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Ajith Balaji N
 \nDeepan p
 \nGowri Shankar
@@ -161,8 +169,7 @@
 \nSanjana Smruthi S
 \nSuganthan S
 \nVishnu S"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -176,26 +183,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="TREASURER"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Gowthaman T K
 \nKarthick S"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -209,26 +218,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="SECRETARY"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Ganesh Raj T
 \nNethra Viswanathan"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -242,26 +253,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="DOCUMENTATION"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Preethaa Ganesh
 \nLikhitta Dugar"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -275,28 +288,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="SPONSORSHIP TEAM"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Avaneeja Kuna
 \nHarikrishna K
 \nDeekshitha V
 \nShyam Sundar R"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -310,25 +325,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="TECH TEAM"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Subatheesh R\nAdithya J\nAkash Milton"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -342,25 +359,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingStart="20dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:text="DESIGN"
-                    android:textSize="25sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:autoLink="all"
-                    android:padding="16dp"
+                    android:padding="8dp"
                     android:text="Pratheep Kumar C\nMohammed Afzal\nShailesh S"
-                    android:textColor="@color/about_page_card_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>

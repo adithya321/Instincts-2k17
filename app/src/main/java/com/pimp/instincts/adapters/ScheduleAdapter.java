@@ -20,11 +20,12 @@ package com.pimp.instincts.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pimp.instincts.R;
@@ -34,11 +35,11 @@ import com.pimp.instincts.model.Event;
 
 import java.util.List;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
+public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
     private List<Event> eventList;
     private Context context;
 
-    public EventsAdapter(Context context, List<Event> Events) {
+    public ScheduleAdapter(Context context, List<Event> Events) {
         eventList = Events;
         this.context = context;
     }
@@ -48,17 +49,17 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     }
 
     @Override
-    public EventsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ScheduleAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View EventView = inflater.inflate(R.layout.item_event, parent, false);
+        View EventView = inflater.inflate(R.layout.item_schedule, parent, false);
 
         return new ViewHolder(EventView);
     }
 
     @Override
-    public void onBindViewHolder(final EventsAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(final ScheduleAdapter.ViewHolder viewHolder, int position) {
         final Event event = eventList.get(position);
 
         viewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +69,48 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
                 context.startActivity(new Intent(context, EventDetailActivity.class));
             }
         });
+
+        switch (event.getType()) {
+            case "Special":
+                setImageView(viewHolder.imageView, R.drawable.ic_award);
+                break;
+            case "Gaming":
+                setImageView(viewHolder.imageView, R.drawable.ic_puppet_show);
+                break;
+            case "Quiz":
+                setImageView(viewHolder.imageView, R.drawable.ic_walk_of_fame);
+                break;
+            case "Fine Arts":
+                setImageView(viewHolder.imageView, R.drawable.ic_puppet);
+                break;
+            case "Variety":
+                setImageView(viewHolder.imageView, R.drawable.ic_mask);
+                break;
+            case "ELC":
+                setImageView(viewHolder.imageView, R.drawable.ic_costume);
+                break;
+            case "Music":
+                setImageView(viewHolder.imageView, R.drawable.ic_microphone);
+                break;
+            case "Dance":
+                setImageView(viewHolder.imageView, R.drawable.ic_spotlights);
+                break;
+            case "LOP":
+                setImageView(viewHolder.imageView, R.drawable.ic_stage);
+                break;
+            case "Photography":
+                setImageView(viewHolder.imageView, R.drawable.ic_shutter);
+                break;
+            case "Saaral":
+                setImageView(viewHolder.imageView, R.drawable.ic_writer);
+                break;
+            case "Film Club":
+                setImageView(viewHolder.imageView, R.drawable.ic_clapperboard);
+                break;
+            default:
+                setImageView(viewHolder.imageView, R.drawable.ic_award);
+                break;
+        }
 
         viewHolder.startTime.setText(event.getStartTime().split(" ")[1].substring(0, 5));
         viewHolder.endTime.setText(event.getEndTime().split(" ")[1].substring(0, 5));
@@ -80,9 +123,15 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         return eventList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private CardView linearLayout;
+    private void setImageView(ImageView imageView, int drawable) {
+        imageView.setImageDrawable(context.getResources().getDrawable(drawable));
+        imageView.setTag(drawable);
+    }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private LinearLayout linearLayout;
+
+        private ImageView imageView;
         private TextView startTime;
         private TextView endTime;
         private TextView title;
@@ -90,8 +139,9 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            linearLayout = (CardView) itemView.findViewById(R.id.event_ll);
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.event_ll);
 
+            imageView = (ImageView) itemView.findViewById(R.id.icon);
             startTime = (TextView) itemView.findViewById(R.id.start_time);
             endTime = (TextView) itemView.findViewById(R.id.end_time);
             title = (TextView) itemView.findViewById(R.id.title);

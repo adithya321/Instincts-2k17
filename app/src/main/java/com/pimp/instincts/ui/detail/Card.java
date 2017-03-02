@@ -22,12 +22,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 public class Card {
+    @Nullable
+    public final String title;
     @NonNull
     public final String content;
     @Nullable
     public final String action;
 
-    public Card(@NonNull String content, @Nullable String action) {
+    public Card(@Nullable String title, @NonNull String content, @Nullable String action) {
+        this.title = title;
         this.content = content;
         this.action = action;
     }

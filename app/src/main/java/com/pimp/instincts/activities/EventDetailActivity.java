@@ -31,7 +31,6 @@ import android.widget.RelativeLayout;
 
 import com.pimp.instincts.R;
 import com.pimp.instincts.ui.detail.Card;
-import com.pimp.instincts.ui.detail.Category;
 import com.pimp.instincts.ui.detail.Contact;
 import com.pimp.instincts.ui.detail.Line;
 import com.pimp.instincts.utils.LogHelper;
@@ -82,11 +81,11 @@ public class EventDetailActivity extends EventDetailBaseActivity {
     @Override
     protected void onItemsCreated(@NonNull Items items) {
         if (!event.getDescription().equals("")) {
-            items.add(new Card(event.getDescription(), null));
+            items.add(new Card(null, event.getDescription(), null));
             items.add(new Line());
         }
         if (!event.getLocation().equals("")) {
-            items.add(new Category("Location"));
+            //items.add(new Category("Location"));
 
             SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yy HH:mm");
@@ -103,17 +102,17 @@ public class EventDetailActivity extends EventDetailBaseActivity {
             items.add(new Line());
         }
         if (!event.getRules().equals("")) {
-            items.add(new Category("Rules"));
-            items.add(new Card(event.getRules(), null));
+            //items.add(new Category("Rules"));
+            items.add(new Card("Rules", event.getRules(), null));
             items.add(new Line());
         }
         if (!event.getInfo().equals("")) {
-            items.add(new Category("Info"));
-            items.add(new Card(event.getInfo(), null));
+            //items.add(new Category("Info"));
+            items.add(new Card("Info", event.getInfo(), null));
             items.add(new Line());
         }
         if (!event.getContact1().equals("")) {
-            items.add(new Category("Contact"));
+            //items.add(new Category("Contact"));
             items.add(new Contact(R.drawable.ic_call, event.getContact1().split(":")[0],
                     event.getContact1().split(":")[1]));
         }
@@ -126,7 +125,9 @@ public class EventDetailActivity extends EventDetailBaseActivity {
     @Nullable
     @Override
     protected CharSequence onCreateTitle() {
-        toolbar.setTitle(event.getName());
+        collapsingToolbar.setTitle(event.getName());
+        toolbar1.setTitle(event.getType());
+        toolbar2.setTitle(event.getType());
         return super.onCreateTitle();
     }
 
