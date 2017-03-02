@@ -20,20 +20,48 @@ package com.pimp.instincts.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.pimp.instincts.R;
 
 public class SplashActivity extends AppCompatActivity {
+
+    private ImageView logo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        try {
-            Thread.sleep(1000);
-            startActivity(new Intent(this, HomeActivity.class));
-        } catch (Exception e) {
-            //
-        }
+        int mUIFlag = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LOW_PROFILE
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+
+        getWindow().getDecorView().setSystemUiVisibility(mUIFlag);
+
+        setContentView(R.layout.activity_splash);
+
+        logo = (ImageView) findViewById(R.id.logo);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startSecondActivity();
+            }
+        }, 1000);
+    }
+
+    private void startSecondActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        ActivityOptionsCompat transitionActivityOptions =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this, logo, "logo");
+        startActivity(intent, transitionActivityOptions.toBundle());
     }
 }

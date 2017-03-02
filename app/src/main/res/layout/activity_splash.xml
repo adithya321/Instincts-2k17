@@ -21,37 +21,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main"
     android:clipChildren="false"
     tools:context=".activities.HomeActivity">
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:scaleType="fitXY"
         android:src="@drawable/heading"
         android:transitionName="logo"
         app:layout_heightPercent="19%"
-        app:layout_marginTopPercent="4%"
         app:layout_widthPercent="60%" />
-
-    <com.lukedeighton.wheelview.WheelView
-        android:id="@+id/wheelview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:repeatItems="true"
-        app:rotatableWheelDrawable="true"
-        app:selectionAngle="60.0"
-        app:wheelDrawable="@drawable/spin_wheel"
-        app:wheelItemCount="6"
-        app:wheelPosition="right" />
-
-    <ImageView
-        android:id="@+id/spin_arrow"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/spin_arrow"
-        app:layout_heightPercent="25%"
-        app:layout_widthPercent="50%" />
 </android.support.percent.PercentRelativeLayout>
