@@ -22,37 +22,67 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.pimp.instincts.R;
+import com.pimp.instincts.model.User;
+import com.pimp.instincts.utils.LogHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RegisterActivity extends AppCompatActivity {
+    private static final String TAG = LogHelper.makeLogTag(RegisterActivity.class);
 
-    @BindView(R.id.username_et)
-    EditText usernameEt;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+    @BindView(R.id.name_et)
+    EditText nameEt;
+    @BindView(R.id.college_et)
+    EditText collegeEt;
+    @BindView(R.id.department_et)
+    EditText departmentEt;
+    @BindView(R.id.year_et)
+    EditText yearEt;
+    @BindView(R.id.email_et)
+    EditText emailEt;
+    @BindView(R.id.mobile_et)
+    EditText mobileEt;
     @BindView(R.id.password_et)
     EditText passwordEt;
-    @BindView(R.id.repeat_password_et)
-    EditText repeatPasswordEt;
     @BindView(R.id.go_btn)
     Button goBtn;
     @BindView(R.id.register_cardview)
     CardView registerCardview;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
+
+    private FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener authStateListener;
+    private DatabaseReference databaseReference;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +100,41 @@ public class RegisterActivity extends AppCompatActivity {
                 animateRevealClose();
             }
         });
-        goBtn.setOnClickListener(new View.OnClickListener() {
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
             }
-        });
+        };
+
+        try {
+            populateProfile();
+        } catch (Exception e) {
+            LogHelper.e(TAG, e.toString());
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(authStateListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (authStateListener != null) {
+            auth.removeAuthStateListener(authStateListener);
+        }
     }
 
     private void ShowEnterAnimation() {
@@ -156,5 +213,76 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         animateRevealClose();
+    }
+
+    public void goOnClick(View view) {
+        if (!validate()) return;
+        auth.createUserWithEmailAndPassword(emailEt.getText().toString().trim(),
+                passwordEt.getText().toString().trim())
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        LogHelper.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(RegisterActivity.this, task.getResult().toString(), Toast.LENGTH_LONG).show();
+                        } else {
+                            User user = new User(currentUser.getUid(),
+                                    nameEt.getText().toString(),
+                                    emailEt.getText().toString(),
+                                    collegeEt.getText().toString(),
+                                    departmentEt.getText().toString(),
+                                    Integer.parseInt(yearEt.getText().toString()),
+                                    mobileEt.getText().toString());
+
+                            databaseReference.child("users").child(currentUser.getUid()).setValue(user);
+
+                            Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class)
+                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                });
+    }
+
+    private boolean validate() {
+        if (emailEt.getText().toString().trim().equals("")) {
+            Toast.makeText(this, "Email cannot be empty", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (passwordEt.getText().toString().trim().equals("")) {
+            Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    public void populateProfile() {
+        nameEt.setText(currentUser.getDisplayName());
+        emailEt.setText(currentUser.getEmail());
+
+        Query userQuery = databaseReference.child("users").child(currentUser.getUid());
+        userQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try {
+                    User user = dataSnapshot.getValue(User.class);
+                    nameEt.setText(user.getName());
+                    emailEt.setText(user.getEmail());
+                    collegeEt.setText(user.getCollege());
+                    departmentEt.setText(user.getDepartment());
+                    yearEt.setText(String.valueOf(user.getYear()));
+                    mobileEt.setText(user.getMobile());
+                } catch (Exception e) {
+                    Log.e("populateProfile", e.toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 }

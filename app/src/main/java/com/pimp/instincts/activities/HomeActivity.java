@@ -128,6 +128,12 @@ public class HomeActivity extends AppCompatActivity {
         return imagesList;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     static class WheelAdapter extends WheelArrayAdapter<Map.Entry<String, Integer>> {
         public WheelAdapter(List<Map.Entry<String, Integer>> items) {
             super(items);
@@ -144,11 +150,5 @@ public class HomeActivity extends AppCompatActivity {
             shapeDrawable.getPaint().setColor(0x0);
             return shapeDrawable;
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
     }
 }

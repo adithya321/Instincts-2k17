@@ -15,7 +15,6 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pimp.instincts">
 
@@ -39,7 +38,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LoginActivity" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@style/AboutTheme" />
         <activity
             android:name=".activities.RegisterActivity"
             android:theme="@style/Translucent" />
@@ -92,5 +93,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pimp.instincts.activities.HomeActivity" />
         </activity>
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:theme="@style/ProfileTheme" />
     </application>
 </manifest>

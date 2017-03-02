@@ -45,7 +45,7 @@
                     android:layout_width="8dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
-                    android:background="#2fa881" />
+                    android:background="@color/spin_wheel_blue" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="50dp"
                     android:text="@string/login"
-                    android:textColor="#FFCC00"
+                    android:textColor="@color/spin_wheel_blue"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -72,16 +72,15 @@
                     android:textColorHint="#c5c5c5">
 
                     <EditText
-                        android:id="@+id/username_et"
+                        android:id="@+id/email_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/selector_bg_edit"
-                        android:hint="@string/Username"
-                        android:inputType="textPersonName"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
                         android:paddingBottom="2dp"
-                        android:textColor="#2fa881"
-                        android:textCursorDrawable="@drawable/bg_input_cursor"
-                        android:textSize="13sp" />
+                        android:textColor="@color/spin_wheel_blue"
+                        android:textCursorDrawable="@drawable/bg_input_cursor" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -102,12 +101,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/selector_bg_edit"
-                        android:hint="@string/Password"
+                        android:hint="@string/password"
                         android:inputType="textPassword"
                         android:paddingBottom="2dp"
-                        android:textColor="#2fa881"
-                        android:textCursorDrawable="@drawable/bg_input_cursor"
-                        android:textSize="13sp" />
+                        android:textColor="@color/spin_wheel_blue"
+                        android:textCursorDrawable="@drawable/bg_input_cursor" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -127,11 +125,11 @@
                     android:textColor="#d3d3d3" />
             </RelativeLayout>
 
-            <TextView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
                 android:text="@string/forgot_your_password"
                 android:textColor="#9a9a9a"
                 android:textSize="12sp" />

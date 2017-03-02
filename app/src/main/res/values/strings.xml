@@ -21,8 +21,13 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="login">LOGIN</string>
-    <string name="Username">Username</string>
-    <string name="Password">Password</string>
+    <string name="name">Name</string>
+    <string name="college">College</string>
+    <string name="department">Department</string>
+    <string name="year">Year</string>
+    <string name="email">Email</string>
+    <string name="mobile">Mobile</string>
+    <string name="password">Password</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="go">GO</string>
     <string name="repeat_password">Repeat Password</string>
@@ -77,4 +82,10 @@
 \n\nSSN prides itself a little in being among the top ten most serene and beautiful campuses in the country, prides itself a little more in having the best infrastructure in the country and prides itself the most in providing an amalgamation of stimulating environments for intellectual development, free thinking and personal growth, challenging its students with dynamic learning opportunities and equipping them with the skills, insights, attitudes and practical experiences that are necessary to carry forward the various roles of society.
 \n\nSo when it comes to learning , SSN doesn&#8217;t stop at the educational front,it acts as a catalyst that ignites students to reach the point of zenith in the cultural sphere as well.
 \n\nThe future is set in motion when there is a confluence of youth; SSN takes pride in being responsible for the revolution that follows!</string>
+
+    <string name="sign_in_cancelled">Sign in cancelled</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="unknown_sign_in_response">Unknown response from Auth sign-in</string>
+    <string name="unknown_error">An unknown error occurred</string>
+    <string name="sign_out_failed">Sign out failed</string>
 </resources>
