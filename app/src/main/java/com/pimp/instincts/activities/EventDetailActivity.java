@@ -51,30 +51,42 @@ public class EventDetailActivity extends EventDetailBaseActivity {
     @Override
     protected void onCreateHeader(ImageView icon) {
         switch (event.getType()) {
-            case "null":
-                icon.setImageResource(R.drawable.ic_stage);
+            case "Special":
+                icon.setImageResource(R.drawable.special);
                 break;
-            case "ELC":
-                icon.setImageResource(R.drawable.ic_costume);
-                break;
-            case "Saaral":
-                icon.setImageResource(R.drawable.ic_writer);
-                break;
-            case "Music":
-                icon.setImageResource(R.drawable.ic_microphone);
-                break;
-            case "Variety":
-                icon.setImageResource(R.drawable.ic_mask);
-                break;
-            case "Dance":
-                icon.setImageResource(R.drawable.ic_spotlights);
+            case "Gaming":
+                icon.setImageResource(R.drawable.gaming);
                 break;
             case "Quiz":
-                icon.setImageResource(R.drawable.ic_walk_of_fame);
+                icon.setImageResource(R.drawable.quiz);
                 break;
-
-            default:
-                icon.setImageResource(R.drawable.ic_stage);
+            case "Fine Arts":
+                icon.setImageResource(R.drawable.finearts);
+                break;
+            case "Variety":
+                icon.setImageResource(R.drawable.variety);
+                break;
+            case "ELC":
+                icon.setImageResource(R.drawable.elc);
+                break;
+            case "Music":
+                icon.setImageResource(R.drawable.music);
+                break;
+            case "Dance":
+                icon.setImageResource(R.drawable.dance);
+                break;
+            case "LOP":
+                icon.setImageResource(R.drawable.lop);
+                break;
+            case "Photography":
+                icon.setImageResource(R.drawable.photography);
+                break;
+            case "Saaral":
+                icon.setImageResource(R.drawable.saaral);
+                break;
+            case "Film Club":
+                icon.setImageResource(R.drawable.filmclub);
+                break;
         }
     }
 
@@ -88,7 +100,7 @@ public class EventDetailActivity extends EventDetailBaseActivity {
             //items.add(new Category("Location"));
 
             SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yy HH:mm");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yy \t\t HH:mm");
             SimpleDateFormat sdf3 = new SimpleDateFormat("HH:mm");
             try {
                 Date startTime = sdf1.parse(event.getStartTime());
