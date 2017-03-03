@@ -18,7 +18,6 @@
 
 package com.pimp.instincts.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -68,11 +67,11 @@ public class ProfileActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                startActivity(new Intent(this, HomeActivity.class));
+                onBackPressed();
                 break;
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(this, HomeActivity.class));
+                onBackPressed();
                 break;
             case R.id.action_info:
                 Toast.makeText(this, "Info", Toast.LENGTH_SHORT).show();

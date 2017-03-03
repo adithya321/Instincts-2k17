@@ -225,8 +225,13 @@ public class RegisterActivity extends AppCompatActivity {
                         LogHelper.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
                         if (!task.isSuccessful()) {
-                            Toast.makeText(RegisterActivity.this, task.getResult().toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this,
+                                    task.getException().getMessage().toString(),
+                                    Toast.LENGTH_LONG).show();
                         } else {
+                            if (yearEt.getText().toString().trim().equals(""))
+                                yearEt.setText("0");
+                            currentUser = FirebaseAuth.getInstance().getCurrentUser();
                             User user = new User(currentUser.getUid(),
                                     nameEt.getText().toString(),
                                     emailEt.getText().toString(),

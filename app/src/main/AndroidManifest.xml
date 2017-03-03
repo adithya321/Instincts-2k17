@@ -47,6 +47,7 @@
             android:theme="@style/Translucent" />
         <activity
             android:name=".activities.HomeActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="userPortrait" />
         <activity
             android:name=".activities.EventsActivity"
@@ -65,37 +66,22 @@
 
         <activity
             android:name=".activities.MapsActivity"
-            android:label="@string/title_activity_maps">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pimp.instincts.activities.HomeActivity" />
-        </activity>
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".activities.ScheduleActivity"
-            android:parentActivityName=".activities.HomeActivity"
-            android:theme="@style/ScheduleTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pimp.instincts.activities.HomeActivity" />
-        </activity>
+            android:theme="@style/ScheduleTheme" />
         <activity
             android:name=".activities.HospitalityActivity"
-            android:parentActivityName=".activities.HomeActivity"
-            android:theme="@style/ScheduleTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pimp.instincts.activities.HomeActivity" />
-        </activity>
+            android:theme="@style/ScheduleTheme" />
         <activity
             android:name=".activities.AboutActivity"
-            android:parentActivityName=".activities.HomeActivity"
-            android:theme="@style/AboutTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pimp.instincts.activities.HomeActivity" />
-        </activity>
+            android:theme="@style/AboutTheme" />
         <activity
             android:name=".activities.ProfileActivity"
+            android:noHistory="true"
             android:theme="@style/ProfileTheme" />
+        <activity
+            android:name=".activities.SponsorsActivity"
+            android:theme="@style/AboutTheme" />
     </application>
 </manifest>

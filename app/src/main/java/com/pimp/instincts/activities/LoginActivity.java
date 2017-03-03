@@ -30,6 +30,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -63,14 +64,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        try {
-            String uid = firebaseUser.getUid();
-            if (!uid.equals("uid")) startActivity(new Intent(this, ProfileActivity.class));
-        } catch (Exception e) {
-            LogHelper.e(TAG, e.toString());
-        }
 
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
@@ -125,12 +118,11 @@ public class LoginActivity extends AppCompatActivity {
                                 LogHelper.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
                                 if (!task.isSuccessful()) {
-                                    Log.w(TAG, "signInWithEmail:failed", task.getException());
+                                    Toast.makeText(LoginActivity.this,
+                                            task.getException().getMessage().toString(),
+                                            Toast.LENGTH_LONG).show();
                                 } else {
-                                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class)
-                                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                                                    Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
+                                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
                                     finish();
                                 }
                             }

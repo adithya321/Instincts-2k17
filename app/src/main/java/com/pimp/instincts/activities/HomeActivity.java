@@ -55,6 +55,8 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.spin_arrow)
     ImageView spinArrow;
 
+    private FirebaseUser firebaseUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +75,6 @@ public class HomeActivity extends AppCompatActivity {
 
         new LocalJSONSource(this);
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
-
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (firebaseUser == null) wheelView.setWheelDrawable(R.drawable.spin_wheel_register);
-        else wheelView.setWheelDrawable(R.drawable.spin_wheel_profile);
 
         logo.bringToFront();
 
@@ -107,7 +105,10 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(new Intent(HomeActivity.this, HospitalityActivity.class));
                         break;
                     case 3:
-                        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                        if (firebaseUser == null)
+                            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                        else
+                            startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
                         break;
                     case 4:
                         startActivity(new Intent(HomeActivity.this, EventsActivity.class));
@@ -119,6 +120,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         wheelView.setAdapter(new WheelAdapter(entries));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser == null) wheelView.setWheelDrawable(R.drawable.spin_wheel_register);
+        else wheelView.setWheelDrawable(R.drawable.spin_wheel_profile);
     }
 
     @Override
