@@ -46,7 +46,8 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="sans-serif"
                     android:text="Contact"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -108,7 +109,8 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="sans-serif"
                     android:text="Accommodation Guidelines"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/content"

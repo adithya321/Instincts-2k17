@@ -83,5 +83,8 @@
         <activity
             android:name=".activities.SponsorsActivity"
             android:theme="@style/AboutTheme" />
+        <activity
+            android:name=".activities.GalleryActivity"
+            android:theme="@style/EventsTheme" />
     </application>
 </manifest>

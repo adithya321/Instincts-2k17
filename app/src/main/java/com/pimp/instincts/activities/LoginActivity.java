@@ -110,6 +110,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(this, RegisterActivity.class), options.toBundle());
                 break;
             case R.id.go_btn:
+                if (!validate()) return;
+                Toast.makeText(this, "Loading...", Toast.LENGTH_LONG).show();
                 auth.signInWithEmailAndPassword(emailEt.getText().toString().trim(),
                         passwordEt.getText().toString().trim())
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -129,5 +131,18 @@ public class LoginActivity extends AppCompatActivity {
                         });
                 break;
         }
+    }
+
+    private boolean validate() {
+        if (emailEt.getText().toString().trim().equals("")) {
+            Toast.makeText(this, "Email cannot be empty", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (passwordEt.getText().toString().trim().equals("")) {
+            Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
     }
 }

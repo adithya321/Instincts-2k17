@@ -33,8 +33,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.lukedeighton.wheelview.WheelView;
 import com.lukedeighton.wheelview.adapter.WheelArrayAdapter;
-import com.mzelzoghbi.zgallery.ZGallery;
-import com.mzelzoghbi.zgallery.entities.ZColor;
 import com.pimp.instincts.R;
 import com.pimp.instincts.model.LocalJSONSource;
 
@@ -94,12 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(new Intent(HomeActivity.this, SponsorsActivity.class));
                         break;
                     case 1:
-                        ZGallery.with(HomeActivity.this, getImageList())
-                                .setToolbarColorResId(R.color.navigationBar)
-                                .setTitle("Gallery")
-                                .setGalleryBackgroundColor(ZColor.BLACK)
-                                .setToolbarTitleColor(ZColor.WHITE)
-                                .show();
+                        startActivity(new Intent(HomeActivity.this, GalleryActivity.class));
                         break;
                     case 2:
                         startActivity(new Intent(HomeActivity.this, HospitalityActivity.class));

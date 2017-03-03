@@ -52,6 +52,13 @@
                 tools:text="09:00" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:text="to" />
+
+            <TextView
                 android:id="@+id/end_time"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -74,8 +81,10 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:ellipsize="marquee"
+                android:gravity="center_vertical"
                 android:maxLines="1"
                 android:padding="8dp"
                 android:textSize="18sp"
@@ -86,7 +95,9 @@
                 android:id="@+id/location"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:padding="8dp"
                 android:textSize="16sp"
                 tools:text="Location" />
