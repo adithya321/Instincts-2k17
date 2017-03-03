@@ -28,6 +28,9 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:foreground="?selectableItemBackground"
+        android:onClick="logoOnClick"
         android:scaleType="fitXY"
         android:src="@drawable/heading"
         android:transitionName="logo"
@@ -42,7 +45,7 @@
         app:repeatItems="true"
         app:rotatableWheelDrawable="true"
         app:selectionAngle="60.0"
-        app:wheelDrawable="@drawable/spin_wheel"
+        app:wheelDrawable="@drawable/spin_wheel_register"
         app:wheelItemCount="6"
         app:wheelPosition="right" />
 

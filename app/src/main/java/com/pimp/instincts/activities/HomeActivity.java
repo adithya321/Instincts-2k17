@@ -29,6 +29,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.lukedeighton.wheelview.WheelView;
 import com.lukedeighton.wheelview.adapter.WheelArrayAdapter;
 import com.mzelzoghbi.zgallery.ZGallery;
@@ -41,7 +43,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class HomeActivity extends AppCompatActivity {
+
+    @BindView(R.id.logo)
+    ImageView logo;
+    @BindView(R.id.wheelview)
+    WheelView wheelView;
+    @BindView(R.id.spin_arrow)
+    ImageView spinArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +69,16 @@ public class HomeActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(mUIFlag);
 
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
 
         new LocalJSONSource(this);
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
 
-        ImageView spinArrowImageView = (ImageView) findViewById(R.id.spin_arrow);
-        spinArrowImageView.getLayoutParams().width = displayMetrics.widthPixels / 2;
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser == null) wheelView.setWheelDrawable(R.drawable.spin_wheel_register);
+        else wheelView.setWheelDrawable(R.drawable.spin_wheel_profile);
+
+        logo.bringToFront();
 
         List<Map.Entry<String, Integer>> entries = new ArrayList<>(6);
         for (int i = 0; i < 6; i++) {
@@ -70,7 +86,6 @@ public class HomeActivity extends AppCompatActivity {
             entries.add(entry);
         }
 
-        WheelView wheelView = (WheelView) findViewById(R.id.wheelview);
         wheelView.setWheelRadius(displayMetrics.widthPixels / 2);
         wheelView.setWheelItemRadius(displayMetrics.widthPixels / 6);
         wheelView.setOnWheelItemClickListener(new WheelView.OnWheelItemClickListener() {
@@ -78,7 +93,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onWheelItemClick(WheelView parent, int position, boolean isSelected) {
                 switch (position) {
                     case 0:
-                        startActivity(new Intent(HomeActivity.this, AboutActivity.class));
+                        startActivity(new Intent(HomeActivity.this, SponsorsActivity.class));
                         break;
                     case 1:
                         ZGallery.with(HomeActivity.this, getImageList())
@@ -150,5 +165,9 @@ public class HomeActivity extends AppCompatActivity {
             shapeDrawable.getPaint().setColor(0x0);
             return shapeDrawable;
         }
+    }
+
+    public void logoOnClick(View view) {
+        startActivity(new Intent(this, AboutActivity.class));
     }
 }
