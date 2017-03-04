@@ -23,15 +23,28 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.lukedeighton.wheelview.WheelView;
 import com.pimp.instincts.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static com.pimp.instincts.R.id.wheelview;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private ImageView logo;
+    @BindView(R.id.logo)
+    ImageView logo;
+    @BindView(wheelview)
+    WheelView wheelView;
+    @BindView(R.id.spin_arrow)
+    ImageView spinArrow;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,8 +60,13 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(mUIFlag);
 
         setContentView(R.layout.activity_splash);
+        ButterKnife.bind(this);
 
-        logo = (ImageView) findViewById(R.id.logo);
+        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
+        spinArrow.setTranslationX(-2000);
+        wheelView.setTranslationX(2000);
+        wheelView.setWheelRadius(displayMetrics.widthPixels / 2);
+        wheelView.setWheelItemRadius(displayMetrics.widthPixels / 6);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -61,7 +79,10 @@ public class SplashActivity extends AppCompatActivity {
     private void startSecondActivity() {
         Intent intent = new Intent(this, HomeActivity.class);
         ActivityOptionsCompat transitionActivityOptions =
-                ActivityOptionsCompat.makeSceneTransitionAnimation(this, logo, "logo");
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                        Pair.create((View) logo, "logo"),
+                        Pair.create((View) wheelView, "wheel"),
+                        Pair.create((View) spinArrow, "arrow"));
         startActivity(intent, transitionActivityOptions.toBundle());
     }
 }

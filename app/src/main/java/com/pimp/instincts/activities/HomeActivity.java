@@ -27,6 +27,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +42,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,6 +55,18 @@ public class HomeActivity extends AppCompatActivity {
     WheelView wheelView;
     @BindView(R.id.spin_arrow)
     ImageView spinArrow;
+    @BindView(R.id.cloud1)
+    ImageView cloud1;
+    @BindView(R.id.cloud2)
+    ImageView cloud2;
+    @BindView(R.id.cloud3)
+    ImageView cloud3;
+    @BindView(R.id.cloud4)
+    ImageView cloud4;
+    @BindView(R.id.cloud5)
+    ImageView cloud5;
+    @BindView(R.id.cloud6)
+    ImageView cloud6;
 
     private FirebaseUser firebaseUser;
 
@@ -113,6 +128,26 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         wheelView.setAdapter(new WheelAdapter(entries));
+
+        Animation translateAnimation10 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_0);
+        Animation translateAnimation11 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_1);
+        Animation translateAnimation12 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_2);
+        Animation translateAnimation13 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_3);
+        Animation translateAnimation2 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_2);
+        Animation translateAnimation3 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_3);
+        cloud1.setAnimation(translateAnimation10);
+        cloud2.setAnimation(translateAnimation11);
+        cloud3.setAnimation(translateAnimation12);
+        cloud4.setAnimation(translateAnimation13);
+        cloud5.setAnimation(translateAnimation2);
+        cloud6.setAnimation(translateAnimation3);
+
+        spinArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wheelView.setSelected(ThreadLocalRandom.current().nextInt(0, 5 + 1));
+            }
+        });
     }
 
     @Override

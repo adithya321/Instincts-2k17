@@ -21,7 +21,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main"
+    android:background="@drawable/bg_without_clouds"
     android:clipChildren="false"
     tools:context=".activities.HomeActivity">
 
@@ -38,10 +38,53 @@
         app:layout_marginTopPercent="4%"
         app:layout_widthPercent="60%" />
 
+    <ImageView
+        android:id="@+id/cloud1"
+        android:src="@drawable/clouds_01"
+        app:layout_heightPercent="2%"
+        app:layout_marginTopPercent="4%"
+        app:layout_widthPercent="18%" />
+
+    <ImageView
+        android:id="@+id/cloud2"
+        android:src="@drawable/clouds_02"
+        app:layout_heightPercent="3%"
+        app:layout_marginTopPercent="21%"
+        app:layout_widthPercent="18%" />
+
+    <ImageView
+        android:id="@+id/cloud3"
+        android:src="@drawable/clouds_03"
+        app:layout_heightPercent="1%"
+        app:layout_marginTopPercent="20%"
+        app:layout_widthPercent="17%" />
+
+    <ImageView
+        android:id="@+id/cloud4"
+        android:src="@drawable/clouds_01"
+        app:layout_heightPercent="2%"
+        app:layout_marginTopPercent="32%"
+        app:layout_widthPercent="18%" />
+
+    <ImageView
+        android:id="@+id/cloud5"
+        android:src="@drawable/clouds_01"
+        app:layout_heightPercent="2%"
+        app:layout_marginTopPercent="26%"
+        app:layout_widthPercent="18%" />
+
+    <ImageView
+        android:id="@+id/cloud6"
+        android:src="@drawable/clouds_01"
+        app:layout_heightPercent="2%"
+        app:layout_marginTopPercent="10%"
+        app:layout_widthPercent="18%" />
+
     <com.lukedeighton.wheelview.WheelView
         android:id="@+id/wheelview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:transitionName="wheel"
         app:repeatItems="true"
         app:rotatableWheelDrawable="true"
         app:selectionAngle="60.0"
@@ -53,8 +96,11 @@
         android:id="@+id/spin_arrow"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
+        android:clickable="true"
+        android:foreground="?selectableItemBackground"
         android:scaleType="fitXY"
         android:src="@drawable/spin_arrow"
+        android:transitionName="arrow"
         app:layout_heightPercent="25%"
         app:layout_widthPercent="50%" />
 </android.support.percent.PercentRelativeLayout>
