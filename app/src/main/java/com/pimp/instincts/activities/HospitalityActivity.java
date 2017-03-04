@@ -70,6 +70,16 @@ public class HospitalityActivity extends AppCompatActivity {
         startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+91 89 39 619640")));
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public static class PlaceholderFragment extends Fragment {
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -134,15 +144,5 @@ public class HospitalityActivity extends AppCompatActivity {
             }
             return null;
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

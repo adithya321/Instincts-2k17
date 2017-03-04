@@ -86,5 +86,8 @@
         <activity
             android:name=".activities.GalleryActivity"
             android:theme="@style/EventsTheme" />
+        <activity
+            android:name=".activities.GalleryViewPagerActivity"
+            android:theme="@style/EventsTheme" />
     </application>
 </manifest>

@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Instincts
   ~ Copyright (C) 2017  Adithya J
   ~
@@ -16,9 +16,6 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
 
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gallery_image"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="2dp"
-    android:transitionName="gallery_image" />
+<resources>
+    <item name="index" type="id" />
+</resources>

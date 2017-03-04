@@ -21,47 +21,67 @@ package com.pimp.instincts.activities;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.SharedElementCallback;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 import com.pimp.instincts.R;
-import com.pimp.instincts.adapters.GalleryAdapter;
+import com.pimp.instincts.adapters.ImagePagerAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class GalleryActivity extends AppCompatActivity {
-
-    @BindView(R.id.gallery_recycler_view)
-    RecyclerView galleryRecyclerView;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    private GalleryAdapter galleryAdapter;
-    private final SharedElementCallback exitTransitionCallback = new SharedElementCallback() {
+public class GalleryViewPagerActivity extends AppCompatActivity {
+    public static final String EXTRA_POSITION = "position";
+    public static int selectedIndex = -1;
+    private ImagePagerAdapter imagePagerAdapter;
+    private ViewPager viewPager;
+    private final SharedElementCallback enterTransitionCallback = new SharedElementCallback() {
         @Override
         public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
-            if (GalleryViewPagerActivity.selectedIndex < 0) {
-            } else {
-                sharedElements.put(names.get(0), galleryAdapter.getViewAtIndex(
-                        galleryRecyclerView, GalleryViewPagerActivity.selectedIndex));
-                GalleryViewPagerActivity.selectedIndex = -1;
+            View view = null;
+
+            if (viewPager.getChildCount() > 0) {
+                view = imagePagerAdapter.getCurrentView(viewPager);
+                view = view.findViewById(R.id.gallery_image);
             }
+
+            if (view != null) {
+                sharedElements.put(names.get(0), view);
+            }
+        }
+    };
+    private ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            selectedIndex = position;
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+        }
+    };
+    private ViewTreeObserver.OnGlobalLayoutListener pagerLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
+        @Override
+        public void onGlobalLayout() {
+            viewPager.getViewTreeObserver().removeOnGlobalLayoutListener(pagerLayoutListener);
+            ActivityCompat.startPostponedEnterTransition(GalleryViewPagerActivity.this);
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ActivityCompat.setExitSharedElementCallback(this, exitTransitionCallback);
         super.onCreate(savedInstanceState);
+
+        ActivityCompat.postponeEnterTransition(this);
+        ActivityCompat.setEnterSharedElementCallback(this, enterTransitionCallback);
 
         int mUIFlag = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -72,24 +92,22 @@ public class GalleryActivity extends AppCompatActivity {
 
         getWindow().getDecorView().setSystemUiVisibility(mUIFlag);
 
-        setContentView(R.layout.activity_gallery);
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_view_pager_gallery);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Gallery");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        ArrayList<String> imagesList = new ArrayList<>();
-        for (int i = 1; i <= 23; i++)
-            imagesList.add("http://ssninstincts.org.in/img/gallery/big/" + i + ".jpg");
+        imagePagerAdapter = new ImagePagerAdapter(this);
 
-        galleryAdapter = new GalleryAdapter(this, imagesList);
-        StaggeredGridLayoutManager gridLayoutManager =
-                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        gridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
-        galleryRecyclerView.setHasFixedSize(true);
-        galleryRecyclerView.setLayoutManager(gridLayoutManager);
-        galleryRecyclerView.setAdapter(galleryAdapter);
+        viewPager = (ViewPager) findViewById(R.id.container);
+        viewPager.setAdapter(imagePagerAdapter);
+
+        int position = selectedIndex = getIntent().getIntExtra(EXTRA_POSITION, 0);
+        viewPager.setCurrentItem(position);
+        viewPager.setOnPageChangeListener(pageChangeListener);
+        viewPager.getViewTreeObserver().addOnGlobalLayoutListener(pagerLayoutListener);
     }
 
     @Override

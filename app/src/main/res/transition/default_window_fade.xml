@@ -16,9 +16,10 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
 
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gallery_image"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="2dp"
-    android:transitionName="gallery_image" />
+<fade xmlns:android="http://schemas.android.com/apk/res/android">
+    <targets>
+        <target android:excludeId="@android:id/statusBarBackground" />
+        <target android:excludeId="@android:id/navigationBarBackground" />
+        <target android:excludeId="@id/toolbar" />
+    </targets>
+</fade>

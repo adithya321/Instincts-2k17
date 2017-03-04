@@ -18,9 +18,13 @@
 
 package com.pimp.instincts.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -30,12 +34,14 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.pimp.instincts.R;
+import com.pimp.instincts.activities.GalleryViewPagerActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoViewHolder> {
 
+    private static final String TRANSITION_NAME = "transition";
     private ArrayList<String> imagesList;
     private Context context;
     private int screenWidth;
@@ -56,14 +62,12 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
 
     @Override
     public GalleryAdapter.PhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View photoView = inflater.inflate(R.layout.item_gallery, parent, false);
-        return new PhotoViewHolder(photoView);
+        return new PhotoViewHolder(LayoutInflater.from(context).inflate(R.layout.item_gallery,
+                parent, false));
     }
 
     @Override
-    public void onBindViewHolder(final GalleryAdapter.PhotoViewHolder viewHolder, int position) {
+    public void onBindViewHolder(final GalleryAdapter.PhotoViewHolder viewHolder, final int position) {
         String url = imagesList.get(position);
 
         BitmapFactory.Options opts = new BitmapFactory.Options();
@@ -81,27 +85,35 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
                 .resize(screenWidth / 2, height)
                 .centerCrop()
                 .into((viewHolder.imageView));
-
-        /*Glide.with(context)
-                .load(url)
-                .asBitmap()
-                .dontAnimate()
-                .centerCrop()
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
-                        if (bitmap != null) {
-                            viewHolder.imageView.setHeightRatio(bitmap.getHeight() / bitmap.getWidth());
-                            viewHolder.imageView.setImageBitmap(bitmap);
-                        }
-                    }
-                });*/
     }
 
     @Override
     public int getItemCount() {
         return imagesList.size();
+    }
+
+    public View getViewAtIndex(RecyclerView recycler, int index) {
+        if (index >= 0) {
+            for (int i = 0; i < recycler.getChildCount(); i++) {
+                View child = recycler.getChildAt(i);
+
+                int pos = recycler.getChildAdapterPosition(child);
+                if (pos == index) {
+                    return child;
+                }
+            }
+        }
+        return null;
+    }
+
+    private void showPagerActivity(View view, int position) {
+        Intent intent = new Intent(context, GalleryViewPagerActivity.class);
+        intent.putExtra(GalleryViewPagerActivity.EXTRA_POSITION, position);
+
+        Activity activity = (Activity) context;
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
+                view, TRANSITION_NAME);
+        ActivityCompat.startActivity(activity, intent, options.toBundle());
     }
 
     public class PhotoViewHolder extends RecyclerView.ViewHolder {
@@ -111,6 +123,12 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
             super(itemView);
 
             imageView = (ImageView) itemView.findViewById(R.id.gallery_image);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showPagerActivity(view, getLayoutPosition());
+                }
+            });
         }
     }
 }

@@ -55,8 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="12sp"
-                android:text="to" />
+                android:text="to"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/end_time"

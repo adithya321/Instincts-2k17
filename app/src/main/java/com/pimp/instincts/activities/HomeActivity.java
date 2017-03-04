@@ -168,24 +168,6 @@ public class HomeActivity extends AppCompatActivity {
         finish();
     }
 
-    static class WheelAdapter extends WheelArrayAdapter<Map.Entry<String, Integer>> {
-        public WheelAdapter(List<Map.Entry<String, Integer>> items) {
-            super(items);
-        }
-
-        @Override
-        public Drawable getDrawable(int position) {
-            Drawable[] drawable = new Drawable[]{createOvalDrawable()};
-            return new LayerDrawable(drawable);
-        }
-
-        private Drawable createOvalDrawable() {
-            ShapeDrawable shapeDrawable = new ShapeDrawable(new OvalShape());
-            shapeDrawable.getPaint().setColor(0x0);
-            return shapeDrawable;
-        }
-    }
-
     public void logoOnClick(View view) {
         startActivity(new Intent(this, AboutActivity.class));
     }
@@ -203,5 +185,23 @@ public class HomeActivity extends AppCompatActivity {
         cloud4.setAnimation(translateAnimation13);
         cloud5.setAnimation(translateAnimation2);
         cloud6.setAnimation(translateAnimation3);
+    }
+
+    static class WheelAdapter extends WheelArrayAdapter<Map.Entry<String, Integer>> {
+        public WheelAdapter(List<Map.Entry<String, Integer>> items) {
+            super(items);
+        }
+
+        @Override
+        public Drawable getDrawable(int position) {
+            Drawable[] drawable = new Drawable[]{createOvalDrawable()};
+            return new LayerDrawable(drawable);
+        }
+
+        private Drawable createOvalDrawable() {
+            ShapeDrawable shapeDrawable = new ShapeDrawable(new OvalShape());
+            shapeDrawable.getPaint().setColor(0x0);
+            return shapeDrawable;
+        }
     }
 }

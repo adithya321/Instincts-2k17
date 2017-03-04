@@ -46,12 +46,12 @@
         app:wheelPosition="right" />
 
     <ImageView
-        android:transitionName="arrow"
         android:id="@+id/spin_arrow"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:scaleType="fitXY"
         android:src="@drawable/spin_arrow"
+        android:transitionName="arrow"
         app:layout_heightPercent="25%"
         app:layout_widthPercent="50%" />
 </android.support.percent.PercentRelativeLayout>

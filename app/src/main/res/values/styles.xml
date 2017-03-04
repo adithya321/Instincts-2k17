@@ -33,6 +33,8 @@
         <item name="colorAccent">@color/eventsAccent</item>
         <item name="colorControlNormal">@color/white</item>
         <item name="android:navigationBarColor">@color/spin_wheel_orange</item>
+        <item name="android:windowEnterTransition">@transition/default_window_fade</item>
+        <item name="android:windowExitTransition">@transition/default_window_fade</item>
     </style>
 
     <style name="ScheduleTheme" parent="Theme.AppCompat.Light.NoActionBar">
