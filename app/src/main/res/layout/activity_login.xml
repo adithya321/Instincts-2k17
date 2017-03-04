@@ -16,11 +16,11 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main">
+    android:background="@drawable/bg_without_clouds">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
@@ -148,4 +148,46 @@
         android:src="@drawable/plus"
         android:transitionName="loginFab"
         app:fabSize="normal" />
-</RelativeLayout>
+
+    <ImageView
+        android:id="@+id/cloud1"
+        android:src="@drawable/clouds_01"
+        app:layout_heightPercent="2%"
+        app:layout_marginTopPercent="4%"
+        app:layout_widthPercent="18%" />
+
+    <ImageView
+        android:id="@+id/cloud2"
+        android:src="@drawable/clouds_02"
+        app:layout_heightPercent="3%"
+        app:layout_marginTopPercent="21%"
+        app:layout_widthPercent="18%" />
+
+    <ImageView
+        android:id="@+id/cloud3"
+        android:src="@drawable/clouds_03"
+        app:layout_heightPercent="1%"
+        app:layout_marginTopPercent="20%"
+        app:layout_widthPercent="17%" />
+
+    <ImageView
+        android:id="@+id/cloud4"
+        android:src="@drawable/clouds_01"
+        app:layout_heightPercent="2%"
+        app:layout_marginTopPercent="32%"
+        app:layout_widthPercent="18%" />
+
+    <ImageView
+        android:id="@+id/cloud5"
+        android:src="@drawable/clouds_01"
+        app:layout_heightPercent="2%"
+        app:layout_marginTopPercent="26%"
+        app:layout_widthPercent="18%" />
+
+    <ImageView
+        android:id="@+id/cloud6"
+        android:src="@drawable/clouds_01"
+        app:layout_heightPercent="2%"
+        app:layout_marginTopPercent="10%"
+        app:layout_widthPercent="18%" />
+</android.support.percent.PercentRelativeLayout>

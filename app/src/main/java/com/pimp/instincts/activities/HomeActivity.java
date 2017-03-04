@@ -129,18 +129,7 @@ public class HomeActivity extends AppCompatActivity {
         });
         wheelView.setAdapter(new WheelAdapter(entries));
 
-        Animation translateAnimation10 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_0);
-        Animation translateAnimation11 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_1);
-        Animation translateAnimation12 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_2);
-        Animation translateAnimation13 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_3);
-        Animation translateAnimation2 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_2);
-        Animation translateAnimation3 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_3);
-        cloud1.setAnimation(translateAnimation10);
-        cloud2.setAnimation(translateAnimation11);
-        cloud3.setAnimation(translateAnimation12);
-        cloud4.setAnimation(translateAnimation13);
-        cloud5.setAnimation(translateAnimation2);
-        cloud6.setAnimation(translateAnimation3);
+        moveClouds();
 
         spinArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,13 +162,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    private ArrayList<String> getImageList() {
-        ArrayList<String> imagesList = new ArrayList<>();
-        for (int i = 1; i <= 23; i++)
-            imagesList.add("http://ssninstincts.org.in/img/gallery/big/" + i + ".jpg");
-        return imagesList;
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -206,5 +188,20 @@ public class HomeActivity extends AppCompatActivity {
 
     public void logoOnClick(View view) {
         startActivity(new Intent(this, AboutActivity.class));
+    }
+
+    private void moveClouds() {
+        Animation translateAnimation10 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_0);
+        Animation translateAnimation11 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_1);
+        Animation translateAnimation12 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_2);
+        Animation translateAnimation13 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_1_3);
+        Animation translateAnimation2 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_2);
+        Animation translateAnimation3 = AnimationUtils.loadAnimation(this, R.anim.translate_cloud_3);
+        cloud1.setAnimation(translateAnimation10);
+        cloud2.setAnimation(translateAnimation11);
+        cloud3.setAnimation(translateAnimation12);
+        cloud4.setAnimation(translateAnimation13);
+        cloud5.setAnimation(translateAnimation2);
+        cloud6.setAnimation(translateAnimation3);
     }
 }
