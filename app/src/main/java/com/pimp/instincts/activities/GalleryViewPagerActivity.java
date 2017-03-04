@@ -29,7 +29,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 
 import com.pimp.instincts.R;
-import com.pimp.instincts.adapters.ImagePagerAdapter;
+import com.pimp.instincts.adapters.GalleryViewPagerAdapter;
 
 import java.util.List;
 import java.util.Map;
@@ -37,7 +37,7 @@ import java.util.Map;
 public class GalleryViewPagerActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "position";
     public static int selectedIndex = -1;
-    private ImagePagerAdapter imagePagerAdapter;
+    private GalleryViewPagerAdapter galleryViewPagerAdapter;
     private ViewPager viewPager;
     private final SharedElementCallback enterTransitionCallback = new SharedElementCallback() {
         @Override
@@ -45,7 +45,7 @@ public class GalleryViewPagerActivity extends AppCompatActivity {
             View view = null;
 
             if (viewPager.getChildCount() > 0) {
-                view = imagePagerAdapter.getCurrentView(viewPager);
+                view = galleryViewPagerAdapter.getCurrentView(viewPager);
                 view = view.findViewById(R.id.gallery_image);
             }
 
@@ -99,10 +99,10 @@ public class GalleryViewPagerActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        imagePagerAdapter = new ImagePagerAdapter(this);
+        galleryViewPagerAdapter = new GalleryViewPagerAdapter(this);
 
         viewPager = (ViewPager) findViewById(R.id.container);
-        viewPager.setAdapter(imagePagerAdapter);
+        viewPager.setAdapter(galleryViewPagerAdapter);
 
         int position = selectedIndex = getIntent().getIntExtra(EXTRA_POSITION, 0);
         viewPager.setCurrentItem(position);

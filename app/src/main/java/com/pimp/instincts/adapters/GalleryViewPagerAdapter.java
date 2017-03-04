@@ -29,11 +29,11 @@ import android.widget.ImageView;
 import com.pimp.instincts.R;
 import com.squareup.picasso.Picasso;
 
-public class ImagePagerAdapter extends PagerAdapter {
+public class GalleryViewPagerAdapter extends PagerAdapter {
     protected LayoutInflater inflater;
     protected Context context;
 
-    public ImagePagerAdapter(Context context) {
+    public GalleryViewPagerAdapter(Context context) {
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -50,7 +50,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = inflater.inflate(R.layout.item_gallery, container, false);
+        View view = inflater.inflate(R.layout.item_view_pager_gallery, container, false);
 
         view.setTag(R.id.index, position);
         ImageView image = (ImageView) view.findViewById(R.id.gallery_image);
