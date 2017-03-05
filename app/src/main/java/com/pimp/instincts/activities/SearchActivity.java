@@ -25,47 +25,43 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
+import com.pimp.instincts.InstinctsApplication;
 import com.pimp.instincts.R;
-import com.pimp.instincts.utils.LogHelper;
+import com.pimp.instincts.adapters.SearchAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.moonmonkeylabs.realmsearchview.RealmSearchView;
+import io.realm.Realm;
 
-public class EventsActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = LogHelper.makeLogTag(EventsActivity.class);
+public class SearchActivity extends AppCompatActivity {
 
-    @BindView(R.id.events_root_ll)
-    LinearLayout eventsRootLl;
+    @BindView(R.id.search_view)
+    RealmSearchView searchView;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_events);
+        setTheme(getIntent().getIntExtra("theme", R.style.EventsTheme));
+        setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        for (int i = 1; i < eventsRootLl.getChildCount(); i++) {
-            ViewGroup viewGroup = (ViewGroup) eventsRootLl.getChildAt(i);
-            for (int j = 0; j < viewGroup.getChildCount(); j++) {
-                LinearLayout linearLayout = (LinearLayout) viewGroup.getChildAt(j);
-                linearLayout.setOnClickListener(this);
-            }
-        }
+        InstinctsApplication instinctsApplication = (InstinctsApplication) getApplicationContext();
+        Realm realm = instinctsApplication.getRealmHelper().getRealmInstance();
+        SearchAdapter searchAdapter = new SearchAdapter(this, realm, "name");
+        searchView.setAdapter(searchAdapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_events, menu);
+        getMenuInflater().inflate(R.menu.menu_event_list, menu);
         return true;
     }
 
@@ -75,18 +71,10 @@ public class EventsActivity extends AppCompatActivity implements View.OnClickLis
             case android.R.id.home:
                 onBackPressed();
                 break;
-            case R.id.action_search:
-                startActivity(new Intent(EventsActivity.this, SearchActivity.class)
-                        .putExtra("theme", R.style.EventsTheme));
+            case R.id.action_home:
+                startActivity(new Intent(this, HomeActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View view) {
-        TextView textView = (TextView) ((ViewGroup) view).getChildAt(1);
-        startActivity(new Intent(this, EventsListActivity.class).putExtra("section_type",
-                textView.getText().toString()));
     }
 }

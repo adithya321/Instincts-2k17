@@ -45,6 +45,7 @@ public class EventDetailActivity extends EventDetailBaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(getIntent().getIntExtra("theme", R.style.EventsTheme));
         super.onCreate(savedInstanceState);
     }
 

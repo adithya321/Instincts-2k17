@@ -65,7 +65,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 EventDetailBaseActivity.event = event;
-                context.startActivity(new Intent(context, EventDetailActivity.class));
+                context.startActivity(new Intent(context, EventDetailActivity.class)
+                        .putExtra("theme", R.style.EventsTheme));
             }
         });
 

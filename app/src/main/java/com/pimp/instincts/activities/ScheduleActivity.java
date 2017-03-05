@@ -18,6 +18,7 @@
 
 package com.pimp.instincts.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -29,6 +30,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,10 +69,20 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_events, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.action_search:
+                startActivity(new Intent(ScheduleActivity.this, SearchActivity.class)
+                        .putExtra("theme", R.style.ScheduleTheme));
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -101,7 +113,8 @@ public class ScheduleActivity extends AppCompatActivity {
             RealmHelper realmHelper = instinctsApplication.getRealmHelper();
             Realm realm = realmHelper.getRealmInstance();
             RealmResults<Event> eventRealmResults = realm.where(Event.class)
-                    .contains("startTime", "0" + day + "-03-2017").findAllSorted("startTime");
+                    .contains("startTime", (day > 9) ? day + "-03-2017" : "0" + day + "-03-2017")
+                    .findAllSorted("startTime");
 
             ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), eventRealmResults);
             RecyclerView eventsRecyclerView = (RecyclerView) rootView.findViewById(R.id.events_recycler_view);

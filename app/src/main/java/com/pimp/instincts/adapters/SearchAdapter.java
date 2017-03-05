@@ -20,7 +20,6 @@ package com.pimp.instincts.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,23 +32,21 @@ import com.pimp.instincts.activities.EventDetailActivity;
 import com.pimp.instincts.activities.EventDetailBaseActivity;
 import com.pimp.instincts.model.Event;
 
-import java.util.List;
+import co.moonmonkeylabs.realmsearchview.RealmSearchAdapter;
+import co.moonmonkeylabs.realmsearchview.RealmSearchViewHolder;
+import io.realm.Realm;
 
-public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
-    private List<Event> eventList;
+public class SearchAdapter extends RealmSearchAdapter<Event, SearchAdapter.ViewHolder> {
+
     private Context context;
 
-    public ScheduleAdapter(Context context, List<Event> Events) {
-        eventList = Events;
+    public SearchAdapter(Context context, Realm realm, String filterColumnName) {
+        super(context, realm, filterColumnName);
         this.context = context;
     }
 
-    private Context getContext() {
-        return context;
-    }
-
     @Override
-    public ScheduleAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateRealmViewHolder(ViewGroup parent, int i) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -59,15 +56,14 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(final ScheduleAdapter.ViewHolder viewHolder, int position) {
-        final Event event = eventList.get(position);
+    public void onBindRealmViewHolder(ViewHolder viewHolder, int position) {
+        final Event event = realmResults.get(position);
 
         viewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EventDetailBaseActivity.event = event;
-                context.startActivity(new Intent(context, EventDetailActivity.class)
-                        .putExtra("theme", R.style.ScheduleTheme));
+                context.startActivity(new Intent(context, EventDetailActivity.class));
             }
         });
 
@@ -121,7 +117,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return eventList.size();
+        return realmResults.size();
     }
 
     private void setImageView(ImageView imageView, int drawable) {
@@ -129,7 +125,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         imageView.setTag(drawable);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RealmSearchViewHolder {
         private LinearLayout linearLayout;
 
         private ImageView imageView;
