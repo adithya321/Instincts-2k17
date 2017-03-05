@@ -40,7 +40,7 @@ public class SponsorsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_sponsors);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Sponsors");
@@ -83,7 +83,22 @@ public class SponsorsActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_our_team, container, false);
+            View rootView;
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+                case 0:
+                    rootView = inflater.inflate(R.layout.fragment_title_sponsors, container, false);
+                    break;
+                case 1:
+                    rootView = inflater.inflate(R.layout.fragment_partner_sponsors, container, false);
+                    break;
+                case 2:
+                    rootView = inflater.inflate(R.layout.fragment_associate_sponsors, container, false);
+                    break;
+
+                default:
+                    rootView = inflater.inflate(R.layout.fragment_title_sponsors, container, false);
+            }
+            return rootView;
         }
     }
 
@@ -100,7 +115,7 @@ public class SponsorsActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
 
         @Override
@@ -109,6 +124,8 @@ public class SponsorsActivity extends AppCompatActivity {
                 case 0:
                     return "TITLE";
                 case 1:
+                    return "PARTNERS";
+                case 2:
                     return "ASSOCIATE";
             }
             return null;

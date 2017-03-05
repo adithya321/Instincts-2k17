@@ -227,6 +227,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void goOnClick(View view) {
         if (!validate()) return;
+        Toast.makeText(this, "Loading...", Toast.LENGTH_LONG).show();
         auth.createUserWithEmailAndPassword(emailEt.getText().toString().trim(),
                 passwordEt.getText().toString().trim())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
