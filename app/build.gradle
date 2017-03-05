@@ -67,7 +67,9 @@ dependencies {
     compile 'com.android.support:support-v4:25.2.0'
 
     compile 'com.google.firebase:firebase-auth:10.2.0'
+    compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-database:10.2.0'
+    compile 'com.google.firebase:firebase-messaging:10.2.0'
     compile 'com.firebaseui:firebase-ui-database:1.2.0'
 
     compile 'com.google.android.gms:play-services-maps:10.2.0'
