@@ -115,14 +115,14 @@ public class EventDetailActivity extends EventDetailBaseActivity {
         }
         if (!event.getRules().equals("")) {
             //items.add(new Category("Rules"));
-            items.add(new Card("Rules", event.getRules(), null));
+            items.add(new Card("Rules / Info", event.getRules(), null));
             items.add(new Line());
         }
-        if (!event.getInfo().equals("")) {
+        /*if (!event.getInfo().equals("")) {
             //items.add(new Category("Info"));
             items.add(new Card("Info", event.getInfo(), null));
             items.add(new Line());
-        }
+        }*/
         if (!event.getContact1().equals("")) {
             //items.add(new Category("Contact"));
             items.add(new Contact(R.drawable.ic_call, event.getContact1().split(":")[0],

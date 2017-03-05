@@ -38,6 +38,7 @@ import com.lukedeighton.wheelview.WheelView;
 import com.lukedeighton.wheelview.adapter.WheelArrayAdapter;
 import com.pimp.instincts.R;
 import com.pimp.instincts.model.LocalJSONSource;
+import com.pimp.instincts.model.RemoteJSONSource;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -88,6 +89,8 @@ public class HomeActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         new LocalJSONSource(this);
+        new RemoteJSONSource(this);
+
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
 
         logo.bringToFront();
