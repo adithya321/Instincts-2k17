@@ -31,6 +31,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.github.javiersantos.appupdater.AppUpdater;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.lukedeighton.wheelview.WheelView;
@@ -137,6 +138,9 @@ public class HomeActivity extends AppCompatActivity {
                 wheelView.setSelected(ThreadLocalRandom.current().nextInt(0, 5 + 1));
             }
         });
+
+        AppUpdater appUpdater = new AppUpdater(this);
+        appUpdater.start();
     }
 
     @Override
