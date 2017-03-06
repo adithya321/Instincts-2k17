@@ -116,7 +116,7 @@ public class EventDetailActivity extends EventDetailBaseActivity {
         }
         if (!event.getRules().equals("")) {
             //items.add(new Category("Rules"));
-            items.add(new Card("Rules / Info", event.getRules(), null));
+            items.add(new Card("Info / Rules", event.getRules(), null));
             items.add(new Line());
         }
         /*if (!event.getInfo().equals("")) {

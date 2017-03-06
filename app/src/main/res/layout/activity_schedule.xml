@@ -28,16 +28,12 @@
         android:id="@+id/weekView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:columnGap="8dp"
-        app:dayBackgroundColor="#05000000"
-        app:eventTextColor="@android:color/white"
-        app:eventTextSize="12sp"
-        app:headerColumnBackground="#ffffffff"
-        app:headerColumnPadding="8dp"
-        app:headerColumnTextColor="#FFFFFF"
-        app:headerRowBackgroundColor="#9FEBFD"
-        app:headerRowPadding="12dp"
+        app:dayBackgroundColor="@android:color/transparent"
+        app:eventTextColor="@color/white"
+        app:headerColumnTextColor="@color/white"
+        app:headerRowBackgroundColor="?colorPrimary"
+        app:headerRowPadding="8dp"
         app:hourHeight="60dp"
-        app:noOfVisibleDays="3"
-        app:todayBackgroundColor="#1848adff" />
+        app:todayBackgroundColor="?colorPrimary"
+        app:todayHeaderTextColor="@color/white" />
 </RelativeLayout>

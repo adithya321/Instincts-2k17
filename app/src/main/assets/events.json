@@ -285,6 +285,58 @@
       "info": "",
       "contact1": "S.Naveen:9597303058",
       "contact2": "Kamesh:9677168403"
+    },
+    {
+      "id": 22,
+      "name": "Celebrity Variety Show",
+      "startTime": "10-03-2017 14:00:00",
+      "endTime": "10-03-2017 16:00:00",
+      "location": "Main Auditorium",
+      "type": "Variety",
+      "description": "Variety show includes mime, mimicry, skit and other skills which will entertain the crowd. Be innovative, sharpen your entertaining skills. Pull your sparkling creativity to reality. Be the best team to rock the floor!!!!",
+      "rules": "Prelims will be conducted\n\nHave your own theme.\n\nEach team will be given 10 min for performance and 2min for stage setting.\n\nA team may have a Minimum of 5 and maximum of 15.\n\nNo abusive languages should be used.\n\nA team should be represented by one college only.\n\nThe teams are requested to bring their sound track in Pen drives or Cd s and have another copy for your safety.\n\nID cards are must for registration.\n\nThe Final Judgment will be mainly based on their performance, sense of Humor, theme and Creativity.\n\nJudges decision will be final.",
+      "info": "",
+      "contact1": "A.Gousik:9087995729",
+      "contact2": ""
+    },
+    {
+      "id": 23,
+      "name": "Western Solo",
+      "startTime": "10-03-2017 10:00:00",
+      "endTime": "10-03-2017 17:00:00",
+      "location": "Main Stage",
+      "type": "Dance",
+      "description": "Have you got the attitude and the moves that take to tear up the dance floor? Do you shine every time you're on stage doing your style? From Jazz to Hip hop, to Broadway, we've got 'em all! So come on, groove to your music and wow us with those moves you do oh so effortlessly!",
+      "rules": "The performance must be between 2 to 3 minutes.\n\nThe performance can be in any Western genre.\n\nParticipants must be college students only.\n\nThe music/track for the performance should be given in a pendrive.",
+      "info": "",
+      "contact1": "D K Vigneshwar:9500135345",
+      "contact2": ""
+    },
+    {
+      "id": 24,
+      "name": "Adapt To Tune",
+      "startTime": "10-03-2017 10:00:00",
+      "endTime": "10-03-2017 17:00:00",
+      "location": "Main Stage",
+      "type": "Dance",
+      "description": "Got the skills to kill any beat that we play and adapt perfectly to the style? Here is the right place to showcase your swag! Come show us what you got!!",
+      "rules": "The performance will be between 2-3 minutes\n\nThe participant should be a college student.\n\nThe songs played may be of any genre.\n\nJudges decision will be final.",
+      "info": "",
+      "contact1": "Priyanka C:9003114115",
+      "contact2": ""
+    },
+    {
+      "id": 25,
+      "name": "Classical Dual",
+      "startTime": "10-03-2017 10:00:00",
+      "endTime": "10-03-2017 17:00:00",
+      "location": "Main Stage",
+      "type": "Dance",
+      "description": "The performance can be in any indian classical dance genere such as bharathanatyam,kathak,mohiniyattam with 2 members in a team.",
+      "rules": "he performance must be between 3 to 5 minutes.\n\nThe performance can be in any Indian classical dance genre. (bharatanatyam, kuchipudi, mohiniyattam, odissi etc)\n\nParticipants must be college students only.\n\nThe scoring will be based on performance,presentation and costume/makeup.\n\nThe music/song for the performance should be classical (Non-film Song)",
+      "info": "",
+      "contact1": "Sujana:9600094640",
+      "contact2": ""
     }
   ]
 }

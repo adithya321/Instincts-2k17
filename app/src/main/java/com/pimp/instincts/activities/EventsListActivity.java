@@ -43,13 +43,14 @@ import io.realm.RealmResults;
 public class EventsListActivity extends AppCompatActivity {
     private static final String TAG = LogHelper.makeLogTag(EventsListActivity.class);
     public Map<Integer, String> sectionNoToString;
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_event);
 
-        String type = getIntent().getStringExtra("section_type");
+        type = getIntent().getStringExtra("section_type");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(type);
@@ -93,6 +94,10 @@ public class EventsListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.action_view_day:
+                startActivity(new Intent(this, DayViewActivity.class)
+                        .putExtra("type", type));
                 break;
             case R.id.action_home:
                 startActivity(new Intent(this, HomeActivity.class));

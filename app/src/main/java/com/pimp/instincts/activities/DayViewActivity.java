@@ -65,13 +65,14 @@ public class DayViewActivity extends AppCompatActivity implements WeekView.Event
         InstinctsApplication instinctsApplication = (InstinctsApplication) getApplicationContext();
         RealmHelper realmHelper = instinctsApplication.getRealmHelper();
         Realm realm = realmHelper.getRealmInstance();
-        eventRealmResults = realm.where(Event.class).findAll();
+        eventRealmResults = realm.where(Event.class)
+                .equalTo("type", getIntent().getStringExtra("type")).findAll();
 
         weekView = (WeekView) findViewById(R.id.weekView);
         weekView.setOnEventClickListener(this);
         weekView.setMonthChangeListener(this);
         weekView.setEventLongPressListener(this);
-        weekView.setNumberOfVisibleDays(1);
+        weekView.setNumberOfVisibleDays(2);
 
         setupDateTimeInterpreter();
 

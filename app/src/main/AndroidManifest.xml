@@ -60,7 +60,9 @@
         <activity
             android:name=".activities.EventDetailActivity"
             android:theme="@style/EventsTheme" />
-        <activity android:name=".activities.DayViewActivity" />
+        <activity
+            android:name=".activities.DayViewActivity"
+            android:theme="@style/EventsTheme" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
