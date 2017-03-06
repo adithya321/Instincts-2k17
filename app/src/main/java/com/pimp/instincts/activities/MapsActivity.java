@@ -69,6 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LatLng CSE_CLASSROOMS = new LatLng(12.751438, 80.197301);
     private LatLng IT_LABS = new LatLng(12.751621, 80.196869);
     private LatLng FOUNTAIN = new LatLng(12.751590, 80.195825);
+    private LatLng MECH_SEMINAR_HALL = new LatLng(12.751813, 80.194363);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         stringToLatLngMap.put("CSE Classrooms", CSE_CLASSROOMS);
         stringToLatLngMap.put("IT Labs", IT_LABS);
         stringToLatLngMap.put("Fountain", FOUNTAIN);
+        stringToLatLngMap.put("Mech Seminar Hall", MECH_SEMINAR_HALL);
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
