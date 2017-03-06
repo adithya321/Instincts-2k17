@@ -110,5 +110,8 @@
         <activity
             android:name=".activities.SearchActivity"
             android:theme="@style/EventsTheme" />
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="327685d013652e58a2cb3571746ced9f0a54aab3" />
     </application>
 </manifest>

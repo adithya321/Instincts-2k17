@@ -21,10 +21,12 @@ package com.pimp.instincts;
 import android.app.Application;
 import android.os.StrictMode;
 
+import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
 import com.pimp.instincts.utils.RealmHelper;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
+import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 
 public class InstinctsApplication extends Application {
@@ -32,6 +34,7 @@ public class InstinctsApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
 
         if (BuildConfig.DEBUG) {
             StrictMode.enableDefaults();
