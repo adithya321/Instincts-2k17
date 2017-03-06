@@ -54,6 +54,13 @@
                 tools:text="09:00" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="to"
+                android:textSize="12sp" />
+
+            <TextView
                 android:id="@+id/end_time"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -81,6 +88,12 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="Title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/location"
