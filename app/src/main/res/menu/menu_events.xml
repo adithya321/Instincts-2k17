@@ -30,6 +30,6 @@
         android:id="@+id/action_food"
         android:icon="@drawable/ic_local_pizza"
         android:orderInCategory="100"
-        android:title="Search"
+        android:title="Food Stalls"
         app:showAsAction="always" />
 </menu>

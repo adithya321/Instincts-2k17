@@ -18,6 +18,7 @@
 
 package com.pimp.instincts.activities;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -78,13 +79,24 @@ public class AboutActivity extends AppCompatActivity {
                 startActivity(browserIntent1);
                 break;
             case R.id.action_facebook:
-                Intent browserIntent2 = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://www.facebook.com/instincts.ssn/"));
-                startActivity(browserIntent2);
+                Uri uri1 = Uri.parse("https://www.facebook.com/instincts.ssn");
+                try {
+                    this.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("fb://facewebmodal/f?href=" + uri1)));
+                } catch (Exception e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, uri1));
+                }
+                break;
             case R.id.action_instagram:
-                Intent browserIntent3 = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://www.instagram.com/ssninstincts/"));
-                startActivity(browserIntent3);
+                Uri uri2 = Uri.parse("http://instagram.com/_u/ssninstincts");
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri2);
+                    intent.setPackage("com.instagram.android");
+                    startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, uri2));
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

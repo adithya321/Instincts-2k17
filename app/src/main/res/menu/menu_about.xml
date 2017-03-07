@@ -35,6 +35,6 @@
         android:id="@+id/action_instagram"
         android:icon="@drawable/ic_instagram"
         android:orderInCategory="300"
-        android:title="Facebook"
+        android:title="Instagram"
         app:showAsAction="always" />
 </menu>
