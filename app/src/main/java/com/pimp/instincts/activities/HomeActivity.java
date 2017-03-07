@@ -32,6 +32,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.lukedeighton.wheelview.WheelView;
@@ -143,7 +144,9 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         AppUpdater appUpdater = new AppUpdater(this);
-        appUpdater.start();
+        appUpdater.setUpdateFrom(UpdateFrom.GITHUB)
+                .setGitHubUserAndRepo("adithya321", "Instincts")
+                .start();
     }
 
     @Override
