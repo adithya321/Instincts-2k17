@@ -27,10 +27,22 @@
         android:orientation="vertical"
         tools:context="com.pimp.instincts.activities.HospitalityActivity$PlaceholderFragment">
 
+        <Button
+            android:id="@+id/ssn_bus_routes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="sans-serif"
+            android:text="SSN Bus Routes"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground">
 

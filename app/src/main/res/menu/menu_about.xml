@@ -20,16 +20,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_search"
-        android:orderInCategory="200"
-        android:title="Search"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/action_food"
-        android:icon="@drawable/ic_local_pizza"
+        android:id="@+id/action_twitter"
+        android:icon="@drawable/ic_twitter"
         android:orderInCategory="100"
-        android:title="Search"
+        android:title="Twitter"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_facebook"
+        android:icon="@drawable/ic_facebook"
+        android:orderInCategory="200"
+        android:title="Facebook"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_instagram"
+        android:icon="@drawable/ic_instagram"
+        android:orderInCategory="300"
+        android:title="Facebook"
         app:showAsAction="always" />
 </menu>

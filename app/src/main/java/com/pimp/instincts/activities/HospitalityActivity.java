@@ -32,6 +32,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.pimp.instincts.R;
 
@@ -107,6 +108,16 @@ public class HospitalityActivity extends AppCompatActivity {
                     break;
                 case 2:
                     rootView = inflater.inflate(R.layout.fragment_buses, container, false);
+
+                    Button button = (Button) rootView.findViewById(R.id.ssn_bus_routes);
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("http://www.ssn.edu.in/wp-content/uploads/2016/01/Bus_ciruclar.pdf"));
+                            startActivity(browserIntent);
+                        }
+                    });
                     break;
 
                 default:

@@ -18,6 +18,8 @@
 
 package com.pimp.instincts.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -27,6 +29,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,10 +61,30 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_about, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.action_twitter:
+                Intent browserIntent1 = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://twitter.com/ssn_instincts"));
+                startActivity(browserIntent1);
+                break;
+            case R.id.action_facebook:
+                Intent browserIntent2 = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://www.facebook.com/instincts.ssn/"));
+                startActivity(browserIntent2);
+            case R.id.action_instagram:
+                Intent browserIntent3 = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://www.instagram.com/ssninstincts/"));
+                startActivity(browserIntent3);
                 break;
         }
         return super.onOptionsItemSelected(item);

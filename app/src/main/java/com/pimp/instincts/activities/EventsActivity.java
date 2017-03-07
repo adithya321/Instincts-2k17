@@ -79,6 +79,10 @@ public class EventsActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(EventsActivity.this, SearchActivity.class)
                         .putExtra("theme", R.style.EventsTheme));
                 break;
+            case R.id.action_food:
+                startActivity(new Intent(EventsActivity.this, MapsActivity.class)
+                        .putExtra("location", "Food Stalls"));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

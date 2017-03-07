@@ -85,6 +85,10 @@ public class ScheduleActivity extends AppCompatActivity {
                 startActivity(new Intent(ScheduleActivity.this, SearchActivity.class)
                         .putExtra("theme", R.style.ScheduleTheme));
                 break;
+            case R.id.action_food:
+                startActivity(new Intent(ScheduleActivity.this, MapsActivity.class)
+                        .putExtra("location", "Food Stalls"));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
