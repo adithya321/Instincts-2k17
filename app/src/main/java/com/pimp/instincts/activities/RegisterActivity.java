@@ -21,6 +21,7 @@ package com.pimp.instincts.activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -249,7 +250,16 @@ public class RegisterActivity extends AppCompatActivity {
                                     collegeEt.getText().toString(),
                                     departmentEt.getText().toString(),
                                     Integer.parseInt(yearEt.getText().toString()),
-                                    mobileEt.getText().toString());
+                                    mobileEt.getText().toString(), false);
+
+                            SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("name", nameEt.getText().toString());
+                            editor.putString("college", collegeEt.getText().toString());
+                            editor.putString("department", departmentEt.getText().toString());
+                            editor.putString("year", yearEt.getText().toString());
+                            editor.putString("mobile", mobileEt.getText().toString());
+                            editor.apply();
 
                             databaseReference.child("users").child(currentUser.getUid()).setValue(user);
 

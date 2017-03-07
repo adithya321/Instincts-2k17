@@ -27,13 +27,13 @@ public class User {
     private String department;
     private int year;
     private String mobile;
+    private boolean paid;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String id, String name, String email, String college, String department, int year,
-                String mobile) {
+    public User(String id, String name, String email, String college, String department, int year, String mobile, boolean paid) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -41,6 +41,7 @@ public class User {
         this.department = department;
         this.year = year;
         this.mobile = mobile;
+        this.paid = paid;
     }
 
     public String getId() {
@@ -99,6 +100,14 @@ public class User {
         this.mobile = mobile;
     }
 
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -109,6 +118,7 @@ public class User {
                 ", department='" + department + '\'' +
                 ", year=" + year +
                 ", mobile='" + mobile + '\'' +
+                ", paid=" + paid +
                 '}';
     }
 }

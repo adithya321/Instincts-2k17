@@ -4,3 +4,4 @@
 *.apk
 ignore.xml
 google-services.json
+fabric.properties

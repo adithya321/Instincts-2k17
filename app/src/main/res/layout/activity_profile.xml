@@ -37,5 +37,118 @@
     <ImageView
         android:id="@+id/qr_image_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textColorHint="#f0f7f4"
+        android:theme="@style/TextLabel">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/name_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_bg_edit_2"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:paddingBottom="2dp"
+            android:textColor="#f0f7f4"
+            android:textCursorDrawable="@drawable/bg_input_cursor_2" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textColorHint="#f0f7f4"
+        android:theme="@style/TextLabel">
+
+        <EditText
+            android:id="@+id/college_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_bg_edit_2"
+            android:hint="@string/college"
+            android:inputType="textPersonName"
+            android:paddingBottom="2dp"
+            android:textColor="#f0f7f4"
+            android:textCursorDrawable="@drawable/bg_input_cursor_2" />
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:textColorHint="#f0f7f4"
+            android:theme="@style/TextLabel">
+
+            <EditText
+                android:id="@+id/department_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_edit_2"
+                android:hint="@string/department"
+                android:inputType="textPersonName"
+                android:paddingBottom="2dp"
+                android:textColor="#f0f7f4"
+                android:textCursorDrawable="@drawable/bg_input_cursor_2" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:textColorHint="#f0f7f4"
+            android:theme="@style/TextLabel">
+
+            <EditText
+                android:id="@+id/year_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_edit_2"
+                android:hint="@string/year"
+                android:inputType="number"
+                android:paddingBottom="2dp"
+                android:textColor="#f0f7f4"
+                android:textCursorDrawable="@drawable/bg_input_cursor_2" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textColorHint="#f0f7f4"
+        android:theme="@style/TextLabel">
+
+        <EditText
+            android:id="@+id/mobile_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_bg_edit_2"
+            android:hint="@string/mobile"
+            android:inputType="phone"
+            android:paddingBottom="2dp"
+            android:textColor="#f0f7f4"
+            android:textCursorDrawable="@drawable/bg_input_cursor_2" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="8dp"
+        android:onClick="updateOnClick"
+        android:src="@drawable/ic_save"
+        android:text="UPDATE" />
 </LinearLayout>
