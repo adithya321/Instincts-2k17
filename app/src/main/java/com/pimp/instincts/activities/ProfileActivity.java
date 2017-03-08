@@ -26,6 +26,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,8 +38,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.pimp.instincts.R;
 import com.pimp.instincts.model.User;
 import com.pimp.instincts.utils.LogHelper;
@@ -70,6 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private DatabaseReference databaseReference;
     private SharedPreferences sharedPreferences;
+    private Boolean paid = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,10 +140,36 @@ public class ProfileActivity extends AppCompatActivity {
         departmentEt.setText(sharedPreferences.getString("department", ""));
         yearEt.setText(sharedPreferences.getString("year", ""));
         mobileEt.setText(sharedPreferences.getString("mobile", ""));
+
+        Query userQuery = databaseReference.child("users").child(currentUser.getUid());
+        userQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try {
+                    User user = dataSnapshot.getValue(User.class);
+                    nameEt.setText(user.getName());
+                    collegeEt.setText(user.getCollege());
+                    departmentEt.setText(user.getDepartment());
+                    yearEt.setText(String.valueOf(user.getYear()));
+                    mobileEt.setText(user.getMobile());
+                    paid = user.isPaid();
+                } catch (Exception e) {
+                    Log.e("populateProfile", e.toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     public void updateOnClick(View view) {
         try {
+            if (paid == null) {
+                Toast.makeText(this, "Check your Internet Connection", Toast.LENGTH_LONG).show();
+                return;
+            }
             if (yearEt.getText().toString().trim().equals(""))
                 yearEt.setText("0");
 
@@ -147,7 +179,7 @@ public class ProfileActivity extends AppCompatActivity {
                     collegeEt.getText().toString(),
                     departmentEt.getText().toString(),
                     Integer.parseInt(yearEt.getText().toString()),
-                    mobileEt.getText().toString(), false);
+                    mobileEt.getText().toString(), paid);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("name", nameEt.getText().toString());
