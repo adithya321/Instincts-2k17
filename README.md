@@ -1,22 +1,22 @@
-# Instincts
+# Instincts 2k17
 
 <p align="center"><a href='https://play.google.com/store/apps/details?id=com.pimp.instincts&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="125" width="323"/></a></p>
 
 <table  border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/home.png"/></td>
-<td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/events.png"/></td>
-<td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/schedule.png"/></td>
+<td><img src="https://raw.githubusercontent.com/adithya321/Instincts-2k17/master/screenshots/home.png"/></td>
+<td><img src="https://raw.githubusercontent.com/adithya321/Instincts-2k17/master/screenshots/events.png"/></td>
+<td><img src="https://raw.githubusercontent.com/adithya321/Instincts-2k17/master/screenshots/schedule.png"/></td>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/events_list.png"/></td>
-<td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/event_detail.png"/></td>
-<td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/map.png"/></td>
+<td><img src="https://raw.githubusercontent.com/adithya321/Instincts-2k17/master/screenshots/events_list.png"/></td>
+<td><img src="https://raw.githubusercontent.com/adithya321/Instincts-2k17/master/screenshots/event_detail.png"/></td>
+<td><img src="https://raw.githubusercontent.com/adithya321/Instincts-2k17/master/screenshots/map.png"/></td>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/login.png"/></td>
-<td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/register.png"/></td>
-<td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/profile.png"/></td>
+<td><img src="https://raw.githubusercontent.com/adithya321/Instincts-2k17/master/screenshots/login.png"/></td>
+<td><img src="https://raw.githubusercontent.com/adithya321/Instincts-2k17/master/screenshots/register.png"/></td>
+<td><img src="https://raw.githubusercontent.com/adithya321/Instincts-2k17/master/screenshots/profile.png"/></td>
 </tr>
 </table>
 
@@ -37,7 +37,7 @@
 
 ## License
 
-    Instincts
+    Instincts 2k17
     Copyright 2016 Adithya J
 
     This program is free software: you can redistribute it and/or modify
