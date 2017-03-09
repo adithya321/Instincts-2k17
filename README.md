@@ -1,5 +1,7 @@
 # Instincts
 
+<p align="center"><a href='https://play.google.com/store/apps/details?id=com.pimp.instincts&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="125" width="323"/></a></p>
+
 <table  border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td><img src="https://raw.githubusercontent.com/adithya321/Instincts/master/screenshots/home.png"/></td>
